@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Profil de {{ user.username }}
+{% endblock %}
+
+
+{% block headerContent %}
+    <h1 class="display-4">{{ user.username }}</h1>
+{%  endblock %}
+
+{% block mainContent %}
+    <ul>
+            <li>
+                {{ user.username }} n'a rien publié pour le moment !
+            </li>
+    </ul>
+{% endblock %}
+
+{% block sidebarContent %}
+    <a href="#" class="btn btn-block btn-outline-primary">
+        Revenir à la liste
+    </a>
+
+{% if user.id == 1 %}
+    <div class="card mt-4">
+        <div class="card-body">
+            {% include 'registration/register.html.twig' %}
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}
