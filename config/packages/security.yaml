@@ -1,5 +1,7 @@
 security:
-  # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+  encoders:
+    App\Entity\User:
+      algorithm: bcrypt
   providers:
     in_memory: { memory: null }
   firewalls:
@@ -8,6 +10,13 @@ security:
       security: false
     main:
       anonymous: true
+      guard:
+        authenticators:
+          - App\Security\LoginFormAuthenticator
+      logout:
+        path: app_logout
+        # where to redirect after logout
+        target: home
       # activate different ways to authenticate
       # https://symfony.com/doc/current/security.html#firewalls-authentication
       # https://symfony.com/doc/current/security/impersonating_user.html

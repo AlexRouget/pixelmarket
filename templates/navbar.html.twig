@@ -19,24 +19,24 @@
 
         </ul>
 
-            {% if user is not empty %}
+            {# {% if user is not empty %} #}
         <ul>
             <li class="nav-item dropdown">
         {# TODO remplacer les user par app.user #}
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span>
-                        Bienvenue {{ user.username }}
+                        {# Bienvenue {{ user.username }} #}
                     </span>
 
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {# <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ path('user_profile', { 'id': user.id}) }}">Profile</a>
                     <a class="dropdown-item disabled" href="#">Settings</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item disabled" href="#">Log out</a>
-                </div>
+                </div> #}
             </li>
         </ul>
-        {% endif %}
+        {# {% endif %} #}
     </div>
 </nav>
