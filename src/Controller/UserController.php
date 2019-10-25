@@ -13,13 +13,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/user/{id}", name="user_profile")
+     * @Route("/users/{id}", name="user_profile")
      */
     public function profile($id)
     {
-        // if(intval($id) === $this->getUser()->getId()) {
-        //     return $this->redirectToRoute('current_user_profile');
-        // }
+        if(intval($id) === $this->getUser()->getId()) {
+            return $this->redirectToRoute('current_user_profile');
+        }
 
         $user = $this
         ->getDoctrine()
@@ -36,7 +36,7 @@ class UserController extends AbstractController
         // ]);
     }
         /**
-     * @Route("/user/me", name="current_user_profile")
+     * @Route("/users/me", name="current_user_profile")
      * @param Request $req
      * @return Response
      */

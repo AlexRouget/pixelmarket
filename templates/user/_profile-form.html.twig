@@ -1,0 +1,29 @@
+{% from '_macros/field-has_error.html.twig' import hasError %}
+
+{{ form_start(form) }}
+
+<div class="form-group">
+  {{ form_label(form.username) }}
+
+  {{ form_widget(form.username, {'attr': { 'class': 'form-control ' ~ hasError(form.username)
+  }}) }}
+
+  <div class="text-danger">
+    {{ form_errors(form.username) }}
+  </div>
+</div>
+
+<div class="form-group">
+  {{ form_label(form.avatar) }}
+
+  {{ form_widget(form.avatar, {'attr': { 'class': 'form-control ' ~ hasError(form.avatar)
+  }}) }}
+
+  <div class="text-danger">
+    {{ form_errors(form.avatar) }}
+  </div>
+</div>
+
+{{ form_widget(form.submit, { 'attr': { 'class' : 'btn btn-primary'}}) }}
+
+{{ form_end(form) }}

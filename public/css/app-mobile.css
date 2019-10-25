@@ -2,8 +2,11 @@
   /* For mobils: */
 }
 
+/* DE 0 à 768px*/
 @media only screen and (max-width: 768px) {
-  a#signInUp {
+  a#signInUp,
+  li#profileNavbar,
+  a#navbarDropdown {
     display: none;
   }
 }
