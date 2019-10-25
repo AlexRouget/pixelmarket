@@ -9,9 +9,6 @@
 }
 @media only screen and (min-width: 768px) {
   /* For tablets: */
-  form.search {
-    background-color: red;
-  }
   li#decouvrir,
   li#CmtCaMarche,
   li#aPropos,
@@ -27,8 +24,9 @@
   nav a {
     margin-right: auto;
   }
+
   div#hamburger-content {
-    margin-right: 12em;
+    margin-right: 10em;
     width: 100%;
   }
   nav ul {
@@ -42,6 +40,12 @@
     justify-content: center;
     margin: 0.3em;
   }
+
+  form.formSignIn {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
 }
 @media only screen and (min-width: 1024px) {
   /* For little desktop: */
@@ -53,7 +57,7 @@
     margin: 0.3em;
   }
   div#hamburger-content {
-    margin-right: 11em;
+    margin-right: 7em;
     width: 100%;
   }
 }
@@ -67,7 +71,7 @@
     margin: 0.3em;
   }
   div#hamburger form {
-    margin-right: 8em;
+    margin-right: 6em;
     width: 100%;
     margin-left: -1em;
   }

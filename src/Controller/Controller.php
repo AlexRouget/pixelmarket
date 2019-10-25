@@ -15,8 +15,8 @@ class Controller extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index() {
+    public function index(AuthenticationUtils $authenticationUtils, Request $request): Response  {
 
-        return $this->render('base.html.twig');
+        return $this->render('homepage.html.twig');
     }
 }

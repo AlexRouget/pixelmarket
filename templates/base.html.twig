@@ -25,32 +25,33 @@
                 {% include 'navbar.html.twig' %}
             {% endblock %}
 
-            {# <div class="jumbotron">
+            <div class="jumbotron p-5">
                 <div class="container">
                     {% block headerContent %}
                     {%  endblock %}
                 </div>
-            </div> #}
+            </div>
 
         {% endblock %}
 
         {% block pageContent %}
 
-            {# <div class="container">
+            <div class="container">
                 <div class="row">
+                    <div class="col-4">
+                        {% block sidebarContent %}{% endblock %}
+                    </div>
+
                     <div class="col-8">
                         {% block mainContent%}{% endblock %}
                     </div>
 
-                    <div class="col-4">
-                        {% block sidebarContent %}{% endblock %}
-                    </div>
                 </div>
             </div>
 
             <div id="notification-container">
                 <div class="alert fade" role="alert"></div>
-            </div> #}
+            </div>
 
         {% endblock %}
 

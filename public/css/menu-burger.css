@@ -39,22 +39,6 @@ li a,
   background-color: #eee;
 }
 
-h1 {
-  position: absolute;
-  top: 50%;
-  left: 75%;
-  transform: translate(-75%, -50%);
-  text-align: left;
-  line-height: 150px;
-  letter-spacing: 4px;
-  color: white;
-  font-size: 99px;
-  font-weight: 800;
-  text-transform: uppercase;
-  text-shadow: 0 6px 1px #000;
-  transition-duration: 0.3s;
-}
-
 #hamburger,
 #hamburger-content {
   display: inline;
@@ -71,6 +55,7 @@ h1 {
   line-height: 47px;
   float: right;
   margin-right: 32px;
+  color: white;
 }
 
 #hamburger-overlay {

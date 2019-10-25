@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    pixelmarket
+{% endblock %}
+
+{% block headerContent %}
+{%  endblock %}
+
+{% block mainContent %}
+    {# <ul id="post-list">
+        {% for post in posts %}
+            <li>
+                {% include 'post/card.html.twig' %}
+            </li>
+        {% endfor  %}
+    </ul> #}
+
+    <div class="row">
+        {# <div class="col">
+            {% include 'post/pagination.html.twig' %}
+        </div> #}
+    </div>
+{% endblock %}
+
+
+
+{% block sidebarContent %}
+    <div class="bg-green w-100 h-100">
+        BLABLA
+     </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script src="{{ asset('js/like.js') }}"></script>
+
+{% endblock %}

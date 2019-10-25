@@ -29,5 +29,5 @@ security:
     - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     # Posts routes require full authentication
     - { path: ^/admin, roles: ROLE_ADMIN }
-    - { path: ^/users, roles: ROLE_USER }
+    - { path: ^/user, roles: ROLE_USER }
     # TODO -> modifier users en user

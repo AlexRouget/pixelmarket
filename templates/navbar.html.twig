@@ -1,53 +1,9 @@
-{# <nav class="bg-blue">
-    <ul class="navbar m-0 justify-content-between">
-
-        <a class="navbar-brand nav-link" href="{{ path('home') }}">
-            <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-            <span class="text-white">pixel</span><span class="text-green">market</span>
-        </a>
-        <form class="search-bar form-inline flex-fill">
-            <input class="search form-control mr-sm-2 w-100 rounded-pill border-light bg-secondary  text-white" type="search" placeholder="Search" aria-label="Search">
-            {# TODO ENLEVER LE BOUTON ? #}
-            {# <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> #}
-        </form>
-
-    
-        {# <li class="mx-2">
-            <a class="nav-link border-0 rounded-pill bg-green text-blue p-1 px-4" href="#">Créer une annonce</a>
-        </li>
-
-        {# EN FAIRE UN ELSEIF #}
-
-       {# <li class="mx-2">
-            <a class="nav-link border-0 rounded-pill bg-white text-blue p-1 px-4" href="#">S'inscrire/Se connecter</a>
-        </li> #}
-
-        {# {% if app.user is not empty %} #}
-            {# <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span>
-                        Bienvenue {{ app.user.username }}
-                    </span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ path('user_profile', { 'id': 1}) }}">Profile</a>
-                    <a class="dropdown-item disabled" href="#">Settings</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item disabled" href="#">Log out</a>
-                </div>
-            </li> #}
-        </ul>
-        {# {% endif %} #}
-
-{# </nav> #}
-
-{# RESPONSIVE DESIGN - MENU BURGER#}
 <nav class="bg-blue navbar m-0">
 
         <img  class="navbar-brand nav-link m-0"  src="/docs/4.3/assets/brand/bootstrap-solid.svg" class="d-inline-block align-top" alt="">
-        <a class="" href="{{ path('home') }}">
+        <h3><a class="" href="{{ path('home') }}">
             <span class="text-white">pixel</span><span class="text-green">market</span>
-        </a>
+        </a></h3>
 
     <div class="bg-blue" id="hamburger">
         <div id="hamburger-content">
@@ -88,7 +44,7 @@
                 <li id="FAQ"><a href="#">FAQ</a></li>
 
                 <li>
-                    <a id="signInUp" class="nav-link border-0 rounded-pill bg-white text-blue p-1 px-4" href="#">S'inscrire/Se connecter</a>
+                    <a id="signInUp" class="nav-link border-0 rounded-pill bg-white text-blue p-1 px-4" href="{{path("app_login")}}">S'inscrire/Se connecter</a>
                 </li>
                 <a id="signUpBurger" href="#" class="button button-sign-up">S'inscrire</a>
                 <a id="signInBurger" href="#" class="button button-sign-in">Se connecter</a>

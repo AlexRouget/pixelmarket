@@ -1,5 +1,7 @@
 /* ------- COLOR -------- */
-
+* {
+  color: #004084;
+}
 .bg-blue {
   background-color: #004084 !important;
 }
