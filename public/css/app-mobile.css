@@ -1,0 +1,89 @@
+@media only screen and (min-width: 600px) {
+  /* For mobils: */
+}
+
+@media only screen and (max-width: 768px) {
+  a#signInUp {
+    display: none;
+  }
+}
+@media only screen and (min-width: 768px) {
+  /* For tablets: */
+  form.search {
+    background-color: red;
+  }
+  li#decouvrir,
+  li#CmtCaMarche,
+  li#aPropos,
+  li#FAQ,
+  div#hamburger #signUpBurger,
+  div#hamburger #signInBurger {
+    display: none;
+  }
+  nav.navbar {
+    position: initial;
+  }
+
+  nav a {
+    margin-right: auto;
+  }
+  div#hamburger-content {
+    margin-right: 12em;
+    width: 100%;
+  }
+  nav ul {
+    display: flex;
+    position: initial !important;
+    justify-content: baseline;
+  }
+  nav ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.3em;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  /* For little desktop: */
+
+  div#hamburger-content {
+    display: flex;
+    position: initial !important;
+    justify-content: baseline;
+    margin: 0.3em;
+  }
+  div#hamburger-content {
+    margin-right: 11em;
+    width: 100%;
+  }
+}
+
+/* -------- DE 768 à 1020 ---------- */
+@media screen and (max-width: 1024px) and (min-width: 767px) {
+  div#hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.3em;
+  }
+  div#hamburger form {
+    margin-right: 8em;
+    width: 100%;
+    margin-left: -1em;
+  }
+
+  div#hamburger-sidebar-body,
+  div#hamburger-sidebar-body ul {
+    display: flex;
+    flex-direction: column;
+  }
+  a#signInUp {
+    background-color: #004084 !important;
+    color: white !important;
+  }
+}
+
+/* -------- PAYSAGE ---------- */
+
+@media only screen and (orientation: landscape) {
+}

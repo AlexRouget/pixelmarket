@@ -1,3 +1,24 @@
+/* ------- COLOR -------- */
+
+.bg-blue {
+  background-color: #004084 !important;
+}
+.text-blue {
+  color: #004084 !important;
+}
+.bg-green {
+  background-color: rgb(0, 172, 112) !important;
+}
+.text-green {
+  color: rgb(0, 172, 112) !important;
+}
+
+/* ------- SEARCH-BAR -------- */
+
+.search::placeholder {
+  color: white !important;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -125,4 +146,14 @@ Exemple de CSS pour l'état de chargement du bouton
   align-items: center;
 
   padding: 32px;
+}
+
+#global {
+  position: absolute;
+  z-index: -10;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../images/background.png) center;
+  background-size: cover;
 }

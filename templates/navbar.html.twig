@@ -1,42 +1,105 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+{# <nav class="bg-blue">
+    <ul class="navbar m-0 justify-content-between">
 
-    <a class="navbar-brand" href="{{ path('home') }}">pixelmarket</a>
+        <a class="navbar-brand nav-link" href="{{ path('home') }}">
+            <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            <span class="text-white">pixel</span><span class="text-green">market</span>
+        </a>
+        <form class="search-bar form-inline flex-fill">
+            <input class="search form-control mr-sm-2 w-100 rounded-pill border-light bg-secondary  text-white" type="search" placeholder="Search" aria-label="Search">
+            {# TODO ENLEVER LE BOUTON ? #}
+            {# <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> #}
+        </form>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    
+        {# <li class="mx-2">
+            <a class="nav-link border-0 rounded-pill bg-green text-blue p-1 px-4" href="#">Créer une annonce</a>
+        </li>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        {# EN FAIRE UN ELSEIF #}
 
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Posts list <span class="sr-only">(current)</span></a>
-            </li>
+       {# <li class="mx-2">
+            <a class="nav-link border-0 rounded-pill bg-white text-blue p-1 px-4" href="#">S'inscrire/Se connecter</a>
+        </li> #}
 
-            <li class="nav-item">
-                <a class="nav-link" href="#">Publish</a>
-            </li>
-
-        </ul>
-
-            {# {% if user is not empty %} #}
-        <ul>
-            <li class="nav-item dropdown">
-        {# TODO remplacer les user par app.user #}
+        {# {% if app.user is not empty %} #}
+            {# <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span>
-                        {# Bienvenue {{ user.username }} #}
+                        Bienvenue {{ app.user.username }}
                     </span>
-
                 </a>
-                {# <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ path('user_profile', { 'id': user.id}) }}">Profile</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('user_profile', { 'id': 1}) }}">Profile</a>
                     <a class="dropdown-item disabled" href="#">Settings</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item disabled" href="#">Log out</a>
-                </div> #}
-            </li>
+                </div>
+            </li> #}
         </ul>
         {# {% endif %} #}
+
+{# </nav> #}
+
+{# RESPONSIVE DESIGN - MENU BURGER#}
+<nav class="bg-blue navbar m-0">
+
+        <img  class="navbar-brand nav-link m-0"  src="/docs/4.3/assets/brand/bootstrap-solid.svg" class="d-inline-block align-top" alt="">
+        <a class="" href="{{ path('home') }}">
+            <span class="text-white">pixel</span><span class="text-green">market</span>
+        </a>
+
+    <div class="bg-blue" id="hamburger">
+        <div id="hamburger-content">
+           
+
+            {# {% if app.user is not empty %} #}
+                {# <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span>
+                            Bienvenue {{ app.user.username }}
+                        </span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ path('user_profile', { 'id': 1}) }}">Profile</a>
+                        <a class="dropdown-item disabled" href="#">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item disabled" href="#">Log out</a>
+                    </div>
+                </li> #}
+            {# {% endif %} #}
+
+            <form class="search-bar form-inline flex-fill">
+                <input class="search form-control mr-sm-2 w-100 rounded-pill border-light bg-secondary  text-white" type="search" placeholder="Search" aria-label="Search">
+                {# TODO ENLEVER LE BOUTON ? #}
+                {# <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> #}
+            </form>
+            <ul>    
+                <li>
+                    <a class="nav-link border-0 rounded-pill bg-green text-blue p-1 px-4" href="#">Créer une annonce</a>
+                </li>
+
+                {# EN FAIRE UN ELSEIF #}
+
+
+                <li id="decouvrir"><a href="#">Découvrir</a></li>
+                <li id="CmtCaMarche"><a href="#">Comment ça marche</a></li>
+                <li id="aPropos"><a href="#">À propos</a></li>
+                <li id="FAQ"><a href="#">FAQ</a></li>
+
+                <li>
+                    <a id="signInUp" class="nav-link border-0 rounded-pill bg-white text-blue p-1 px-4" href="#">S'inscrire/Se connecter</a>
+                </li>
+                <a id="signUpBurger" href="#" class="button button-sign-up">S'inscrire</a>
+                <a id="signInBurger" href="#" class="button button-sign-in">Se connecter</a>
+            </ul>
+        </div>
+        <button class="m-0 align-item-center" id="hamburger-button">&#9776;</button>
+        <div id="hamburger-sidebar">
+            <div id="hamburger-sidebar-header"></div>
+            <div id="hamburger-sidebar-body"></div>
+        </div>
+        <div id="hamburger-overlay"></div>
     </div>
+
 </nav>
