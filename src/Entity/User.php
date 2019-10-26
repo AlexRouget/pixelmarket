@@ -73,24 +73,24 @@ class User extends Model implements UserInterface
 
     public function getFirstName(): ?string
     {
-        return $this->firstName;
+        return $this->first_name;
     }
 
-    public function setFirstName(?string $firstName): self
+    public function setFirstName(?string $first_name): self
     {
-        $this->firstName = $firstName;
+        $this->first_name = $first_name;
 
         return $this;
     }
 
     public function getLastName(): ?string
     {
-        return $this->lastName;
+        return $this->last_name;
     }
 
-    public function setLastName(?string $lastName): self
+    public function setLastName(?string $last_name): self
     {
-        $this->lastName = $lastName;
+        $this->last_name = $last_name;
 
         return $this;
     }

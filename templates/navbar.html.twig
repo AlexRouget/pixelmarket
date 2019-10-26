@@ -1,63 +1,18 @@
-<nav class="bg-blue navbar m-0">
+<nav id="navbar" class="bg-blue navbar m-0">
 
-        <img  class="navbar-brand nav-link m-0"  src="/docs/4.3/assets/brand/bootstrap-solid.svg" class="d-inline-block align-top" alt="">
-        <h3><a class="" href="{{ path('home') }}">
-            <span class="text-white">pixel</span><span class="text-green">market</span>
-        </a></h3>
+    <h3><a class="" href="{{ path('home') }}">
+    <img  class="navbar-brand nav-link m-0"  src="/docs/4.3/assets/brand/bootstrap-solid.svg" class="d-inline-block align-top" alt="">
+        <span class="text-white">pixel</span><span class="text-green">market</span>
+    </a></h3>
+
+    <form class="search-bar form-inline flex-fill">
+        <input class="search form-control mr-sm-2 w-100 rounded-pill border-light bg-secondary  text-white" type="search" placeholder="Search" aria-label="Search">
+        {# TODO ENLEVER LE BOUTON ? #}
+        {# <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> #}
+    </form>
 
     <div class="bg-blue" id="hamburger">
-        <div id="hamburger-content">
-
-            <form class="search-bar form-inline flex-fill">
-                <input class="search form-control mr-sm-2 w-100 rounded-pill border-light bg-secondary  text-white" type="search" placeholder="Search" aria-label="Search">
-                {# TODO ENLEVER LE BOUTON ? #}
-                {# <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> #}
-            </form>
-            <ul>    
-                <li>
-                    <a class="nav-link border-0 rounded-pill bg-green text-blue p-1 px-4" href="#">Créer une annonce</a>
-                </li>
-
-
-                <li id="decouvrir"><a href="#">Découvrir</a></li>
-                <li id="CmtCaMarche"><a href="#">Comment ça marche</a></li>
-                <li id="aPropos"><a href="#">À propos</a></li>
-                <li id="FAQ"><a href="#">FAQ</a></li>
-
-                    {% if app.user is not empty %}
-                        <li class="nav-item dropdown" id="profileNavbar">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="h6 text-white ">
-                                    Bienvenue {{ app.user.username }}
-                                </span>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ path('user_profile', { 'id': app.user.id }) }}">Profile</a>
-                                <a class="dropdown-item disabled" href="#">Settings</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item disabled" href="#">Log out</a>
-                            </div>
-                        </li>
-                    {% else %} #}
-                        <li><a id="signInUp" class="nav-link border-0 rounded-pill bg-white text-blue p-1 px-4" href="{{path("app_login")}}">S'inscrire/Se connecter</a></li>    
-                        <a id="signUpBurger" href="#" class="button button-sign-up">S'inscrire</a>
-                        <a id="signInBurger" href="#" class="button button-sign-in">Se connecter</a>
-                    {% endif %}
-            </ul>
-        </div>
-        <button class="m-0 align-item-center" id="hamburger-button">&#9776;</button>
-        <div id="hamburger-sidebar">
-            <div id="hamburger-sidebar-header" class="bg-green d-flex justify-content-center align-items-center ">
-
-                {% if app.user is not empty %}
-                    <h3 class="text-white">
-                        <span class="text-blue">Bienvenue</span> {{ app.user.username }}
-                    </h3>
-                {% endif %}</div>
-
-            <div id="hamburger-sidebar-body"></div>
-        </div>
-        <div id="hamburger-overlay"></div>
+        {% include '_navbar-burger.html.twig'%}
     </div>
 
 </nav>

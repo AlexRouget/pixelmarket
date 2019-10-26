@@ -4,12 +4,47 @@
 
 /* DE 0 à 768px*/
 @media only screen and (max-width: 768px) {
+  nav#navbar form,
   a#signInUp,
   li#profileNavbar,
   a#navbarDropdown {
     display: none;
   }
+  div#hamburger form {
+    display: block;
+  }
 }
+
+/* DE 0 à 1024px*/
+@media only screen and (max-width: 1024px) {
+  nav#navbar {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+}
+
+/* -------- DE 768 à 1024 ---------- */
+@media screen and (max-width: 1024px) and (min-width: 767px) {
+  div#hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.3em;
+  }
+
+  div#hamburger-sidebar-body,
+  div#hamburger-sidebar-body ul {
+    display: flex;
+    flex-direction: column;
+  }
+  a#signInUp {
+    background-color: #004084 !important;
+    color: white !important;
+  }
+}
+
+/* DE 768 à l'infini */
 @media only screen and (min-width: 768px) {
   /* For tablets: */
   li#decouvrir,
@@ -17,7 +52,8 @@
   li#aPropos,
   li#FAQ,
   div#hamburger #signUpBurger,
-  div#hamburger #signInBurger {
+  div#hamburger #signInBurger,
+  div#hamburger form {
     display: none;
   }
   nav.navbar {
@@ -50,6 +86,8 @@
     max-width: 50%;
   }
 }
+
+/* DE 1024 à l'infini */
 @media only screen and (min-width: 1024px) {
   /* For little desktop: */
 
@@ -64,32 +102,6 @@
     width: 100%;
   }
 }
-
-/* -------- DE 768 à 1020 ---------- */
-@media screen and (max-width: 1024px) and (min-width: 767px) {
-  div#hamburger {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0.3em;
-  }
-  div#hamburger form {
-    margin-right: 6em;
-    width: 100%;
-    margin-left: -1em;
-  }
-
-  div#hamburger-sidebar-body,
-  div#hamburger-sidebar-body ul {
-    display: flex;
-    flex-direction: column;
-  }
-  a#signInUp {
-    background-color: #004084 !important;
-    color: white !important;
-  }
-}
-
 /* -------- PAYSAGE ---------- */
 
 @media only screen and (orientation: landscape) {

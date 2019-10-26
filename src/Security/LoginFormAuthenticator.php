@@ -41,6 +41,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     {
         return 'app_login' === $request->attributes->get('_route')
             && $request->isMethod('POST');
+
+        // normalement pas là 
+        return true;
+
     }
 
     public function getCredentials(Request $request)
@@ -95,7 +99,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         return $this->urlGenerator->generate('app_login');
     }
 
-    // A VOIR
     // public function start(Request $request, AuthenticationException $authException = null)
     // {
 

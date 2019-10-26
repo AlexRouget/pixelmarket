@@ -125,11 +125,6 @@ li a,
 }
 
 @media screen and (max-width: 1024px) {
-  h1 {
-    font-size: 42px;
-    line-height: 56px;
-  }
-
   #hamburger-content li {
     display: none;
   }
