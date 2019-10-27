@@ -25,6 +25,7 @@ class UserType extends AbstractType
     {
         $builder
             ->add('username', TextType::class, [
+                'required' => true,
                 'label' => 'Nom d\'utilisateur',
                 'attr' => [
                     'placeholder' => 'Alex33_game'
@@ -37,12 +38,13 @@ class UserType extends AbstractType
                 ]
             ])
            ->add('last_name', TextType::class, [
-            'label' => 'Nom d\'utilisateur',
+            'label' => 'Nom de famille',
             'attr' => [
                 'placeholder' => 'Rounit'
                 ]
             ])
            ->add('email', EmailType::class, [
+            'required' => true,
             'label' => 'Email',
             'attr' => [
                 'placeholder' => 'rounit.alex@mail.com'
@@ -55,6 +57,7 @@ class UserType extends AbstractType
             'first_options' => ['label' => 'Mot de passe'],
             'second_options' => ['label' => 'Confirmation du mot de passe'],
             'mapped' => false,
+            'help' => 'Votre mot de passe doit contenir au minimum 6 caractères.',
             'constraints' => [
                 new NotBlank([
                     'message' => 'Please enter a password',
@@ -72,17 +75,18 @@ class UserType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'Vous devez prendre connaissance des mentions légales et les cocher pour créer votre compte.'
                     ]),
                 ],
             ])
-            ->add('submit', SubmitType::class, ['label'=>'Je m\'inscrit', 'attr'=>['class'=>'btn-primary btn-block']]);
+            ->add('submit', SubmitType::class, ['label'=>'Je m\'inscris', 'attr'=>['class'=>'btn-primary btn-block']]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'validation_groups' => false,
         ]);
     }
 }

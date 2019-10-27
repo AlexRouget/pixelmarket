@@ -60,19 +60,16 @@ class RegistrationController extends AbstractController
                 // finalement, on dit au manager d'envoyer le post en BDD
                 $manager->flush();
 
-                $this->addFlash('success', 'Votre compte à bien été enregistré.');
-
+                
                 //  MESSAGE FLASHE
-                $this->addFlash(
-                    'notice',
-                    'Bienvenue dans la communauté des pixelmarkets!'
-                );        
+                $this->addFlash('success', 'Votre compte à bien été enregistré. Connecte-toi !');
+                $this->addFlash('notice', 'Bienvenue dans la communauté des pixelmarkets!');        
 
                 return $this->redirectToRoute('app_login');
         }
 
 
-        return $this->render('registration/register-form.html.twig', 
+        return $this->render('registration/register.html.twig', 
         ['user_form' => $form->createView()]);
     }
 }

@@ -1,0 +1,92 @@
+{% from '_macros/field-has_error.html.twig' import hasError %}
+
+{{ form_start(user_form, {'attr' : {'class' : 'm-4'}}) }}
+
+<div class="form-group">
+    {{ form_label(user_form.username) }}
+
+    {{ form_widget(user_form.username, {'attr': { 'class': 'form-control ' ~ hasError(user_form.username)
+  }}) }}
+
+    <div class="text-danger">
+        {{ form_errors(user_form.username) }}
+    </div>
+</div>
+
+<div class="form-group">
+    {{ form_label(user_form.avatar) }}
+    <div id="avatars">
+        <div class="avatar-auto"></div>
+        <div class="avatar-auto"></div>
+        <div class="avatar-auto"></div>
+    </div>
+    {{ form_widget(user_form.avatar, {'attr': { 'class': 'form-control ' ~ hasError(user_form.avatar)
+    }}) }}
+
+    <div class="text-danger">
+        {{ form_errors(user_form.avatar) }}
+    </div>
+</div>
+
+<div class="form-group">
+    {{ form_label(user_form.first_name) }}
+
+    {{ form_widget(user_form.first_name, {'attr': { 'class': 'form-control ' ~ hasError(user_form.first_name)
+  }}) }}
+
+    <div class="text-danger">
+        {{ form_errors(user_form.first_name) }}
+    </div>
+</div>
+
+<div class="form-group">
+    {{ form_label(user_form.last_name) }}
+
+    {{ form_widget(user_form.last_name, {'attr': { 'class': 'form-control ' ~ hasError(user_form.last_name)
+  }}) }}
+
+    <div class="text-danger">
+        {{ form_errors(user_form.last_name) }}
+    </div>
+</div>
+
+<div class="form-group">
+    {{ form_label(user_form.email) }}
+
+    {{ form_widget(user_form.email, {'attr': { 'class': 'form-control ' ~ hasError(user_form.email)
+  }}) }}
+
+    <div class="text-danger">
+        {{ form_errors(user_form.email) }}
+    </div>
+</div>
+
+<div class="form-group">
+    {{ form_row(user_form.password.first, {'attr': { 'class': 'form-control ' ~ hasError(user_form.password) }})  }}
+    {{ form_help(user_form.password, {'help_attr': {'class': 'tiny-text'}})  }}
+    {{ form_row(user_form.password.second, {'attr': { 'class': 'form-control ' ~ hasError(user_form.password) }}) }}
+
+    <div class="text-danger">
+        {{ form_errors(user_form.password) }}
+    </div>
+</div>
+
+
+<div class="form-group">
+    <div class="d-flex">
+        <div class="col-2">
+            {{ form_widget(user_form.agreeTerms, {'attr': { 'class': 'form-control ' ~ hasError(user_form.agreeTerms)
+    }}) }}
+        </div>
+        <label for="user_agreeTerms" class="tiny-text required">&quot;J&#039;accepte les Conditions Générales de Vente et les Conditions Générales d&#039;utilisations&quot;</label>
+    </div>
+
+    <div class="text-danger">
+        {{ form_errors(user_form.agreeTerms) }}
+    </div>
+</div>
+
+
+{{ form_widget(user_form.submit, { 'attr': { 'class' : 'btn bg-green text-white form-control rounded-pill'}}) }}
+
+{{ form_end(user_form) }}

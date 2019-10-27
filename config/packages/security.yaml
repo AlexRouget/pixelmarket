@@ -35,7 +35,7 @@ security:
   access_control:
     # Login page is always accessible
     - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/users/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     # Posts routes require full authentication
     - { path: ^/admin, roles: ROLE_ADMIN }
     - { path: ^/users, roles: ROLE_USER }

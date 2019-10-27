@@ -1,52 +1,6 @@
-@media only screen and (min-width: 600px) {
-  /* For mobils: */
-}
-
-/* DE 0 à 768px*/
-@media only screen and (max-width: 768px) {
-  nav#navbar form,
-  a#signInUp,
-  li#profileNavbar,
-  a#navbarDropdown {
-    display: none;
-  }
-  div#hamburger form {
-    display: block;
-  }
-}
-
-/* DE 0 à 1024px*/
-@media only screen and (max-width: 1024px) {
-  nav#navbar {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-  }
-}
-
-/* -------- DE 768 à 1024 ---------- */
-@media screen and (max-width: 1024px) and (min-width: 767px) {
-  div#hamburger {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0.3em;
-  }
-
-  div#hamburger-sidebar-body,
-  div#hamburger-sidebar-body ul {
-    display: flex;
-    flex-direction: column;
-  }
-  a#signInUp {
-    background-color: #004084 !important;
-    color: white !important;
-  }
-}
-
-/* DE 768 à l'infini */
-@media only screen and (min-width: 768px) {
-  /* For tablets: */
+/* DE 1024 à l'infini */
+@media only screen and (min-width: 1025px) {
+  /* For little desktop: */
   li#decouvrir,
   li#CmtCaMarche,
   li#aPropos,
@@ -56,6 +10,29 @@
   div#hamburger form {
     display: none;
   }
+
+  div#hamburger-content {
+    display: flex;
+    position: initial !important;
+    justify-content: baseline;
+    margin: 0.3em;
+  }
+  div#hamburger-content {
+    margin-right: 7em;
+    width: 100%;
+  }
+
+  form.search-bar {
+    justify-content: stretch;
+    width: 300px;
+    margin-right: -180px;
+    z-index: 1;
+  }
+}
+
+/* DE 768 à l'infini */
+@media only screen and (min-width: 768px) {
+  /* For tablets: */
   nav.navbar {
     position: initial;
   }
@@ -87,21 +64,101 @@
   }
 }
 
-/* DE 1024 à l'infini */
-@media only screen and (min-width: 1024px) {
-  /* For little desktop: */
-
-  div#hamburger-content {
-    display: flex;
-    position: initial !important;
-    justify-content: baseline;
-    margin: 0.3em;
+/* DE 0 à 1024px*/
+@media screen and (max-width: 1024px) {
+  #navbar h3 img,
+  #hamburger-content {
+    display: none;
   }
-  div#hamburger-content {
-    margin-right: 7em;
-    width: 100%;
+
+  #hamburger-button,
+  #hamburger-sidebar,
+  .hamburger-activated #hamburger-overlay {
+    display: block;
+  }
+
+  .hamburger-activated #hamburger-sidebar {
+    transform: translateX(0);
   }
 }
+
+/* -------- DE 768 à 1024 ---------- */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  div#hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.3em;
+  }
+
+  div#hamburger-sidebar-body,
+  div#hamburger-sidebar-body ul {
+    display: flex;
+    flex-direction: column;
+  }
+  a#signInUp {
+    background-color: #004084 !important;
+    color: white !important;
+  }
+  #navbar #hamburger {
+    order: 1;
+  }
+  #navbar h3 {
+    order: 2;
+  }
+  #navbar form {
+    order: 3;
+  }
+}
+
+/*--------- DE 0 à 768px ----------*/
+@media only screen and (max-width: 768px) {
+  nav#navbar form,
+  a#signInUp,
+  li#profileNavbar,
+  a#navbarDropdown {
+    display: none;
+  }
+
+  #hamburger-content {
+    display: none;
+  }
+  div#hamburger form {
+    display: block;
+  }
+
+  .register-title {
+    font-size: 8vw;
+  }
+  nav#navbar h3 {
+    margin: auto;
+  }
+  nav#navbar #hamburger {
+    justify-content: flex-end;
+  }
+  nav#navbar {
+    flex-direction: row-reverse;
+  }
+}
+
+/* -------- DE 600 à 768 ---------- */
+@media screen and (min-width: 600px) and (max-width: 768px) {
+  #register {
+    -ms-flex: 0 0 83.3333%;
+    flex: 0 0 83.3333%;
+    max-width: 83.3333%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  /* For mobils: */
+  #register {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
 /* -------- PAYSAGE ---------- */
 
 @media only screen and (orientation: landscape) {

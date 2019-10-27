@@ -43,6 +43,10 @@ li a,
 #hamburger-content {
   display: inline;
 }
+#hamburger,
+#hamburger-content {
+  flex-direction: row-reverse;
+}
 
 #hamburger-button {
   display: none;
@@ -53,8 +57,8 @@ li a,
   vertical-align: top;
   padding: 0;
   line-height: 47px;
-  float: right;
-  margin-right: 32px;
+  float: left;
+  margin-left: 32px;
   color: white;
 }
 
@@ -122,26 +126,4 @@ li a,
   height: auto;
   line-height: inherit;
   padding: 10px;
-}
-
-@media screen and (max-width: 1024px) {
-  #hamburger-content li {
-    display: none;
-  }
-
-  #hamburger-button,
-  #hamburger-sidebar,
-  .hamburger-activated #hamburger-overlay {
-    display: block;
-  }
-
-  .hamburger-activated #hamburger-sidebar {
-    transform: translateX(0);
-  }
-}
-
-@media screen and (max-width: 767px) {
-  #hamburger-content {
-    display: none;
-  }
 }
