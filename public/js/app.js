@@ -1,6 +1,6 @@
 console.log("hello app.js");
 
-// BURGER SCRIPT
+// BURGER
 var content = document.querySelector("#hamburger-content");
 var sidebarBody = document.querySelector("#hamburger-sidebar-body");
 var button = document.querySelector("#hamburger-button");
@@ -26,4 +26,13 @@ overlay.addEventListener("click", function(e) {
   e.preventDefault();
 
   this.parentNode.classList.remove(activatedClass);
+});
+
+// CHECKBOX
+const checkbox = document.querySelector(".checkbox"),
+  checkboxInput = checkbox.querySelector("#inputID");
+
+checkboxInput.addEventListener("change", e => {
+  checkbox.classList.toggle("checkbox-unchecked", !e.target.checked);
+  checkbox.classList.toggle("checkbox-checked", e.target.checked);
 });

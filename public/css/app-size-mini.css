@@ -1,0 +1,6 @@
+/* -------- de 320 à l'infini---------- */
+@media only screen and (max-width: 320px) {
+  #hamburger-sidebar {
+    width: 265px;
+  }
+}

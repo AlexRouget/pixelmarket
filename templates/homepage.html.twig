@@ -4,37 +4,37 @@
     pixelmarket
 {% endblock %}
 
-{% block headerContent %}
-{%  endblock %}
+{% block headerContent %}{%  endblock %}
 
-{% block mainContent %}
-    {# <ul id="post-list">
-        {% for post in posts %}
-            <li>
-                {% include 'post/card.html.twig' %}
-            </li>
-        {% endfor  %}
-    </ul> #}
-
-    <div class="row">
-        {# <div class="col">
-            {% include 'post/pagination.html.twig' %}
-        </div> #}
+{% block sidebarContent %}
+    <div class="container p-2">
+        <div id="side-menu">
+            {% include 'navbar/_nav-content.html.twig'%}
+        </div>
     </div>
 {% endblock %}
 
+{% block mainContent %}
+    <h1>BLABLABLA</h1>
+    {# <ul id="post-list">
+                            {% for post in posts %}
+                                <li>
+                                    {% include 'post/card.html.twig' %}
+                                </li>
+                            {% endfor  %}
+                            </ul> #}
 
-
-{% block sidebarContent %}
-    <div class="bg-green w-100 h-100">
-        BLABLA
-     </div>
+    <div
+        class="row">{# <div class="col">
+                                                                                                                                                            {% include 'post/pagination.html.twig' %}
+                                                                                                                                                        </div> #}
+    </div>
 {% endblock %}
 
 {% block javascripts %}
 
     {{ parent() }}
 
-    <script src="{{ asset('js/like.js') }}"></script>
+    <!-- // <script src="{{ asset('js/like.js') }}"></script> -->
 
 {% endblock %}

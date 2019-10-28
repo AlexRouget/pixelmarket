@@ -1,24 +1,6 @@
-#logo,
 nav,
 li {
   display: inline-block;
-}
-
-#logo {
-  background-color: #2196f3;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-}
-
-nav {
-  display: inline-block;
-  line-height: 20px;
-  vertical-align: top;
-}
-
-li {
-  margin-left: 32px;
 }
 li a,
 .button {
@@ -35,16 +17,17 @@ li a,
   text-decoration: none;
   padding: 0 16px;
 }
+
 .button-sign-up {
   background-color: #eee;
 }
 
-#hamburger,
-#hamburger-content {
-  display: inline;
+#hamburger li {
+  margin-left: 32px;
 }
 #hamburger,
 #hamburger-content {
+  display: inline;
   flex-direction: row-reverse;
 }
 
@@ -86,37 +69,58 @@ li a,
   transform: translateX(-100%);
   transition: transform 0.2s ease-out;
 }
+
 #hamburger-sidebar li {
   display: block;
 }
+
 #hamburger-sidebar-header {
-  background: url(../images/sidebar-header.png) center;
+  background: url(../img/fond_pixelmarket_annonce.png) center;
   background-size: cover;
   height: 128px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul#signInUp li,
+ul#infos-burger li {
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+.icons {
+  height: 1.5em;
+  width: 1.5em;
+  margin: 0.5em;
+}
+
+li.categorie-burger {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
 }
 #hamburger-sidebar-body {
   padding: 16px 8px;
 }
-#hamburger-sidebar-body li:before {
-  content: " ";
+
+ul#categories-burger {
+  margin: 0.5em;
+}
+
+#hamburger-sidebar-body li:after {
   display: inline-block;
   vertical-align: middle;
   margin-bottom: 4px;
   margin-right: 16px;
   width: 24px;
   height: 24px;
-}
-#hamburger-sidebar-body li:first-child:before {
-  background-image: url(../images/icons/discover.svg);
-}
-#hamburger-sidebar-body li:nth-child(2):before {
-  background-image: url(../images/icons/how.svg);
-}
-#hamburger-sidebar-body li:nth-child(3):before {
-  background-image: url(../images/icons/about.svg);
-}
-#hamburger-sidebar-body li:last-child:before {
-  background-image: url(../images/icons/qna.svg);
 }
 #hamburger-sidebar-body .button {
   margin-top: 16px;
@@ -126,4 +130,17 @@ li a,
   height: auto;
   line-height: inherit;
   padding: 10px;
+}
+
+#infos-burger {
+  display: flex;
+  flex-direction: column;
+}
+
+#burger-cross {
+  position: absolute;
+  font-size: 2em;
+  color: white;
+  right: 25px;
+  cursor: pointer;
 }

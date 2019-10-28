@@ -17,14 +17,14 @@
             <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
             <link rel="stylesheet" href="{{ asset('css/menu-burger.css') }}"/>
             <link rel="stylesheet" href="{{ asset('css/app-mobile.css') }}"/>
+            <link rel="stylesheet" href="{{ asset('css/app-size-mini.css') }}"/>
+            <link rel="stylesheet" href="{{ asset('css/checkbox.css') }}"/>
         {% endblock %}
     </head>
     <body>
-
         {% block header %}
-
             {% block navbar %}
-                {% include 'navbar.html.twig' %}
+                {% include 'navbar/navbar.html.twig' %}
             {% endblock %}
 
             <div class="container">
@@ -32,10 +32,9 @@
             </div>
 
         {% endblock %}
-
         {# MESSAGE FLASH #}
-
-        {# read and display just one flash message type #}
+        {# read and display just one flash
+                                                                                                                                                                                                                                                                    message type #}
         {% for message in app.flashes('notice') %}
             <div class="container alert alert-info text-center">
                 {{ message }}
@@ -44,15 +43,13 @@
 
         {% block pageContent %}
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-4">
-                        {% block sidebarContent %}{% endblock %}
-                    </div>
+            <div id="page-content">
+                <div class="col-3 border-0">
+                    {% block sidebarContent %}{% endblock %}
+                </div>
 
-                    <div class="col-8">
-                        {% block mainContent%}{% endblock %}
-                    </div>
+                <div class="col-8 border-0">
+                    {% block mainContent%}{% endblock %}
                 </div>
             </div>
 
@@ -61,13 +58,10 @@
             </div>
 
         {% endblock %}
-
-
         {# MESSAGE FLASH #}
-
         {% block flash %}
-
-            {% for flash_message in app.session.flashbag.get('success text-center') %}
+            {% for flash_message in
+    app.session.flashbag.get('success text-center') %}
                 <div class="container alert alert-success" role="alert">
                     {{ flash_message }}
                 </div>
@@ -101,4 +95,4 @@
             <script src="{{ asset('js/app.js') }}"></script>
         {% endblock %}
     </body>
-</html></body></html>
+</html>

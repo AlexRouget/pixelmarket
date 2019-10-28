@@ -1,0 +1,25 @@
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  background: #55d8c6;
+
+  height: 20px;
+  width: 20px;
+  border-radius: 80%;
+  box-shadow: 0px 2px 2px 0 rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  border: 10px solid #fff;
+  transition: border 0.3s ease;
+}
+
+input[type="checkbox"]:checked {
+  border-color: #fff;
+  border-width: 3px;
+  /* position: fixed; */
+  right: 3em;
+}

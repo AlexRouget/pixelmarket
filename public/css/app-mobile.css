@@ -1,13 +1,7 @@
 /* DE 1024 à l'infini */
 @media only screen and (min-width: 1025px) {
   /* For little desktop: */
-  li#decouvrir,
-  li#CmtCaMarche,
-  li#aPropos,
-  li#FAQ,
-  div#hamburger #signUpBurger,
-  div#hamburger #signInBurger,
-  div#hamburger form {
+  div#hamburger {
     display: none;
   }
 
@@ -21,12 +15,11 @@
     margin-right: 7em;
     width: 100%;
   }
-
-  form.search-bar {
-    justify-content: stretch;
-    width: 300px;
-    margin-right: -180px;
-    z-index: 1;
+  nav#navbar {
+    padding: 0.55rem 1rem;
+  }
+  #toogle-sign {
+    display: inline;
   }
 }
 
@@ -45,17 +38,6 @@
     margin-right: 10em;
     width: 100%;
   }
-  nav ul {
-    display: flex;
-    position: initial !important;
-    justify-content: baseline;
-  }
-  nav ul li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0.3em;
-  }
 
   form.formSignIn {
     -ms-flex: 0 0 50%;
@@ -64,10 +46,26 @@
   }
 }
 
+/* -------- DE 470 à l'infini ---------- */
+@media only screen and (min-width: 470px) {
+  #hamburger-sidebar {
+    width: 400px;
+  }
+  #burger-cross {
+    position: absolute;
+    font-size: 2em;
+    color: white;
+    left: 420px;
+  }
+}
+
 /* DE 0 à 1024px*/
 @media screen and (max-width: 1024px) {
-  #navbar h3 img,
-  #hamburger-content {
+  #side-menu,
+  #navbar h1 img,
+  #navbar form,
+  #hamburger-content,
+  #navbar #toogle-sign {
     display: none;
   }
 
@@ -80,6 +78,18 @@
   .hamburger-activated #hamburger-sidebar {
     transform: translateX(0);
   }
+
+  input[type="checkbox"]:checked {
+    border-color: #fff;
+    border-width: 3px;
+    position: fixed;
+    right: 3em;
+  }
+
+  li.categorie-burger input {
+    position: fixed;
+    right: 3em;
+  }
 }
 
 /* -------- DE 768 à 1024 ---------- */
@@ -88,33 +98,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0.3em;
-  }
-
-  div#hamburger-sidebar-body,
-  div#hamburger-sidebar-body ul {
-    display: flex;
-    flex-direction: column;
-  }
-  a#signInUp {
-    background-color: #004084 !important;
-    color: white !important;
   }
   #navbar #hamburger {
     order: 1;
   }
-  #navbar h3 {
+  #navbar h1 {
     order: 2;
-  }
-  #navbar form {
-    order: 3;
+    margin: auto;
   }
 }
 
 /*--------- DE 0 à 768px ----------*/
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   nav#navbar form,
-  a#signInUp,
   li#profileNavbar,
   a#navbarDropdown {
     display: none;
@@ -123,14 +119,11 @@
   #hamburger-content {
     display: none;
   }
-  div#hamburger form {
-    display: block;
-  }
 
   .register-title {
     font-size: 8vw;
   }
-  nav#navbar h3 {
+  nav#navbar h1 {
     margin: auto;
   }
   nav#navbar #hamburger {
@@ -150,6 +143,7 @@
   }
 }
 
+/* -------- DE 0 à 600 ---------- */
 @media only screen and (max-width: 600px) {
   /* For mobils: */
   #register {
@@ -161,5 +155,10 @@
 
 /* -------- PAYSAGE ---------- */
 
-@media only screen and (orientation: landscape) {
+/* -------- PAYSAGE + de 470 à l'infini---------- */
+
+@media only screen and (orientation: landscape) and (min-width: 470px) {
+  #hamburger-sidebar {
+    width: 400px;
+  }
 }
