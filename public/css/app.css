@@ -21,6 +21,59 @@
   color: rgb(0, 172, 112) !important;
 }
 
+/* ------- BUTTON -------- */
+
+.btn-green {
+  display: block;
+  text-align: center;
+
+  background-color: rgb(0, 172, 112) !important;
+  color: #004a71 !important;
+
+  border-radius: 50rem !important;
+  padding: 0.25em 1.5em 0.25em 1.5em;
+  transition: all 0.2s ease;
+}
+
+.btn-white {
+  display: block;
+  text-align: center;
+
+  background-color: white !important;
+  color: #004a71 !important;
+
+  border-radius: 50rem !important;
+  padding: 0.25em 1.5em 0.25em 1.5em;
+  transition: all 0.2s ease;
+}
+
+.btn-green:hover {
+  background-color: white !important;
+  color: #004a71 !important;
+
+  transition: all 0.2s ease;
+}
+
+.btn-white:hover {
+  background-color: rgb(0, 172, 112) !important;
+  color: #004a71 !important;
+
+  transition: all 0.2s ease;
+}
+
+.btn-white:hover,
+.btn-green:hover,
+.btn-green:focus,
+.btn-white:focus {
+  text-decoration: none;
+}
+
+.btn-white.disabled,
+.btn-green.disabled {
+  color: #6c757d;
+  pointer-events: none;
+  cursor: default;
+}
 /* ------- SEARCH-BAR -------- */
 
 #page-content {

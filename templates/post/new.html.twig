@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Post
+{% endblock %}
+
+{% block pageContent %}
+
+    <h1>Create new Post</h1>
+
+    {{ include('post/_form.html.twig') }}
+
+    <a href="{{ path('current_user_profile') }}">back to list</a>
+
+{% endblock %}

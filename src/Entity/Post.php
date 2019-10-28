@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Post extends Model
 {
-
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -180,4 +179,16 @@ class Post extends Model
 
         return $this;
     }
+
+        /**
+     * Generates the magic method
+     * 
+     */
+    public function __toString(){
+        // to show the name of the Category in the select
+        return $this->setAuthor();
+        // to show the id of the Category in the select
+        // return $this->id;
+    }
+
 }

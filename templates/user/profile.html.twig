@@ -10,14 +10,22 @@
 
 {% block mainContent %}
     <ul>
-        <li>{{ user.username }}
-            n'a rien publié pour le moment !</li>
+        {% for post in user.posts %}
+            <li>
+                {% include 'post/_posts.html.twig' %}
+            </li>
+        {% else %}
+            <li>
+                {{ user.username }}
+                n'a rien publié pour le moment !
+            </li>
+        {% endfor  %}
     </ul>
 {% endblock %}
 
 {% block sidebarContent %}
-    <a href="#" class="btn btn-block btn-outline-primary">
-        Revenir à la liste
+    <a href="{{ path('home')}}" class="btn btn-block btn-outline-primary">
+        Revenir à l'accueil
     </a>
 
     {% if user.id == app.user.id %}

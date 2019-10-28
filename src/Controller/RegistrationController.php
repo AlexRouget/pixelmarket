@@ -60,10 +60,9 @@ class RegistrationController extends AbstractController
                 // finalement, on dit au manager d'envoyer le post en BDD
                 $manager->flush();
 
-                
                 //  MESSAGE FLASHE
-                $this->addFlash('success', 'Votre compte à bien été enregistré. Connecte-toi !');
                 $this->addFlash('notice', 'Bienvenue dans la communauté des pixelmarkets!');        
+                $this->addFlash('success', 'Votre compte à bien été enregistré. Connecte-toi !');
 
                 return $this->redirectToRoute('app_login');
         }

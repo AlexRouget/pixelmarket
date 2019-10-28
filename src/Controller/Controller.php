@@ -17,6 +17,42 @@ class Controller extends AbstractController
      */
     public function index(AuthenticationUtils $authenticationUtils, Request $request): Response  {
 
-        return $this->render('homepage.html.twig');
+           // Gestion de la pagination
+           $page = (int) $request->query->get('p');
+
+           if (!isset($page)) {
+               $page = 1;
+           }
+   
+           $page = max(1, $page);
+           $start = ($page - 1) * 5;
+           $totalPosts = $this
+               ->getDoctrine()
+               ->getRepository(Post::class)
+               ->countForHomepage();
+   
+           $max = ceil($totalPosts / 5);
+   
+           // get the login error if there is one
+           $error = $authenticationUtils->getLastAuthenticationError();
+           // last username entered by the user
+           $lastUsername = $authenticationUtils->getLastUsername();
+   
+           // On récupère tous les Posts publics
+           $posts = $this
+               ->getDoctrine()
+               ->getRepository(Post::class)
+               ->findHomepage($start);
+   
+           // On envoie les posts dans la vue
+           return $this->render('homepage.html.twig', [
+               'posts' => $posts,
+               'last_username' => $lastUsername,
+               'error' => $error,
+               'pagination' => [
+                   'current' => $page,
+                   'max' => $max, // fake limit for now
+               ]
+           ]);
     }
 }

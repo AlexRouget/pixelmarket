@@ -1,0 +1,4 @@
+{% include 'user/_avatar-img.html.twig' with { 'avatar' : user.avatar } %}
+<a href="{{ path('user_profile', { 'id': user.id }) }}">
+    {{ user.username }}
+</a>

@@ -17,7 +17,9 @@
 
     <ul id="toogle-sign">
         <li>
-            <a class="nav-link border-0 rounded-pill bg-green text-blue p-1 px-4" href="#">Créer une annonce</a>
+            <a class="btn-green" href="{{ app.user ? path("post_new") : path("app_login") }}">
+                Créer une annonce
+            </a>
         </li>
         {% if app.user is not empty %}
             <li class="nav-item dropdown" id="profileNavbar">
@@ -36,7 +38,7 @@
             </li>
         {% else %}
             <li>
-                <a id="signInUp" class="nav-link border-0 rounded-pill bg-white text-blue p-1 px-4" href="{{path("app_login")}}">S'inscrire/Se connecter</a>
+                <a id="signInUp" class="btn-white" href="{{path("app_login")}}">S'inscrire/Se connecter</a>
             </li>
         {% endif %}
     </ul>

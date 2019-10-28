@@ -61,6 +61,7 @@
 
 /* DE 0 à 1024px*/
 @media screen and (max-width: 1024px) {
+  #base-sidebar,
   #side-menu,
   #navbar h1 img,
   #navbar form,

@@ -5,7 +5,7 @@
         </li>
     {% endif %}
     <li>
-        <a href="#">+ Créer une annonce</a>
+        <a href="{{ app.user ? path("post_new") : path("app_login") }}">+ Créer une annonce</a>
     </li>
     <li>
         <a href="#">Recherche</a>
