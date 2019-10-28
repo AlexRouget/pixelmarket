@@ -4,16 +4,14 @@
 {% endblock %}
 
 {% block mainContent %}
-    <h1>Post</h1>
+    <h1>{{ post.title }}</h1>
 
-    <table class="table">
+    <div class="col-md-4">
+        <img src="{{ asset('uploads/' ~ post.attachment) }}" class="card-img">
+    </div>
+
+    <table class="container table">
         <tbody>
-            <!-- SECTION  -->
-            <tr>
-                <th>Attachment</th>
-                <td>{{ post.attachment }}</td>
-            </tr>
-
             <!-- SECTION  -->
             <tr>
                 <th>Title</th>
@@ -50,7 +48,7 @@
 
     <a href="{{ path('current_user_profile') }}">back to list</a>
 
-    <div class="d-flex flex-column ">
+    <div class="container d-flex flex-column ">
         {% include 'user/_profile-card.html.twig'%}
         <div class="btn-green">
             Contacter le vendeur
@@ -66,7 +64,7 @@
 
 {% endblock %}
 {% block sidebarContent %}
-    <div class="d-flex flex-column ">
+    <div class="container d-flex flex-column ">
         <div class="btn-green">
             Contacter le vendeur
         </div>

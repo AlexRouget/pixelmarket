@@ -32,35 +32,10 @@
             </div>
 
         {% endblock %}
-        {# MESSAGE FLASH #}
-        {# read and display just one flash message type #}
-        {# MESSAGE FLASH #}
-            {% block flash %}
-                {% for flash_message in
-        app.session.flashbag.get('success') %}
-                    <div class="container alert alert-success text-center" role="alert"> {{ flash_message }}
-                </div>
-            {% endfor %}
-            {% for flash_message in app.session.flashbag.get('info') %}
-                <div class="container alert alert-info text-center" role="alert">
-                    {{ flash_message }}
-                </div>
-            {% endfor %}
-            {% for flash_message in app.session.flashbag.get('warning') %}
-                <div class="container alert alert-warning text-center" role="alert">
-                    {{ flash_message }}
-                </div>
-            {% endfor %}
-            {% for flash_message in app.session.flashbag.get('danger') %}
-                <div class="container alert alert-danger text-center" role="alert">
-                    {{ flash_message }}
-                </div>
-            {% endfor %}
-            {% for message in app.flashes('notice') %}
-                <div class="container alert alert-info text-center">
-                    {{ message }}
-                </div>
-            {% endfor %}
+
+        <!-- MESSAGE FLASH -->
+        {% block flash %}
+            {% include 'flash.html.twig'%}
         {% endblock %}
 
         {% block pageContent %}

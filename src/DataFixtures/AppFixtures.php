@@ -56,7 +56,7 @@ class AppFixtures extends Fixture
             $description = $faker->realText(180);
             $price = $faker->numberBetween(10, 100);
             $location = $faker->randomElement(['Bordeaux', 'Paris', 'Franconville']);
-            $categories = $faker->randomElements(['jeux vidéo','goodies','dvd'], 2);
+            $categories = $faker->randomElement(['jeux vidéo','goodies','dvd']);
             $isPublic = $faker->boolean(70);
 
             $date = new \DateTime();

@@ -6,6 +6,8 @@ use App\Entity\Post;
 use App\Form\PostType;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,15 +30,17 @@ class PostController extends AbstractController
     /**
      * @Route("/new", name="post_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
-    {
-        $post = new Post();
-        $form = $this->createForm(PostType::class, $post);
+    public function new(Request $request){
+        $response = new Response();
+
+        $form = $this->createForm(PostType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            
+                $post = $form->getData();
                 $post->setAuthor($this->getUser());
+
                 /* @var UploadedFile $file */
                 $file = $post->getAttachment();
                 if (!empty($file)) {
@@ -48,9 +52,6 @@ class PostController extends AbstractController
                     $file->move($this->getParameter('user_upload_folder'), $filename);
                     $post->setAttachment($filename);
                 }
-
-            $this->getDoctrine()->getManager()->flush();
-
             // on dit à Doctrine de "s'occuper" de ce Post
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($post);
@@ -65,7 +66,6 @@ class PostController extends AbstractController
 
 
         return $this->render('post/new.html.twig', [
-            'post' => $post,
             'form' => $form->createView(),
         ]);
     }

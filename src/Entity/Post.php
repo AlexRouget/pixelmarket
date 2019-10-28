@@ -45,9 +45,9 @@ class Post extends Model
     private $location;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="string", length=255)
      */
-    private $categories = [];
+    private $categories;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -96,12 +96,12 @@ class Post extends Model
         return $this;
     }
 
-    public function getAttachment(): ?string
+    public function getAttachment()
     {
         return $this->attachment;
     }
 
-    public function setAttachment(?string $attachment): self
+    public function setAttachment($attachment): self
     {
         $this->attachment = $attachment;
 
@@ -144,12 +144,12 @@ class Post extends Model
         return $this;
     }
 
-    public function getCategories(): ?array
+    public function getCategories(): ?string
     {
         return $this->categories;
     }
 
-    public function setCategories(array $categories): self
+    public function setCategories(?string $categories): self
     {
         $this->categories = $categories;
 

@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -27,9 +28,12 @@ class PostType extends AbstractType
             ])
             ->add('price')
             ->add('location')
-            ->add('categories')
-            ->add('state')
-        ;
+            ->add('categories', ChoiceType::class, [
+                'choices' => [
+                    'jeux vidéo' => 'jeux vidéo',
+                    'dvd' => 'dvd',
+                    'goodies' => 'goodies']])
+            ->add('state');
     }
 
     public function configureOptions(OptionsResolver $resolver)
