@@ -72,21 +72,20 @@
 </div>
 
 
-<div class="form-group">
-    <div class="d-flex">
-        <div class="col-2">
-            {{ form_widget(user_form.agreeTerms, {'attr': { 'class': 'form-control' ~ hasError(user_form.agreeTerms)
+<div class="d-flex">
+    {{ form_widget(user_form.agreeTerms, {'attr': { 'class': '' ~ hasError(user_form.agreeTerms)
     }}) }}
-        </div>
-        <label for="user_agreeTerms" class="tiny-text required">&quot;J&#039;accepte les Conditions Générales de Vente et les Conditions Générales d&#039;utilisations&quot;</label>
-    </div>
+
+    <label for="user_agreeTerms" class="tiny-text required w-100 ml-2">&quot;J&#039;accepte les Conditions Générales de Vente et les Conditions Générales d&#039;utilisations&quot;</label>
 
     <div class="text-danger">
         {{ form_errors(user_form.agreeTerms) }}
     </div>
+
 </div>
 
-
-{{ form_widget(user_form.submit, { 'attr': { 'class' : 'btn bg-green text-white form-control rounded-pill'}}) }}
-
+<div class="d-flex justify-content-center">
+    {{ form_widget(user_form.submit, { 'attr': { 'class' : 'btn btn-green'}}) }}
+</div>
 {{ form_end(user_form) }}
+<input type="checkbox" id="">

@@ -1,9 +1,9 @@
 :root {
   --blue: #004a71;
-  --green: rgb(0, 172, 112);
+  --green: #4ee1af;
   --green-light: #55d8c6;
   --grey: #6c757d;
-  --grey-light: #f8f9fa;
+  --grey-light: #b1b1b1;
 }
 
 /* ------- GENERAL -------- */
@@ -38,6 +38,7 @@
 .btn-green {
   display: block;
   text-align: center;
+  border: 0.5px solid transparent;
 
   background-color: var(--green) !important;
   color: var(--blue) !important;
@@ -50,6 +51,7 @@
 .btn-white {
   display: block;
   text-align: center;
+  border: 0.5px solid var(--blue);
 
   background-color: white !important;
   color: var(--blue) !important;
@@ -60,8 +62,10 @@
 }
 
 .btn-green:hover {
-  background-color: white !important;
-  color: var(--blue) !important;
+  background-color: transparent !important;
+  color: initial;
+
+  border: 0.5px solid var(--blue);
 
   transition: all 0.2s ease;
 }
@@ -96,6 +100,9 @@
 .search-bar {
   width: 30%;
 }
+.search-bar input {
+  border: 0.5px solid white;
+}
 /* ------- LOGIN-FORM -------- */
 
 .login-btn {
@@ -126,6 +133,7 @@
 }
 
 #register form input {
+  border: 0.5px solid var(--grey-light);
   border-radius: 50rem;
 }
 #avatars {
@@ -176,7 +184,7 @@ li.categorie-burger input:checked {
 .price {
   display: block;
   text-align: center;
-  width: min-content;
+  -webkit-align: center;
 
   border-radius: 50rem !important;
   padding: 0.1em 0.75em;
@@ -186,7 +194,8 @@ li.categorie-burger input:checked {
   position: absolute;
   bottom: 0;
   left: 50%; /* à 50% du parent référent (référencé grace à position:relative) */
-  transform: translate(-50%, +50%); /* décalage de +/-50% de sa propre taille */
+  transform: translate3d(-50%, 50%, 0);
+  -webkit-transform: translate3d(-50%, 50%, 0);
 
   background-color: var(--blue) !important;
   color: white !important;

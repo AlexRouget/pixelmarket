@@ -1,5 +1,5 @@
 :root {
-  --green-light: #55d8c6;
+  --green: #4ee1af;
 }
 
 input[type="checkbox"] {
@@ -10,20 +10,20 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"] {
-  background: var(--green-light);
+  background: var(--green);
 
   height: 20px;
   width: 20px;
   border-radius: 80%;
-  box-shadow: 0px 2px 2px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 2px 0 rgba(0, 0, 0, 0.2) !important;
+  border: 10px solid #fff !important;
   box-sizing: border-box;
-  border: 10px solid #fff;
   transition: border 0.3s ease;
 }
 
 input[type="checkbox"]:checked {
-  border-color: #fff;
-  border-width: 3px;
-  /* position: fixed; */
+  background-color: var(--green) !important;
+  border-color: #fff !important;
+  border-width: 3px !important;
   right: 3em;
 }

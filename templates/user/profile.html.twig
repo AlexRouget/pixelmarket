@@ -10,7 +10,7 @@
 
 {% block mainContent %}
     {% if user.posts is not empty %}
-        <div class="container">
+        <div class="container-fluid">
             {% include 'post/index.html.twig' %}
         </div>
     {% else %}

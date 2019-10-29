@@ -79,7 +79,7 @@ class UserType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('submit', SubmitType::class, ['label'=>'Je m\'inscris', 'attr'=>['class'=>'btn-primary btn-block']]);
+            ->add('submit', SubmitType::class, ['label'=>'Je m\'inscris']);
     }
 
     public function configureOptions(OptionsResolver $resolver)
