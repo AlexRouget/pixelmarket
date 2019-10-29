@@ -72,11 +72,11 @@
 </div>
 
 
-<div class="d-flex">
+<div class="d-flex form-group">
     {{ form_widget(user_form.agreeTerms, {'attr': { 'class': '' ~ hasError(user_form.agreeTerms)
     }}) }}
 
-    <label for="user_agreeTerms" class="tiny-text required w-100 ml-2">&quot;J&#039;accepte les Conditions Générales de Vente et les Conditions Générales d&#039;utilisations&quot;</label>
+    <label for="user_agreeTerms" class="required w-100 ml-2">&quot;J&#039;accepte les Conditions Générales de Vente et les Conditions Générales d&#039;utilisations&quot;</label>
 
     <div class="text-danger">
         {{ form_errors(user_form.agreeTerms) }}

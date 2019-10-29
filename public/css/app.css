@@ -1,12 +1,28 @@
 :root {
   --blue: #004a71;
   --green: #4ee1af;
-  --green-light: #55d8c6;
+  --green-light: #eefffd;
   --grey: #6c757d;
   --grey-light: #b1b1b1;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--blue);
+  box-shadow: 0 0 0px 1000px var(--green-light) inset;
+  -webkit-box-shadow: 0 0 0px 1000px var(--green-light) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 /* ------- GENERAL -------- */
+
 #page-content {
   display: flex;
   flex-direction: row;
@@ -255,8 +271,9 @@ ul {
 }
 
 .avatar-img {
-  width: 30px;
-  height: 30px;
+  border: 1px solid black;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
 
   margin-right: 8px;

@@ -3,7 +3,7 @@
 }
 
 input[type="checkbox"] {
-  -webkit-appearance: none;
+  -webkit-appearance: none !important;
   -moz-appearance: none;
   -ms-appearance: none;
   cursor: pointer;
@@ -26,4 +26,7 @@ input[type="checkbox"]:checked {
   border-color: #fff !important;
   border-width: 3px !important;
   right: 3em;
+}
+input[type="checkbox"]:focus {
+  outline: none;
 }

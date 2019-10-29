@@ -5,9 +5,7 @@
 
 {% block mainContent %}
 
-    <div class="col-md-4">
-        <img src="{{ asset('uploads/' ~ post.attachment) }}" class="card-img">
-    </div>
+    <img src="{{ asset('uploads/' ~ post.attachment) }}" class="card-img">
 
     <p>{{ post.categories ? post.categories|join(', ') : '' }}</p>
 
@@ -33,30 +31,33 @@
 
     <HR size="2" align="center" width="100%">
 
-    <a href="{{ path('current_user_profile') }}">back to list</a>
+    <a href="javascript:history.back()">back to list</a>
 
-    <div class="container d-flex flex-column ">
-        {% include 'user/_profile-card.html.twig'%}
+    <div class="d-flex flex-column ">
         <div class="btn-green">
             Contacter le vendeur
         </div>
 
+        {% include 'user/_profile-card.html.twig'%}
     </div>
 
-    {% if app.user is not empty %}
+    {% if post.author.id == app.user.id %}
         <a href="{{ path('post_edit', {'id': post.id}) }}">edit</a>
 
         {{ include('post/_delete_form.html.twig') }}
+
+        {% else %}
+
     {% endif %}
 
 {% endblock %}
 {% block sidebarContent %}
     <div class="container d-flex flex-column ">
+        {% include 'user/_profile-card.html.twig'%}
+
         <div class="btn-green">
             Contacter le vendeur
         </div>
-
-        {% include 'user/_profile-card.html.twig'%}
     </div>
 
 {% endblock %}

@@ -91,6 +91,10 @@
     position: fixed;
     right: 3em;
   }
+  .avatar-img {
+    width: 10%;
+    height: auto;
+  }
 }
 
 /* -------- DE 768 à 1024 ---------- */
@@ -113,10 +117,7 @@
 @media only screen and (max-width: 767px) {
   nav#navbar form,
   li#profileNavbar,
-  a#navbarDropdown {
-    display: none;
-  }
-
+  a#navbarDropdown,
   #hamburger-content {
     display: none;
   }
@@ -132,6 +133,10 @@
   }
   nav#navbar {
     flex-direction: row-reverse;
+  }
+  .avatar-img {
+    width: 70px;
+    height: 70px;
   }
 }
 
