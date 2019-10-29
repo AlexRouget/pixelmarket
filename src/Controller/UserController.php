@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Post;
 use App\Form\UserType;
+use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,13 +46,15 @@ class UserController extends AbstractController
      * @param Request $req
      * @return Response
      */
-    public function me(Request $req) {
+    public function me(Request $req, PostRepository $postRepository) {
 
         /** @var $user User*/
         $user = $this->getUser();
 
+        // EN FAIRE DES RECHERCHES PAR CAT / FAVORIS... 
         return $this->render('user/profile.html.twig', [
             'user' => $user,
+            'posts' => $postRepository->findPostList(0, 4)
         ]);
     }
 }

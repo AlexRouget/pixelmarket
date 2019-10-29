@@ -9,18 +9,16 @@
 {% endblock %}
 
 {% block mainContent %}
-    <ul>
-        {% for post in user.posts %}
-            <li>
-                {% include 'post/_posts.html.twig' %}
-            </li>
-        {% else %}
-            <li>
-                {{ user.username }}
-                n'a rien publié pour le moment !
-            </li>
-        {% endfor  %}
-    </ul>
+    {% if user.posts is not empty %}
+        <div class="container">
+            {% include 'post/index.html.twig' %}
+        </div>
+    {% else %}
+        <h5>
+            {{ user.username }}
+            n'a rien publié pour le moment !
+        </h5>
+    {% endif  %}
 {% endblock %}
 
 {% block sidebarContent %}

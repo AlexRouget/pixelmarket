@@ -152,14 +152,21 @@
     flex: 0 0 100%;
     max-width: 100%;
   }
+  #post-list li {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+@media only screen and (max-width: 360px) {
+  body {
+    width: 360px;
+  }
 }
 
 /* -------- PAYSAGE ---------- */
 
 /* -------- PAYSAGE + de 470 à l'infini---------- */
 
-@media only screen and (orientation: landscape) and (min-width: 470px) {
-  #hamburger-sidebar {
-    width: 400px;
-  }
+@media only screen and (orientation: landscape) {
 }

@@ -1,3 +1,7 @@
+:root {
+  --green-light: #55d8c6;
+}
+
 input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -6,7 +10,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"] {
-  background: #55d8c6;
+  background: var(--green-light);
 
   height: 20px;
   width: 20px;

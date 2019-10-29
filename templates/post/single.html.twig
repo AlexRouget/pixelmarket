@@ -4,47 +4,34 @@
 {% endblock %}
 
 {% block mainContent %}
-    <h1>{{ post.title }}</h1>
 
     <div class="col-md-4">
         <img src="{{ asset('uploads/' ~ post.attachment) }}" class="card-img">
     </div>
 
-    <table class="container table">
-        <tbody>
-            <!-- SECTION  -->
-            <tr>
-                <th>Title</th>
-                <td>{{ post.title }}</td>
-            </tr>
-            <tr>
-                <th>Location</th>
-                <td>{{ post.location }}</td>
-            </tr>
-            <tr>
-                <th>Published_at</th>
-                <td>{{ post.publishedAt ? post.publishedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ post.price }}</td>
-            </tr>
+    <p>{{ post.categories ? post.categories|join(', ') : '' }}</p>
 
-            <!-- SECTION  -->
-            <tr>
-                <th>Description</th>
-                <td>{{ post.description }}</td>
-            </tr>
-            <tr>
-                <th>Categories</th>
-                <td>{{ post.categories ? post.categories|join(', ') : '' }}</td>
-            </tr>
-            <tr>
-                <th>State</th>
-                <td>{{ post.state }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <h3>{{ post.title }}</h3>
+
+    <p>
+        {{ post.location }}, à
+        {{ post.publishedAt ? post.publishedAt|date('Y-m-d H:i:s') : '' }}
+    </p>
+    <div class="price">
+        {{ post.price }}€
+    </div>
+
+    <HR
+    size="2" align="center" width="100%">
+
+    <!-- SECTION  -->
+
+    <h6>Description</h6>
+    <p>{{ post.description }},
+        {{ post.state }}
+    </p>
+
+    <HR size="2" align="center" width="100%">
 
     <a href="{{ path('current_user_profile') }}">back to list</a>
 

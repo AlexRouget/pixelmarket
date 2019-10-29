@@ -17,26 +17,22 @@
 {% block flash %}{% endblock %}
 
 {% block mainContent %}
-    <ul id="post-list">
-        {% for post in posts %}
-            <li>
-                {% include 'post/index.html.twig' %}
-            </li>
-        {% endfor  %}
-    </ul>
-
+    <div class="container">
+        <p class="lead">32 nouveaux posts aujourd'hui</p>
+        {% include 'post/index.html.twig' %}
+    </div>
 {% endblock %}
 {#
-<div class="row">
-    <div class="col">
-        {% include 'post/pagination.html.twig' %}
+    <div class="row">
+        <div class="col">
+            {% include 'post/pagination.html.twig' %}
+        </div>
     </div>
-</div>
-{% block javascripts %}
-
-    {{ parent() }}
-
-    <!-- // <script src="{{ asset('js/like.js') }}"></script> -->
-
-{% endblock %}
-#}
+    {% block javascripts %}
+    
+        {{ parent() }}
+    
+        <!-- // <script src="{{ asset('js/like.js') }}"></script> -->
+    
+    {% endblock %}
+    #}

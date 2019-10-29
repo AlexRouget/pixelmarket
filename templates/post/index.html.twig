@@ -1,4 +1,9 @@
-<p class="lead">42 nouveaux posts aujourd'hui</p>
-{% for post in posts %}
-    {% include 'post/_posts.html.twig' %}
-{% endfor  %}
+<ul id="post-list" class="row">
+    <div class="row">
+        {% for post in posts %}
+            <li class="col-sm-3 w-100 p-1">
+                {% include 'post/card.html.twig'  %}
+            </li>
+        {% endfor  %}
+    </div>
+</ul>
