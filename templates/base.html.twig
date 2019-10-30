@@ -19,6 +19,7 @@
             <link rel="stylesheet" href="{{ asset('css/menu-burger.css') }}"/>
             <link rel="stylesheet" href="{{ asset('css/app-mobile.css') }}"/>
             <link rel="stylesheet" href="{{ asset('css/app-size-mini.css') }}"/>
+            <link rel="stylesheet" href="{{ asset('css/animation.css') }}"/>
             <link rel="stylesheet" href="{{ asset('css/checkbox.css') }}"/>
         {% endblock %}
     </head>
@@ -46,7 +47,7 @@
                     {% block sidebarContent %}{% endblock %}
                 </div>
 
-                <div id="base-main" class="col">
+                <div id="base-main" class="col container-fluid m-4">
                     {% block mainContent%}{% endblock %}
                 </div>
             </div>

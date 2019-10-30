@@ -38,6 +38,6 @@ security:
     - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     # Posts routes require full authentication
     - { path: ^/admin, roles: ROLE_ADMIN }
-    - { path: ^/users, roles: ROLE_USER }
+    - { path: ^/users/me, roles: ROLE_USER }
     - { path: "^/post/[0-9]*/edit", roles: ROLE_USER }
     - { path: "^/post/[0-9]*/new", roles: ROLE_USER }

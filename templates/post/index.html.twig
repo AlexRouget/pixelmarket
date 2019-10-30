@@ -1,7 +1,8 @@
 <ul id="post-list" class="row">
     <div class="row">
+
         {% for post in posts %}
-            <li class="col-sm-3 w-100 p-1">
+            <li class="appear-animation col-sm-3 w-100 p-1">
                 {% include 'post/card.html.twig'  %}
             </li>
         {% endfor  %}

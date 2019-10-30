@@ -37,9 +37,6 @@ class UserController extends AbstractController
         }
 
         return $this->render('user/profile.html.twig', ['user'=> $user]);
-        // return $this->render('user/index.html.twig', [
-        //     'controller_name' => 'UserController',
-        // ]);
     }
         /**
      * @Route("/me", name="current_user_profile")

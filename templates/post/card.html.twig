@@ -1,17 +1,24 @@
 <a href="{{ path('post_show', {'id': post.id}) }}">
-    <div class="card-post m-0 position-relative">
-        <img src="{{ asset('uploads/' ~ post.attachment) }}" class="" style='width:100%; height:100%; object-fit: cover;'>
-        <div class="card-price">
-            {{ post.price }}€
+
+    <img src="{{ asset('uploads/' ~ post.attachment) }}" class="" style='width:100%; height:100%; object-fit: cover;'>
+
+    <div class="position-relative card-bottom">
+
+        <div class="card-post m-0 position-relative">
+            <div class="card-price">
+                {{ post.price }}€
+            </div>
         </div>
+
+        <div class="card-post card-bottom-content">
+            <h5 class="item-title text-center">{{ post.title }}</h5>
+
+            <p class="m-0">
+                {{ post.location }}, il y a
+                {{ post.publishedAt ? post.publishedAt|date('Y-m-d H:i:s') : '20 min' }}
+            </p>
+        </div>
+
     </div>
 
-    <div id="card-bottom" class="card-post">
-        <h5 class="item-title text-center">{{ post.title }}</h5>
-
-        <p class="m-0">
-            {{ post.location }}, il y a
-            {{ post.publishedAt ? post.publishedAt|date('Y-m-d H:i:s') : '20 min' }}
-        </p>
-    </div>
 </a>

@@ -1,8 +1,33 @@
 <div class="d-flex flex-column align-items-center mt-4">
 
-    <img class="avatar-img" src="{{ asset('' ~ post.author.avatar) }}" alt="" '>
-    <div class="">{{ post.author.username }}</div>
-    <p>Avis 4/5</p>
-    <p>* * * * *</p>
+    <img class="avatar-img" src="{{ asset('' ~ user.avatar) }}" alt="">
 
+    <div class="d-flex flex-column align-items-center mt-4">
+        <h6 class="m-0">{{ user.username }}</h6>
+
+        <HR size="2" align="center" width="100%">
+
+        <div class="d-flex flex-column align-items-center">
+            <div class="tiny-text">Avis: 4/5</div>
+
+            <ul id="stars">
+                <li class="star">
+                    {{ source('icons-svg-twig/icon_star.svg') }}
+                </li>
+                <li class="star">
+                    {{ source('icons-svg-twig/icon_star.svg') }}
+                </li>
+                <li class="star">
+                    {{ source('icons-svg-twig/icon_star.svg') }}
+                </li>
+                <li class="star">
+                    {{ source('icons-svg-twig/icon_star.svg') }}
+                </li>
+                <li class="star star-empty">
+                    {{ source('icons-svg-twig/icon_star.svg') }}
+                </li>
+            </ul>
+            <HR size="2" align="center" width="100%">
+        </div>
+    </div>
 </div>

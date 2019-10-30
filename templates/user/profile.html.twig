@@ -4,14 +4,10 @@
     {{ user.username }}
 {% endblock %}
 
-{% block headerContent %}
-    <h1 class="display-4">{{ user.username }}</h1>
-{% endblock %}
-
 {% block mainContent %}
     {% if user.posts is not empty %}
         <div class="container-fluid">
-            {% include 'post/index.html.twig' %}
+            {% include 'post/index.html.twig' with {'posts' : user.posts} %}
         </div>
     {% else %}
         <h5>
@@ -22,15 +18,24 @@
 {% endblock %}
 
 {% block sidebarContent %}
-    <a href="{{ path('home')}}" class="btn btn-block btn-outline-primary">
-        Revenir à l'accueil
-    </a>
 
-    {% if user.id == app.user.id %}
-        <div class="card mt-4">
-            <div class="card-body">
-                include new post ;)
-            </div>
+    <div class="container p-2">
+        <div id="side-menu">
+            <a href="{{ path('home')}}" class="btn btn-block btn-green">
+                Revenir à l'accueil
+            </a>
+
+            {% include 'user/_profile-card.html.twig' with {'user' : user}%}
+
+
+            {% if user.id == app.user.id %}
+                <div class="card mt-4">
+                    <div class="card-body">
+                        include new post ;)
+                    </div>
+                </div>
+            {% endif %}
+
         </div>
-    {% endif %}
+    </div>
 {% endblock %}
