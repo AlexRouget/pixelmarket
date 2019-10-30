@@ -1,3 +1,6 @@
+{% set myDate = "now" | date %}
+
+
 <a href="{{ path('post_show', {'id': post.id}) }}" style="text-decoration: none;">
 
     <img src="{{ asset('uploads/' ~ post.attachment) }}" class="" style='width:100%; height:100%; object-fit: cover;'>
@@ -14,8 +17,8 @@
             <h5 class="item-title text-center">{{ post.title }}</h5>
 
             <p class="m-0 tiny-text">
-                {{ post.location }}, il y a
-                {{ post.publishedAt ? post.publishedAt|date('Y-m-d H:i:s') : '20 min' }}
+                {{ post.location }}
+                {{ post.publishedAt|ago }}
             </p>
         </div>
 

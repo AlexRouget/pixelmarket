@@ -21,11 +21,12 @@
 
     <div class="container p-2">
         <div id="side-menu">
-            <a href="{{ path('home')}}" class="btn btn-block btn-green">
-                Revenir à l'accueil
-            </a>
-
-            {% include 'user/_profile-card.html.twig' with {'user' : user}%}
+            <div class="d-flex flex-column align-items-center">
+                <a href="{{ path('home')}}" class="btn btn-block btn-green">
+                    Revenir à l'accueil
+                </a>
+                {% include 'user/_profile-card.html.twig' with {'user' : user}%}
+            </div>
 
             {% if app.session.start is empty %}
 

@@ -1,6 +1,10 @@
 /* DE 1024 à l'infini */
 @media only screen and (min-width: 1025px) {
-  /* For little desktop: */
+  /* For desktop: */
+  #page-content {
+    margin: 50px;
+  }
+
   div#hamburger {
     display: none;
   }
@@ -25,7 +29,6 @@
 
 /* DE 768 à l'infini */
 @media only screen and (min-width: 768px) {
-  /* For tablets: */
   nav.navbar {
     position: initial;
   }

@@ -1,7 +1,7 @@
 /* -------- de 0 à 320 ---------- */
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 320px) {
   body #body-content {
-    width: 360px;
+    width: 320px;
   }
 }
 /* -------- de 1330 à l'infini---------- */
@@ -19,8 +19,8 @@
     background-color: white;
 
     margin: auto;
-    margin-top: 300px;
-    margin-bottom: 300px;
+    margin-top: 100px;
+    margin-bottom: 100px;
 
     transition: margin 0.5s ease;
   }
