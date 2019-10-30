@@ -4,7 +4,6 @@
 {% endblock %}
 
 {% block mainContent %}
-    {{ dump(post.author.id) }}
     <a href="javascript:history.back()" class="btn btn-white">
         ‹‹
     </a>
@@ -32,10 +31,10 @@
 
     <HR size="2" align="center" width="100%">
 
-    <div class="d-flex flex-column ">
-        <div class="btn-green">
+    <div class="d-flex flex-column align-items-center">
+        <a href="{{ path('user_profile', {'id': post.author.id}) }}" class="btn-green">
             Contacter le vendeur
-        </div>
+        </a>
         {% include 'user/_profile-card.html.twig' with { 'user' : post.author }%}
     </div>
 
@@ -50,7 +49,7 @@
 
 {% endblock %}
 {% block sidebarContent %}
-    <div class="container d-flex flex-column ">
+    <div class="d-flex flex-column align-items-center">
         {% include 'user/_profile-card.html.twig' with { 'user' : post.author }%}
 
 

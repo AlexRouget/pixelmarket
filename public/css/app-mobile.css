@@ -163,11 +163,6 @@
     max-width: 50%;
   }
 }
-@media only screen and (max-width: 360px) {
-  body {
-    width: 360px;
-  }
-}
 
 /* -------- PAYSAGE ---------- */
 

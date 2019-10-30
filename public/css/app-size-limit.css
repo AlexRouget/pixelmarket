@@ -1,0 +1,39 @@
+/* -------- de 0 à 320 ---------- */
+@media only screen and (max-width: 360px) {
+  body #body-content {
+    width: 360px;
+  }
+}
+/* -------- de 1330 à l'infini---------- */
+@media only screen and (min-width: 1366px) {
+  body {
+    width: 100%;
+
+    background: url("/img/fonds/fond_pixelmarket_annonce.png"), repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  body #body-content {
+    width: 1466px;
+    background-color: white;
+
+    margin: auto;
+    margin-top: 300px;
+    margin-bottom: 300px;
+
+    transition: margin 0.5s ease;
+  }
+}
+
+@media only screen and (min-width: 1366px) and (max-width: 1470px) {
+  body #body-content {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1470px) {
+  body #body-content {
+    transition: margin 0.5s ease;
+  }
+}

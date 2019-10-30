@@ -27,13 +27,15 @@
 
             {% include 'user/_profile-card.html.twig' with {'user' : user}%}
 
+            {% if app.session.start is empty %}
 
-            {% if user.id == app.user.id %}
-                <div class="card mt-4">
-                    <div class="card-body">
-                        include new post ;)
+                {% if user.id == app.user.id %}
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            include new post ;)
+                        </div>
                     </div>
-                </div>
+                {% endif %}
             {% endif %}
 
         </div>

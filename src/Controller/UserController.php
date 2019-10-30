@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * @Route("/users")
@@ -21,10 +22,14 @@ class UserController extends AbstractController
     /**
      * @Route("/{id<\d+>}", name="user_profile")
      */
-    public function profile($id)
+    public function profile($id, SessionInterface $session)
     {
-        if(intval($id) === $this->getUser()->getId()) {
-            return $this->redirectToRoute('current_user_profile');
+        $this->session = $session;
+
+        if (!$this->session) {            
+            if(intval($id) === $this->getUser()->getId()) {
+                return $this->redirectToRoute('current_user_profile');
+            }
         }
 
         $user = $this
