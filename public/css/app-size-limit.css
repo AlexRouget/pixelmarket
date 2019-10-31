@@ -13,6 +13,9 @@
     background-size: cover;
     background-attachment: fixed;
   }
+  .bg-img {
+    background: white;
+  }
 
   body #body-content {
     width: 1466px;

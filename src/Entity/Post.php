@@ -20,7 +20,7 @@ class Post extends Model
     private $description;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="boolean")
      */
     private $public;
 
@@ -84,12 +84,12 @@ class Post extends Model
         return $this;
     }
 
-    public function getPublic(): ?int
+    public function getPublic(): ?bool
     {
         return $this->public;
     }
 
-    public function setPublic(int $public): self
+    public function setPublic(bool $public): self
     {
         $this->public = $public;
 

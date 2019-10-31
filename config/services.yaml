@@ -7,6 +7,7 @@ parameters:
   locale: "en"
   #ça c'est a nous ajout du dossier uploads
   user_upload_folder: "%kernel.project_dir%/public/uploads"
+
 services:
   # default configuration for services in *this* file
   _defaults:
@@ -24,5 +25,5 @@ services:
   App\Controller\:
     resource: "../src/Controller"
     tags: ["controller.service_arguments"]
-  # add more service definitions when explicit configuration is needed
-  # please note that last definitions always *replace* previous ones
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones

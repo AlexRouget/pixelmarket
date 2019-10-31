@@ -3,21 +3,21 @@
 {% block title %}Se connecter!
 {% endblock %}
 
-{% block headerContent %}
-    <a href="javascript:history.back()" class="btn btn-white">
-        ‹‹
-    </a>
-    <div class="d-flex flex-column align-items-center m-2">
-        <h1 class="display-4">
-            <span class="text-blue">pixel</span>
-            <span class="text-green">market</span>
-        </h1>
-        <p class="lead">À vos marques, prêts? Geekeur, à vos échanges !</p>
-    </div>
-    <hr class="my-4"/>
-{% endblock %}
 
 {% block pageContent %}
+    {% block headerContent %}
+        <a href="javascript:history.back()" class="btn btn-white">
+            ‹‹
+        </a>
+        <div class="d-flex flex-column align-items-center m-2">
+            <h1 class="display-4">
+                <span class="text-blue">pixel</span>
+                <span class="text-green">market</span>
+            </h1>
+            <p class="lead">À vos marques, prêts? Geekeur, à vos échanges !</p>
+        </div>
+        <hr class="my-4"/>
+    {% endblock %}
     <div class="d-flex justify-content-center">
         {% include 'security/_login-form.html.twig' %}
     </div>

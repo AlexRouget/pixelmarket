@@ -1,7 +1,7 @@
 /* DE 1024 à l'infini */
 @media only screen and (min-width: 1025px) {
   /* For desktop: */
-  #page-content {
+  #page-side-content {
     margin: 50px;
   }
 

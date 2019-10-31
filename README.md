@@ -13,6 +13,9 @@ activation du server : php -S 127.0.0.1:8001 -t public
 ? {% if app.session is not empty %} ne mache pas sur firefox => user/profile
 => après 1h30 de recherche, il fallait remplacer app.session is not empty pas par app.session.start is not empty
 
-Ajout de composer require knplabs/knp-time-bundle (pour les date)
+Ajout de composer require knplabs/knp-time-bundle for date)
+
+- TODO faire fil d'ariane
+  Ajout de composer require knplabs/knp-menu-bundle (file d'ariane)
 
 Changement d'horaire => php.ini date.timezone ?
