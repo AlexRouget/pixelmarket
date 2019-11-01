@@ -4,8 +4,8 @@
 {% endblock %}
 
 {% block mainContent %}
-    <a href="javascript:history.back()" class="btn btn-white">
-        ‹‹
+    <a href="javascript:history.back()" class="">
+        file d'ariane
     </a>
 
     <img src="{{ asset('uploads/' ~ post.attachment) }}" class="card-img">
@@ -14,9 +14,11 @@
 
     <h3>{{ post.title }}</h3>
 
+    {% set myDate = "now" | date %}
+
     <p>
         {{ post.location }}, à
-        {{ post.publishedAt ? post.publishedAt|date('Y-m-d H:i:s') : '' }}
+        {{ post.publishedAt|ago }}
     </p>
     <div class="price">
         {{ post.price }}€
@@ -31,11 +33,13 @@
 
     <HR size="2" align="center" width="100%">
 
-    <div class="d-flex flex-column align-items-center">
-        <a href="{{ path('user_profile', {'id': post.author.id}) }}" class="btn-green">
+    <div class="profile-card d-flex flex-column align-items-center">
+        <div class="btn-contact btn-green" onclick="change_2('{{ post.author.email }}')">
             Contacter le vendeur
-        </a>
+        </div>
+
         {% include 'user/_profile-card.html.twig' with { 'user' : post.author }%}
+
     </div>
 
     {% if app.user is not empty %}
@@ -51,11 +55,7 @@
 {% block sidebarContent %}
     <div class="d-flex flex-column align-items-center">
         {% include 'user/_profile-card.html.twig' with { 'user' : post.author }%}
+        {% include 'user/_btn-profile-card.html.twig' with { 'user' : post.author }%}
 
-
-        <a href="{{ path('user_profile', {'id': post.author.id}) }}" class="btn-green">
-            Contacter le vendeur
-        </a>
     </div>
-
 {% endblock %}

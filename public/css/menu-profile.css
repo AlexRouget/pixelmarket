@@ -1,0 +1,47 @@
+#profile-nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#profile-nav a {
+  display: block;
+  padding: 1rem 0;
+  margin: 0 1rem;
+
+  font-size: 1.5rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #eec028;
+
+  border-bottom: solid 2px transparent;
+
+  transition: all 0.4s ease;
+}
+
+#profile-nav a.active {
+  color: #fff;
+  border-bottom: solid 2px #fff;
+}
+
+.menus-container {
+  position: relative;
+}
+
+.menu {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.menu:not(:first-child) {
+  display: none;
+}
+
+.menu-price {
+  display: inline-flex;
+  align-items: baseline;
+
+  font-family: "Playfair Display", serif;
+  font-size: 2.4rem;
+}

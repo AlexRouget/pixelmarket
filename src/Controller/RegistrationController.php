@@ -20,21 +20,19 @@ class RegistrationController extends AbstractController
     {
         $response = new Response();
 
-        $manager = $this->getDoctrine()->getManager();
-
         $form = $this->createForm(UserType::class);
 
         $form->handleRequest($request);
 
         // gérer les données recues
-        // valider les données
         if ($form->isSubmitted() && $form->isValid()) {
 
             // créer un user
             $user = $form->getData();
 
-                /* @var UploadedFile $file */
-                $file = $user->getAvatar();
+            /* @var UploadedFile $file */
+            $file = $user->getAvatar();
+
                 if (!empty($file)) {
                     $basename = 'post-attachment-' . md5(uniqid());
                     // c'est une identifiant basé sur la date en microseconde. c'est n'est pas utilisable en secu, de plus on peut avoir la même chaîne de caractère
@@ -44,27 +42,27 @@ class RegistrationController extends AbstractController
                     $file->move($this->getParameter('user_upload_folder'), $filename);
                     $user->setAvatar($filename);
                 }
-                $user->setPassword(
-                    $passwordEncoder->encodePassword(
-                        $user,
-                        $form->get('password')->getData()
-                    )
-                );
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $form->get('password')->getData()
+                )
+            );
 
-                $this->getDoctrine()->getManager()->flush();
+            $this->getDoctrine()->getManager()->flush();
 
-                // on dit à Doctrine de "s'occuper" de ce Post
-                $manager = $this->getDoctrine()->getManager();
-                $manager->persist($user);
+            // on dit à Doctrine de "s'occuper" de ce Post
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($user);
 
-                // finalement, on dit au manager d'envoyer le post en BDD
-                $manager->flush();
+            // finalement, on dit au manager d'envoyer le post en BDD
+            $manager->flush();
 
-                //  MESSAGE FLASHE
-                $this->addFlash('notice', 'Bienvenue dans la communauté des pixelmarkets!');        
-                $this->addFlash('success', 'Votre compte à bien été enregistré. Connecte-toi !');
+            //  MESSAGE FLASHE
+            $this->addFlash('notice', 'Bienvenue dans la communauté des pixelmarkets!');        
+            $this->addFlash('success', 'Votre compte à bien été enregistré. Connecte-toi !');
 
-                return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_login');
         }
 
 

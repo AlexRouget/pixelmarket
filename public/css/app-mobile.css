@@ -5,8 +5,9 @@
     margin: 50px;
   }
 
-  div#hamburger {
-    display: none;
+  div#hamburger,
+  div.profile-card {
+    display: none !important;
   }
 
   div#hamburger-content {
@@ -95,8 +96,8 @@
     right: 3em;
   }
   .avatar-img {
-    width: 10%;
-    height: auto;
+    width: 70px;
+    height: 70px;
   }
 }
 
@@ -136,10 +137,6 @@
   }
   nav#navbar {
     flex-direction: row-reverse;
-  }
-  .avatar-img {
-    width: 70px;
-    height: 70px;
   }
 }
 

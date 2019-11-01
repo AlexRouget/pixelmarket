@@ -51,26 +51,17 @@ class UserType extends AbstractType
                 ]
             ])
            ->add('password', RepeatedType::class, [
-            // instead of being set onto the object directly,
-            // this is read and encoded in the controller
             'type' => PasswordType::class,
+            'required' => true,
             'first_options' => ['label' => 'Mot de passe'],
             'second_options' => ['label' => 'Confirmation du mot de passe'],
             'mapped' => false,
-            'help' => 'Votre mot de passe doit contenir au minimum 6 caractères.',
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Please enter a password',
-                ]),
-                new Length([
-                    'min' => 6,
-                    'minMessage' => 'Your password should be at least {{ limit }} characters',
-                    // max length allowed by Symfony for security reasons
-                    'max' => 4096,
-                ]),
-            ],
-        ])
+            'help' => 'Votre mot de passe doit contenir au minimum 8 caractères.',
+            'invalid_message' => 'Les mots de passe ne correspondent pas.',
+            ])
+
             ->add('avatar', FileType::class, [ 'required' => false ]) 
+
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [

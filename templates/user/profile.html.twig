@@ -5,6 +5,14 @@
 {% endblock %}
 
 {% block mainContent %}
+    <div class="profile-card d-flex flex-column align-items-center">
+
+        {% include 'user/_btn-profile-card.html.twig' with { 'user' : user }%}
+
+        {% include 'user/_profile-card.html.twig' with { 'user' : user }%}
+
+    </div>
+
     {% if user.posts is not empty %}
         <div class="container-fluid">
             {% include 'post/index.html.twig' with {'posts' : user.posts} %}
@@ -19,26 +27,28 @@
 
 {% block sidebarContent %}
 
-    <div class="container p-2">
+    <div class="container">
         <div id="side-menu">
             <div class="d-flex flex-column align-items-center">
-                <a href="{{ path('home')}}" class="btn btn-block btn-green">
-                    Revenir à l'accueil
-                </a>
-                {% include 'user/_profile-card.html.twig' with {'user' : user}%}
-            </div>
+                <div class="d-flex flex-column align-items-center mt-4">
+                    {% include 'user/_profile-card.html.twig' with {'user' : user}%}
+                </div>
+                {% include 'user/_btn-profile-card.html.twig' with { 'user' : user }%}
 
-            {% if app.session.start is empty %}
+                {% if app.session is not empty %}
 
-                {% if user.id == app.user.id %}
-                    <div class="card mt-4">
-                        <div class="card-body">
-                            include new post ;)
+                    {% if user.id == app.user.id %}
+                        <div class="d-flex flex-column align-items-center mt-4">
+
+                            <a href="{{ path('home')}}" class="btn btn-block btn-green">
+                                Revenir à l'accueil
+                            </a>
+
                         </div>
-                    </div>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
 
+            </div>
         </div>
     </div>
 {% endblock %}

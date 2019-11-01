@@ -41,10 +41,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     {
         return 'app_login' === $request->attributes->get('_route')
             && $request->isMethod('POST');
-
-        // normalement pas là 
-        return true;
-
     }
 
     public function getCredentials(Request $request)
@@ -74,7 +70,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Username could not be found.');
+            throw new CustomUserMessageAuthenticationException('Votre Nom d\'utilisateur nous est inconnu ');
         }
 
         return $user;

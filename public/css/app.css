@@ -59,6 +59,8 @@ select:-webkit-autofill:focus {
 
   border-radius: 50rem !important;
   padding: 0.25em 1.5em 0.25em 1.5em;
+
+  cursor: pointer;
 }
 
 .btn-green {
@@ -101,6 +103,18 @@ select:-webkit-autofill:focus {
   color: #6c757d;
   pointer-events: none;
   cursor: default;
+}
+
+/* ------- NAVBAR -------- */
+
+#navbar .top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+
+  transition: all 0.3s ease;
 }
 
 /* ------- SEARCH-BAR -------- */

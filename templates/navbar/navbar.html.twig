@@ -8,9 +8,7 @@
     </h1>
 
     <form class="search-bar">
-        <input
-        class="search form-control mr-sm-2 w-100 rounded-pill border-light bg-secondary text-white" type="search" placeholder="Rechercher" aria-label="Search">
-    <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">GO</button> -->
+        <input class="search form-control mr-sm-2 w-100 rounded-pill border-light bg-secondary text-white" type="search" placeholder="Rechercher" aria-label="Search">
     </form>
 
     <ul id="toogle-sign">
@@ -28,10 +26,10 @@
                     </span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ path('user_profile', { 'id': app.user.id }) }}">Profile</a>
-                    <a class="dropdown-item disabled" href="#">Settings</a>
+                    <a class="dropdown-item" href="{{ path('current_user_profile') }}">Profile</a>
+                    <a class="dropdown-item disabled" href="#">Paramêtres</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{path("app_logout")}}">Log out</a>
+                    <a class="dropdown-item" href="{{path("app_logout")}}">Deconnexion</a>
                 </div>
             </li>
         {% else %}

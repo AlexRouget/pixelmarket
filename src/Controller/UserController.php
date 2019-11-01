@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
- * @Route("/users")
+ * @Route("/profil")
  */
 class UserController extends AbstractController
 {
@@ -54,7 +54,7 @@ class UserController extends AbstractController
         $user = $this->getUser();
 
         // EN FAIRE DES RECHERCHES PAR CAT / FAVORIS... 
-        return $this->render('user/profile.html.twig', [
+        return $this->render('user/profile-me.html.twig', [
             'user' => $user,
             'posts' => $postRepository->findPostList(0, 4)
         ]);
