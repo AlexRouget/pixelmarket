@@ -1,0 +1,9 @@
+{% if app.user is not empty %}
+    <div class="btn-contact btn-green" onclick="change_2('{{ user.email }}')">
+        Contacter le vendeur
+    </div>
+{% else %}
+    <a onclick="return confirm('vous devez vous connectez pour accéder à ces données')" href="{{ path('app_login')}}" class="btn-contact btn-green">
+        Contacter le vendeur
+    </a>
+{% endif %}

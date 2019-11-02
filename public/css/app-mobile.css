@@ -162,6 +162,9 @@
     flex: 0 0 50%;
     max-width: 50%;
   }
+  .card-price {
+    font-size: 16px;
+  }
 }
 
 /* -------- PAYSAGE ---------- */

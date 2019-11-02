@@ -7,7 +7,7 @@
 {% block mainContent %}
     <div class="profile-card d-flex flex-column align-items-center">
 
-        {% include 'user/_btn-profile-card.html.twig' with { 'user' : user }%}
+        {% include 'user/_btn1-profile-card.html.twig' with { 'user' : user }%}
 
         {% include 'user/_profile-card.html.twig' with { 'user' : user }%}
 
@@ -33,7 +33,7 @@
                 <div class="d-flex flex-column align-items-center mt-4">
                     {% include 'user/_profile-card.html.twig' with {'user' : user}%}
                 </div>
-                {% include 'user/_btn-profile-card.html.twig' with { 'user' : user }%}
+                {% include 'user/_btn2-profile-card.html.twig' with { 'user' : user }%}
 
                 {% if app.session is not empty %}
 

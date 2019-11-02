@@ -1,4 +1,4 @@
-{% if app.session.start is empty %}
+{% if app.session is not empty %}
     <div class="btn-contact btn-green" onclick="change_1('{{ user.email }}')">
         Contacter le vendeur
     </div>

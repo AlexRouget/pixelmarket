@@ -35,18 +35,14 @@ var btnContact = document.getElementsByClassName("btn-contact");
 var btn_1 = btnContact[0];
 var btn_2 = btnContact[1];
 
-function change_1(contact) {
+function change_2(contact) {
   btn_1.innerText = contact;
   btn_1.classList.remove("btn-green");
 }
-function change_2(contact) {
+function change_1(contact) {
   btn_2.innerText = contact;
   btn_2.classList.remove("btn-green");
 }
-// function change_3(contact) {
-//   btn_3.innerText = contact;
-//   btn_3.classList.remove("btn-green");
-// }
 
 $(function() {
   console.log("jquery");

@@ -54,22 +54,25 @@ class AppFixtures extends Fixture
 
             $title = $faker->realText(20);
             $description = $faker->realText(180);
-            $price = $faker->numberBetween(10, 100);
+            $attachment = $faker->imageUrl(640, 480);
+            $price = $faker->numberBetween(10, 500);
             $location = $faker->randomElement(['Bordeaux', 'Paris', 'Franconville']);
-            $categories = $faker->randomElement(['jeux vidéo','goodies','dvd']);
+            $categories = $faker->randomElement(['Jeux vidéo','Goodies','Dvd', 'Jeux de société', 'Rétrogaming']);
             $isPublic = $faker->boolean(70);
+            $dateBetween = $faker->dateTimeBetween('-30 days', 'now', null);
 
             $date = new \DateTime();
 
             $post = new Post();
             $post->setTitle($title);
             $post->setDescription($description);
+            $post->setAttachment($attachment);
             $post->setPrice($price);
             $post->setLocation($location);
             $post->setCategories($categories);
             $post->setPublic($isPublic);
             $post->setCreatedAt($date);
-            $post->setPublishedAt($date->add(new \DateInterval('P1D')));
+            $post->setPublishedAt($dateBetween);
 
             // Auteur du post
             $k = array_rand($users);

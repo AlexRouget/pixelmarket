@@ -29,7 +29,7 @@ class PostRepository extends ServiceEntityRepository
      *
      * @return array The posts for the homepage
      */
-    public function findHomepage(int $start = 0, $take = 5)
+    public function findHomepage(int $start = 0, $take = 16)
     {
        return $this->findPostList($start, $take, true);
     }
@@ -44,7 +44,7 @@ class PostRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('p')
             ->select('p as post')
             ->groupBy('p.id')
-            ->orderBy('p.id', 'DESC')
+            ->orderBy('p.published_at', 'DESC')
             ->setFirstResult($start)
             ->setMaxResults($take);
 

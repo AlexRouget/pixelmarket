@@ -13,9 +13,16 @@
 
     <ul id="toogle-sign">
         <li>
-            <a class="btn-green" href="{{ app.user ? path("post_new") : path("app_login") }}">
-                Créer une annonce
-            </a>
+            {% if app.user is not empty %}
+                <a class="btn-green" href="{{ path("post_new") }}">
+                    Créer une annonce
+                </a>
+            {% else %}
+                <a class="btn-green" onclick="return confirm('vous devez vous connectez pour accéder à ces données')" href="{{ path('app_login')}}">
+                    Créer une annonce
+                </a>
+
+            {% endif %}
         </li>
         {% if app.user is not empty %}
             <li class="nav-item dropdown" id="profileNavbar">

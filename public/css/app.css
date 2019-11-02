@@ -188,10 +188,6 @@ li.categorie-burger input:checked {
 
 /* --------- POST-CARD --------- */
 
-.card-post {
-  width: 100%;
-  height: 50%;
-}
 .card-post-container {
   text-decoration: none;
 }
@@ -218,7 +214,7 @@ li.categorie-burger input:checked {
 .price {
   display: block;
   text-align: center;
-  -webkit-align: center;
+  -webkit-text-align: center;
 
   border-radius: 50rem !important;
   padding: 0.1em 0.75em;
@@ -233,6 +229,7 @@ li.categorie-burger input:checked {
 
   background-color: var(--blue) !important;
   color: white !important;
+  font-size: 18px;
 }
 
 .price {
