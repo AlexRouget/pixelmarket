@@ -34,20 +34,20 @@ class UserType extends AbstractType
            ->add('first_name', TextType::class, [
             'label' => 'Prénom',
             'attr' => [
-                'placeholder' => 'Alexandra'
+                'placeholder' => 'Antoine'
                 ]
             ])
            ->add('last_name', TextType::class, [
-            'label' => 'Nom de famille',
+            'label' => 'Nom',
             'attr' => [
-                'placeholder' => 'Rounit'
+                'placeholder' => 'Dupont'
                 ]
             ])
            ->add('email', EmailType::class, [
             'required' => true,
             'label' => 'Email',
             'attr' => [
-                'placeholder' => 'rounit.alex@mail.com'
+                'placeholder' => 'dupont.antoine@mail.com'
                 ]
             ])
            ->add('password', RepeatedType::class, [

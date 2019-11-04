@@ -45,7 +45,7 @@ class PostController extends AbstractController
                 $file = $post->getAttachment();
                 if (!empty($file)) {
                     $basename = 'post-attachment-' . md5(uniqid());
-                    // c'est une identifiant basé sur la date en microseconde. c'est n'est pas utilisable en secu, de plus on peut avoir la même chaîne de caractère
+                    //TODO c'est une identifiant basé sur la date en microseconde. c'est n'est pas utilisable en secu, de plus on peut avoir la même chaîne de caractère
                     $ext = $file->guessExtension();
                     $filename = $basename . '.' . $ext;
 
@@ -125,6 +125,7 @@ class PostController extends AbstractController
             $entityManager->flush();
             
             $this->addFlash('success', 'Ton post à été supprimé!');
+            return $this->redirectToRoute('current_user_profile');
         }
 
 

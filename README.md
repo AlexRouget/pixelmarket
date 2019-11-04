@@ -13,6 +13,7 @@
 - TODO avatar par defaut si rien
 - TODO replace logos
 - TODO dans UserController sur /me : créer des fonctions selon les besoins
+  -TODO post/edit -> double categories
 - TODO faire fil d'ariane
   ->Ajout de composer require knplabs/knp-menu-bundle (file d'ariane)
 
