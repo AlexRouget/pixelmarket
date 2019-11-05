@@ -45,12 +45,12 @@ function change_1(contact) {
 }
 
 $(function() {
-  console.log("jquery");
+  // console.log("jquery");
 
-  $("#profil-nav").tabify({
-    container: ".profile-container",
-    data: "profil"
-  });
+  // $("#profil-nav").tabify({
+  //   container: ".profile-container",
+  //   data: "profil"
+  // });
 
   //NAVBAR
   const $window = $(window);
@@ -62,4 +62,59 @@ $(function() {
       $navbar.addClass("top");
     }
   });
+
+  //CONFIRM connection
+  var $btnCreatePost = $(".btn-create-post");
+
+  $btnCreatePost.click(function() {
+    console.log("BAHHHHHHH");
+    return confirm("Tu dois te connecter pour créer une annonce");
+  });
+
+  //AVATAR
+  var $avatarInput = $("#user_avatar");
+
+  var $avatar1 = $("#avatar_1");
+  var $avatar2 = $("#avatar_2");
+  var $avatar3 = $("#avatar_3");
+
+  $avatar1.click(function() {});
+
+  var $avatarLabel = $("#avatar_4");
+
+  $avatarLabel.click(function() {
+    $avatarInput.click();
+    uploadAvatar();
+  });
+
+  function uploadAvatar(afterSelection) {
+    var reader = new FileReader();
+    var file = $avatarInput.val();
+
+    console.log("le fichier : " + file);
+
+    $avatarInput.change(() => {
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+      console.log("le reader.result : " + reader.result);
+
+      $avatarLabel.css({
+        border: "2px solid green",
+        background: "url(" + reader.result + ") center"
+      });
+      console.log("Done");
+    });
+  }
+
+  function selectValid(input) {
+    input.css({
+      border: "2px solid green"
+    });
+    $avatarInput.val() = "../img/icons_avatars/avatar-red.png"
+
+    // EN GROS !!!!!!
+  }
+
+  // $("#user_avatar").val();
 });

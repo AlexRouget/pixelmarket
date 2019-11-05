@@ -18,7 +18,7 @@
                     Créer une annonce
                 </a>
             {% else %}
-                <a class="btn-green" onclick="return confirm('vous devez vous connectez pour accéder à ces données')" href="{{ path('app_login')}}">
+                <a class="btn-green btn-create-post" data-value="@Request.RequestContext.HttpContext.Session['user']" href="{{ path('app_login')}}">
                     Créer une annonce
                 </a>
 

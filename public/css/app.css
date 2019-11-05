@@ -155,11 +155,45 @@ select:-webkit-autofill:focus {
 
 #avatars .avatar-auto {
   display: block;
-  background-color: var(--blue);
   width: 5em;
   height: 5em;
+
   border-radius: 50%;
   margin: 1em;
+
+  cursor: pointer;
+}
+
+#avatar_1,
+#avatar_2,
+#avatar_3,
+#avatar_4 {
+  opacity: 0.8;
+}
+#avatar_1:hover,
+#avatar_2:hover,
+#avatar_3:hover,
+#avatar_4:hover {
+  opacity: 1;
+}
+
+#avatar_1 {
+  background: url(../img/icons_avatars/avatar-red.png) center;
+}
+#avatar_2 {
+  background: url(../img/icons_avatars/avatar-green.png) center;
+}
+#avatar_3 {
+  background: url(../img/icons_avatars/avatar-blue.png) center;
+}
+.avatar_4 {
+  background: url(../img/icons_avatars/avatar-pix.png) center;
+}
+
+.hidden {
+  display: none;
+  overflow: hidden;
+  position: absolute;
 }
 
 li.categorie-burger input,

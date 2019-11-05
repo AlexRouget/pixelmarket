@@ -165,6 +165,12 @@
   .card-price {
     font-size: 16px;
   }
+
+  #avatars {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 /* -------- PAYSAGE ---------- */
