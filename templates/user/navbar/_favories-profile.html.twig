@@ -1,15 +1,12 @@
-<div class="menu" id="mes-favories">
-    <p class="menu-price">Mes favories</p>
+<p class="menu-title">Mes favories</p>
 
-    {% if user.posts is not empty %}
+{% if user.posts is not empty %}
 
-        {% include 'post/index.html.twig'  %}
+    {% include 'post/index.html.twig'  %}
 
-    {% else %}
-        <h5>
-            {{ user.username }}
-            n'a rien publié pour le moment !
-        </h5>
-    {% endif  %}
-
-</div>
+{% else %}
+    <h5>
+        {{ user.username }}
+        n'a rien publié pour le moment !
+    </h5>
+{% endif  %}

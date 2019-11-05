@@ -45,13 +45,6 @@ function change_1(contact) {
 }
 
 $(function() {
-  // console.log("jquery");
-
-  // $("#profil-nav").tabify({
-  //   container: ".profile-container",
-  //   data: "profil"
-  // });
-
   //NAVBAR
   const $window = $(window);
   const $navbar = $("#navbar");

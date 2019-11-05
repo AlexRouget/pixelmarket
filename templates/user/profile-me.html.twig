@@ -9,9 +9,15 @@
         <div class="container-fluid h-100">
             {% include 'user/navbar/_navbar.html.twig'%}
             <div class="menus-container">
-                {% include 'user/navbar/_annonce-profile.html.twig' with { 'posts' : user.posts }%}
-                {% include 'user/navbar/_favories-profile.html.twig' with { 'posts' : user.posts }%}
-                {% include 'user/navbar/_infos-profile.html.twig' with { 'user' : user }%}
+                <div class="menu" id="mes-annonces">
+                    {% include 'user/navbar/_annonce-profile.html.twig' with { 'posts' : user.posts }%}
+                </div>
+                <div class="menu" id="mes-favories">
+                    {% include 'user/navbar/_favories-profile.html.twig' with { 'posts' : user.posts }%}
+                </div>
+                <div class="menu" id="mes-infos">
+                    {% include 'user/navbar/_infos-profile.html.twig' with { 'user' : user }%}
+                </div>
             </div>
         </div>
     {% endblock %}

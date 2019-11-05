@@ -1,28 +1,30 @@
+#profile-nav a.active,
+#profile-nav a:hover {
+  border-bottom: solid 4px var(--green);
+}
+
+#profile-nav {
+  width: 100%;
+}
 #profile-nav ul {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 #profile-nav a {
   display: block;
   padding: 1rem 0;
-  margin: 0 1rem;
 
-  font-size: 1.5rem;
-  letter-spacing: 0.2rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   font-weight: bold;
-  color: #eec028;
+  color: var(--blue);
+  text-decoration: none;
 
   border-bottom: solid 2px transparent;
 
   transition: all 0.4s ease;
-}
-
-#profile-nav a.active {
-  color: #fff;
-  border-bottom: solid 2px #fff;
 }
 
 .menus-container {
@@ -31,17 +33,16 @@
 
 .menu {
   text-align: center;
-  padding-top: 40px;
+  padding-top: 20px;
 }
 
 .menu:not(:first-child) {
   display: none;
 }
 
-.menu-price {
+.menu-title {
   display: inline-flex;
   align-items: baseline;
 
-  font-family: "Playfair Display", serif;
   font-size: 2.4rem;
 }
