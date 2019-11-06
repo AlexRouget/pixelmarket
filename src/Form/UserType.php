@@ -11,6 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Validator\Constraints\File;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -50,27 +51,25 @@ class UserType extends AbstractType
                 'placeholder' => 'dupont.antoine@mail.com'
                 ]
             ])
-           ->add('password', RepeatedType::class, [
-            'type' => PasswordType::class,
-            'required' => true,
-            'first_options' => ['label' => 'Mot de passe'],
-            'second_options' => ['label' => 'Confirmation du mot de passe'],
-            'mapped' => false,
-            'help' => 'Votre mot de passe doit contenir au minimum 8 caractères.',
-            'invalid_message' => 'Les mots de passe ne correspondent pas.',
-            ])
-
-            ->add('avatar', FileType::class, [ 'required' => false ]) 
-
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'Vous devez prendre connaissance des mentions légales et les cocher pour créer votre compte.'
-                    ]),
-                ],
-            ])
-            ->add('submit', SubmitType::class, ['label'=>'Je m\'inscris']);
+            ->add('avatar', FileType::class, [ 'required' => false,
+            // unmapped means that this field is not associated to any entity property
+            // 'mapped' => false,
+            'data_class'=>null,
+            'constraints' => [
+                new File([
+                    'maxSize' => '1024k',
+                    'mimeTypes' => [
+                        'application/png',
+                        'application/jpeg',
+                        'application/jpg',
+                        'application/gif',
+                        'application/svg+xml',
+                    ],
+                    'mimeTypesMessage' => 'Attention: le fichier doit être un gif, jpeg, png de moins de 100Mo',
+                ])
+            ],
+              ]) 
+            ->add('submit', SubmitType::class, ['label'=>'J\'enregistre mes modifications']);
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -33,3 +33,6 @@
   content: "✖";
 }
 
+#erreur {
+  display: none;
+}

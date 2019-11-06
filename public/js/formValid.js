@@ -171,7 +171,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     $erreur.css("display", "none"); // on prend soin de cacher le message d'erreur
-    $erreur.css("display", "none");
   });
 
   function checkEmpty(champ) {

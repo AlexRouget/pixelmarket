@@ -102,7 +102,6 @@ class PostController extends AbstractController
           }
 
             $this->getDoctrine()->getManager()->flush();
-            
             $this->addFlash('success', 'Ton post à été modifié!');
             
             return $this->redirectToRoute('current_user_profile');

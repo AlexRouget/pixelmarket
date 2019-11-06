@@ -34,6 +34,7 @@ class User extends Model implements UserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      *
+     * @Assert\NotBlank(message="Attention: le fichier doit être un gif, jpeg, png de moins de 100Mo")
      * @Assert\File(mimeTypes={"image/gif", "image/jpeg", "image/png" ,"image/svg+xml"})
      */
     private $avatar;

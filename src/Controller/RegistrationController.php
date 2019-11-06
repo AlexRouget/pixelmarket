@@ -20,7 +20,7 @@ class RegistrationController extends AbstractController
     {
         $response = new Response();
 
-        $form = $this->createForm(UserType::class);
+        $form = $this->createForm(RegistrationFormType::class);
 
         $form->handleRequest($request);
 
@@ -63,10 +63,12 @@ class RegistrationController extends AbstractController
             $this->addFlash('success', 'Votre compte à bien été enregistré. Connecte-toi !');
 
             return $this->redirectToRoute('app_login');
+            sleep(5);
         }
 
 
         return $this->render('registration/register.html.twig', 
-        ['user_form' => $form->createView()]);
+        ['register_form' => $form->createView()]);
     }
+    
 }

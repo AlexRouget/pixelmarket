@@ -5,14 +5,18 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Post;
 use App\Form\UserType;
+use App\Service\FileUploader;
 use App\Repository\PostRepository;
+use App\Repository\UserRepository;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * @Route("/profil")
@@ -43,20 +47,52 @@ class UserController extends AbstractController
 
         return $this->render('user/profile.html.twig', ['user'=> $user]);
     }
-        /**
-     * @Route("/me", name="current_user_profile")
+
+    /**
+     * @Route("/me", name="current_user_profile", methods={"GET","POST"})
      * @param Request $req
      * @return Response
      */
-    public function me(Request $req, PostRepository $postRepository) {
+    public function me(Request $req, PostRepository $postRepository, UserRepository $userRepository, FileUploader $fileUploader): Response {
 
-        /** @var $user User*/
+        $em = $this->getDoctrine()->getManager();
+
         $user = $this->getUser();
+        $avatar = $user->getAvatar();
+
+        if (!is_null($avatar)) {
+            $user->setAvatar($avatar);
+        }
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($req);
+
+        // gérer les données recues
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $file = $form->get('avatar')->getData();
+
+            if ($file !== null) {
+                $fileName = $fileUploader->upload($file);
+                $user->setAvatar($fileName);
+            } else {
+                $user->setAvatar($avatar);
+            }
+
+            $em->persist($user);
+            $em->flush();
+
+            //  MESSAGE FLASHE     
+            $this->addFlash('success', 'Les modifications ont bien été prise en compte');
+            return $this->redirectToRoute('current_user_profile');
+            sleep(5);
+        }
 
         // EN FAIRE DES RECHERCHES PAR CAT / FAVORIS... 
         return $this->render('user/profile-me.html.twig', [
             'user' => $user,
-            'posts' => $postRepository->findPostList(0, 4)
+            'posts' => $postRepository->findPostList(0, 4), 
+            'user_form' => $form->createView()
         ]);
     }
 }

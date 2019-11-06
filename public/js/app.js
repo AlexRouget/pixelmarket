@@ -1,5 +1,12 @@
 console.log("hello app.js");
 
+//FLASH
+$("document").ready(function() {
+  setTimeout(function() {
+    $("div.alert").remove();
+  }, 3000); // 5 secs
+});
+
 // BURGER
 var content = document.querySelector("#hamburger-content");
 var sidebarBody = document.querySelector("#hamburger-sidebar-body");
@@ -28,7 +35,7 @@ overlay.addEventListener("click", function(e) {
   this.parentNode.classList.remove(activatedClass);
 });
 
-// Change button
+// CHANGE BUTTON
 
 var btnContact = document.getElementsByClassName("btn-contact");
 
@@ -66,6 +73,7 @@ $(function() {
 
   //AVATARS
   var $avatarInput = $("#user_avatar");
+  var $avatarRegisterInput = $("#registration_form_avatar");
 
   var $avatar1 = $("#avatar_1");
   var $avatar2 = $("#avatar_2");
@@ -99,6 +107,10 @@ $(function() {
 
   $avatarLabel.click(function() {
     $avatarInput.click();
+  });
+
+  $avatarLabel.click(function() {
+    $avatarRegisterInput.click();
   });
 
   $avatarInput.change(() => {

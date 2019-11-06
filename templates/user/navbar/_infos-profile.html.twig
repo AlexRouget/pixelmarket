@@ -1,0 +1,45 @@
+{% if user is not empty %}
+    <div class="d-flex flex-column align-items-center mt-4">
+        <div class="d-flex flex-column align-items-center mt-4">
+
+            <div class="d-flex align-items-center">
+
+                <img class="avatar-img" src="{{ asset('uploads/' ~ app.user.avatar) }}" alt="">
+
+                <div class="d-flex flex-column align-items-center mt-4">
+                    <h6 class="m-0">{{ user.username }}</h6>
+                </div>
+                <HR size="2" align="center" width="100%">
+
+                <div class="d-flex flex-column align-items-center">
+                    <div class="tiny-text">Avis: 4/5</div>
+
+                    <ul id="stars">
+                        <li class="star">
+                            {{ source('icons-svg-twig/icon_star.svg') }}
+                        </li>
+                        <li class="star">
+                            {{ source('icons-svg-twig/icon_star.svg') }}
+                        </li>
+                        <li class="star">
+                            {{ source('icons-svg-twig/icon_star.svg') }}
+                        </li>
+                        <li class="star">
+                            {{ source('icons-svg-twig/icon_star.svg') }}
+                        </li>
+                        <li class="star star-empty">
+                            {{ source('icons-svg-twig/icon_star.svg') }}
+                        </li>
+                    </ul>
+                    <HR size="2" align="center" width="100%">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="card align-items-center bg-img">
+        <div id="register" class="card-body col-7 bg-white my-4">
+            {% include 'user/_edit-form.html.twig' %}
+        </div>
+    </div>
+{% endif  %}

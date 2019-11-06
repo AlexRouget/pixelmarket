@@ -141,6 +141,12 @@ select:-webkit-autofill:focus {
 }
 /* ------- REGISTER-FORM -------- */
 
+.form-title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .bg-img {
   background: linear-gradient(rgba(78, 225, 175, 1), rgba(76, 153, 158, 1));
 

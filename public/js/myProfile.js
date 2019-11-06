@@ -21,7 +21,7 @@ $(function() {
         break;
       case "#favories":
         $divAnnonces.hide();
-        $divAnnonces.hide();
+        $divInfos.hide();
         $divFavories.show();
         $aInfos.classList.remove("active");
         $aAnnonces.classList.remove("active");
