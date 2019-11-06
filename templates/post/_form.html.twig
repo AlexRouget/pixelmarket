@@ -43,9 +43,6 @@
     <div class="form-group">
         {{ form_label(post_form.state) }}
 
-        {# {{ form_widget(post_form.state, {'attr': { 'class': 'd-flex flex-column form-control h-auto' ~ hasError(post_form.state)
-                                                                                                                                              }}) }} #}
-
         <div id="post_state" class="d-flex flex-column h-auto">
             <div class="d-flex">
                 <input type="radio" id="post_state_0" name="post[state]" required="required" value="new">

@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class PostType extends AbstractType
@@ -43,17 +44,9 @@ class PostType extends AbstractType
                     ]
                 ])
 
-            ->add('state', ChoiceType::class, [
+            ->add('state', HiddenType::class, [
                 'label' => 'Dans quel état est votre article ?',
                 'required' => true,
-                'expanded' => true,
-                'choices' => [
-                        'Neuf' => 'new',
-                        'Très bon état' => 'very-good',
-                        'Bon état' => 'good',
-                        'État moyen' => 'bad',
-                        'Pour bricoler' => 'very-bad',
-                ]
                ])
 
             ->add('price')

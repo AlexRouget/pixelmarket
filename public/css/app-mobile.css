@@ -142,6 +142,7 @@
 
 /* -------- DE 600 à 768 ---------- */
 @media screen and (min-width: 600px) and (max-width: 768px) {
+  #post,
   #register {
     -ms-flex: 0 0 83.3333%;
     flex: 0 0 83.3333%;
@@ -152,6 +153,7 @@
 /* -------- DE 0 à 600 ---------- */
 @media only screen and (max-width: 600px) {
   /* For mobils: */
+  #post,
   #register {
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
@@ -164,12 +166,6 @@
   }
   .card-price {
     font-size: 16px;
-  }
-
-  #avatars {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
   }
 }
 

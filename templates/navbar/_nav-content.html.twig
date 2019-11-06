@@ -5,7 +5,15 @@
         </li>
     {% endif %}
     <li>
-        <a class='btn-create-post' href="{{ app.user ? path("post_new") : path("app_login") }}">+ Créer une annonce</a>
+        {% if app.user is not empty %}
+            <a href="{{ path("post_new") }}">
+                Créer une annonce
+            </a>
+        {% else %}
+            <a class="btn-create-post" data-value="@Request.RequestContext.HttpContext.Session['user']" href="{{ path('app_login')}}">
+                Créer une annonce
+            </a>
+        {% endif %}
     </li>
     <li>
         <a href="#">Recherche</a>

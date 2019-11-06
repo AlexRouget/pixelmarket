@@ -26,7 +26,7 @@
         {% endblock %}
     </head>
     <body>
-        <div id="body-content">
+        <div id="body-content" class="d-flex flex-column">
             {% block header %}
                 {% block navbar %}
                     {% include 'navbar/navbar.html.twig' %}
@@ -41,7 +41,7 @@
 
             {% block pageContent %}
 
-                <div class="container-fluid">
+                <div class="container-fluid h-100">
                     {% block headerContent %}{% endblock %}
                 </div>
 
@@ -49,7 +49,7 @@
                     <div id="base-sidebar" class="col-3">
                         {% block sidebarContent %}{% endblock %}
                     </div>
-                    <div id="base-main" class="col container-fluid m-4">
+                    <div id="base-main" class="col container-fluid">
                         {% block mainContent%}{% endblock %}
                     </div>
                 </div>
@@ -57,7 +57,6 @@
                 <div id="notification-container">
                     <div class="alert fade" role="alert"></div>
                 </div>
-
             {% endblock %}
 
             {% block footer %}
@@ -74,6 +73,6 @@
                 <script src="{{ asset('js/formValid.js') }}"></script>
                 <script src="{{ asset('js/myProfile.js') }}"></script>
             {% endblock %}
-        </div>
+        </body>
     </body>
-</html>
+</html></div></body></html>

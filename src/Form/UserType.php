@@ -51,9 +51,7 @@ class UserType extends AbstractType
                 'placeholder' => 'dupont.antoine@mail.com'
                 ]
             ])
-            ->add('avatar', FileType::class, [ 'required' => false,
-            // unmapped means that this field is not associated to any entity property
-            // 'mapped' => false,
+            ->add('avatar', FileType::class, [ 'required' => false, 
             'data_class'=>null,
             'constraints' => [
                 new File([
@@ -69,7 +67,7 @@ class UserType extends AbstractType
                 ])
             ],
               ]) 
-            ->add('submit', SubmitType::class, ['label'=>'J\'enregistre mes modifications']);
+            ->add('submit', SubmitType::class, ['label'=>'Modifier']);
     }
 
     public function configureOptions(OptionsResolver $resolver)
