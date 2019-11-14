@@ -234,9 +234,16 @@ li.categorie-burger input:checked {
 }
 
 /* --------- POST-CARD --------- */
-
-.card-post-container {
+.card-post {
   text-decoration: none;
+  position: relative;
+}
+
+.heart-like {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  z-index: 5;
 }
 
 .card-bottom {
@@ -244,6 +251,7 @@ li.categorie-burger input:checked {
   bottom: 0;
   transform: translate3d(0%, -100%, 0);
   -webkit-transform: translate3d(0%, -100%, 0);
+  margin-bottom: -100px;
 }
 
 .card-bottom-content {
@@ -285,6 +293,9 @@ li.categorie-burger input:checked {
   width: max-content;
 }
 
+.liked {
+  color: var(--green);
+}
 /* --------- FORM-POST --------- */
 
 div.custom-file {
@@ -360,10 +371,6 @@ ul {
   border-radius: 50%;
 
   margin-right: 8px;
-}
-
-.liked {
-  color: #de1a15;
 }
 
 .random-container {

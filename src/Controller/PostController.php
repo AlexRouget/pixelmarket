@@ -140,73 +140,7 @@ class PostController extends AbstractController
 
         return $this->redirectToRoute('current_user_profile');
     }
-
-      /**
-     * @Route("posts/{id}/like", name="post_like")
-     *
-     * @param Request $request
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function like(Request $request, $id) {
-
-        $post = $this->findOr404($id);
-
-        $this->getUser()->like($post);
-
-        $manager = $this->getDoctrine()->getManager();
-        $manager->flush();
-
-        if ($request->isXmlHttpRequest()) {
-            /**
-             * @see https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP
-             */
-            return new Response('', 201);
-        }
-
-        // Naive redirect to the previous page
-        $referer = $request->headers->get('referer');
-
-        if (!$referer) {
-            return $this->redirectToRoute('post_single', ['id' => $id]);
-        }
-
-        return $this->redirect($referer);
-
-    }
-
-    /**
-     * @Route("posts/{id}/unlike", name="post_unlike")
-     * @param Request $request
-     * @param $id
-     * @return Response
-     */
-    public function unlike(Request $request, $id) {
-
-        $post = $this->findOr404($id);
-
-        $this->getUser()->unlike($post);
-
-        $manager = $this->getDoctrine()->getManager();
-        $manager->flush();
-
-        if ($request->isXmlHttpRequest()) {
-            /**
-             * @see https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP
-             */
-            return new Response(null, 204);
-        }
-        // Naive redirect to the previous page
-        $referer = $request->headers->get('referer');
-
-        if (!$referer) {
-            return $this->redirectToRoute('post_single', ['id' => $id]);
-        }
-
-        return $this->redirect($referer);
-    }
-
-
+    
     private function findOr404($id) {
 
         $post = $this

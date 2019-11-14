@@ -1,25 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    pixelmarke
+	PixelMarket
 {% endblock %}
 
 {% block headerContent %}{%  endblock %}
 
 {% block sidebarContent %}
-    <div class="container p-2">
-        <div id="side-menu">
-            {% include 'navbar/_nav-content.html.twig'%}
-        </div>
-    </div>
+	<div class="container p-2">
+		<div id="side-menu">
+			{% include 'navbar/_nav-content.html.twig'%}
+		</div>
+	</div>
 {% endblock %}
 
 {% block flash %}{% endblock %}
 
 {% block mainContent %}
 
-    <p class="lead">32 nouveaux posts aujourd'hui</p>
-    {% include 'post/index.html.twig' %}
+	<p class="lead">32 nouveaux posts aujourd'hui</p>
+	{% include 'post/index.html.twig' %}
 {% endblock %}
 {#
     <div class="row">
