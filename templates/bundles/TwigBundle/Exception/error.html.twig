@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Page 404
+{% endblock %}
+
+{% block mainContent %}
+    <h2>
+        Le contenu que vous chercher n'existe pas
+    </h2>
+
+    <a href="{{ path('home')}}" class="btn btn-block btn-green">
+        Revenir à l'accueil
+    </a>
+{% endblock %}

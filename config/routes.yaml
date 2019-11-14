@@ -1,5 +1,3 @@
 home:
   path: /
   controller: App\Controller\Controller::index
-# prev:
-#   path: javascript:history.back()

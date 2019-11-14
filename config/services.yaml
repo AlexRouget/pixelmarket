@@ -5,7 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
   locale: "en"
-  #ça c'est a nous ajout du dossier uploads
+  #add repository uploads
   user_upload_folder: "%kernel.project_dir%/public/uploads"
 
 services:
