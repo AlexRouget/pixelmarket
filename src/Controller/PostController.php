@@ -73,8 +73,12 @@ class PostController extends AbstractController
     /**
      * @Route("/{id}", name="post_show", methods={"GET"})
      */
-    public function show(Post $post): Response
+    public function show($id): Response
     {
+
+        // On va chercher en BDD le post qui correspond à l'ID
+        $post = $this->findOr404($id);
+
         return $this->render('post/single.html.twig', [
             'post' => $post,
         ]);
@@ -83,8 +87,11 @@ class PostController extends AbstractController
     /**
      * @Route("/{id}/edit", name="post_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Post $post): Response
+    public function edit(Request $request, $id): Response
     {
+        // On va chercher en BDD le post qui correspond à l'ID
+        $post = $this->findOr404($id);
+
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
 
@@ -116,8 +123,11 @@ class PostController extends AbstractController
     /**
      * @Route("/{id}", name="post_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Post $post): Response
+    public function delete(Request $request, $id): Response
     {
+        // On va chercher en BDD le post qui correspond à l'ID
+        $post = $this->findOr404($id);
+
         if ($this->isCsrfTokenValid('delete'.$post->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($post);
@@ -129,5 +139,85 @@ class PostController extends AbstractController
 
 
         return $this->redirectToRoute('current_user_profile');
+    }
+
+      /**
+     * @Route("posts/{id}/like", name="post_like")
+     *
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function like(Request $request, $id) {
+
+        $post = $this->findOr404($id);
+
+        $this->getUser()->like($post);
+
+        $manager = $this->getDoctrine()->getManager();
+        $manager->flush();
+
+        if ($request->isXmlHttpRequest()) {
+            /**
+             * @see https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP
+             */
+            return new Response('', 201);
+        }
+
+        // Naive redirect to the previous page
+        $referer = $request->headers->get('referer');
+
+        if (!$referer) {
+            return $this->redirectToRoute('post_single', ['id' => $id]);
+        }
+
+        return $this->redirect($referer);
+
+    }
+
+    /**
+     * @Route("posts/{id}/unlike", name="post_unlike")
+     * @param Request $request
+     * @param $id
+     * @return Response
+     */
+    public function unlike(Request $request, $id) {
+
+        $post = $this->findOr404($id);
+
+        $this->getUser()->unlike($post);
+
+        $manager = $this->getDoctrine()->getManager();
+        $manager->flush();
+
+        if ($request->isXmlHttpRequest()) {
+            /**
+             * @see https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP
+             */
+            return new Response(null, 204);
+        }
+        // Naive redirect to the previous page
+        $referer = $request->headers->get('referer');
+
+        if (!$referer) {
+            return $this->redirectToRoute('post_single', ['id' => $id]);
+        }
+
+        return $this->redirect($referer);
+    }
+
+
+    private function findOr404($id) {
+
+        $post = $this
+            ->getDoctrine()
+            ->getRepository(Post::class)
+            ->find($id);
+
+        if (empty($post)) {
+            throw $this->createNotFoundException('Post introuvable');
+        }
+        
+        return $post;
     }
 }
