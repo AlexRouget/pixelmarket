@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -59,6 +61,17 @@ class Post extends Model
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="liked")
+     */
+    private $likers;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->likers = new ArrayCollection();
+    }
 
     public function getTitle(): ?string
     {
@@ -189,6 +202,32 @@ class Post extends Model
         return $this->setAuthor();
         // to show the id of the Category in the select
         // return $this->id;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getLikers(): Collection
+    {
+        return $this->likers;
+    }
+
+    public function addLiker(User $liker): self
+    {
+        if (!$this->likers->contains($liker)) {
+            $this->likers[] = $liker;
+        }
+
+        return $this;
+    }
+
+    public function removeLiker(User $liker): self
+    {
+        if ($this->likers->contains($liker)) {
+            $this->likers->removeElement($liker);
+        }
+
+        return $this;
     }
 
 }

@@ -60,10 +60,16 @@ class User extends Model implements UserInterface
      */
     private $posts;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Post", mappedBy="likers")
+     */
+    private $liked;
+
     public function __construct()
     {
         parent::__construct();
         $this->posts = new ArrayCollection();
+        $this->liked = new ArrayCollection();
     }
 
     /**
@@ -216,6 +222,34 @@ class User extends Model implements UserInterface
             if ($post->getAuthor() === $this) {
                 $post->setAuthor(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Post[]
+     */
+    public function getLiked(): Collection
+    {
+        return $this->liked;
+    }
+
+    public function addLiked(Post $liked): self
+    {
+        if (!$this->liked->contains($liked)) {
+            $this->liked[] = $liked;
+            $liked->addLiker($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLiked(Post $liked): self
+    {
+        if ($this->liked->contains($liked)) {
+            $this->liked->removeElement($liked);
+            $liked->removeLiker($this);
         }
 
         return $this;
