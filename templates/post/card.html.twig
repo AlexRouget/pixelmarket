@@ -1,7 +1,7 @@
 {% set myDate = "now" | date %}
 <div class="card-post">
 	<div class="heart-like">
-		{% if app.session %}
+		{% if app.user is not empty %}
 			{% if app.user and app.user.doesLike(post) %}
 				<a class="like" href="{{ path('post_unlike', { 'id' : post.id }) }}">
 					<i class="fas fa-heart liked"></i>
@@ -12,7 +12,7 @@
 				</a>
 			{% endif %}
 		{% else %}
-			<a class="like" onclick="return confirm('vous devez vous connectez pour accéder à ces données')" href="{{ path('app_login')}}">
+			<a class="like" onclick="return confirm('vous devez vous connectez pour ajouter cette annonce dans vos favoris')" href="{{ path('app_login')}}">
 				<i class="far fa-heart"></i>
 			</a>
 		{% endif %}

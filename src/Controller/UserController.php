@@ -58,6 +58,7 @@ class UserController extends AbstractController
         $em = $this->getDoctrine()->getManager();
 
         $user = $this->getUser();
+        $id = $this->getUser()->getId();
         $avatar = $user->getAvatar();
 
         if (!is_null($avatar)) {
@@ -91,7 +92,8 @@ class UserController extends AbstractController
         // EN FAIRE DES RECHERCHES PAR CAT / FAVORIS... 
         return $this->render('user/profile-me.html.twig', [
             'user' => $user,
-            'posts' => $postRepository->findPostList(0, 4), 
+            'posts' => $postRepository->findPostList(0, 8, false), 
+            'favories' => $user->getLiked(),
             'user_form' => $form->createView()
         ]);
     }

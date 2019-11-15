@@ -1,23 +1,24 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-    Profil de
-    {{ user.username }}
+	Profil de
+	{{ user.username }}
 {% endblock %}
 
 {% block pageContent %}
-    <div class="section-background">
-        {% include 'user/navbar/_navbar.html.twig'%}
-        <div class="menus-container">
-            <div class="container-fluid h-100">
-                <div class="menu" id="mes-annonces">
-                    {% include 'user/navbar/_annonce-profile.html.twig' with { 'posts' : user.posts }%}
-                </div>
-                <div class="menu" id="mes-favories">
-                    {% include 'user/navbar/_favories-profile.html.twig' with { 'posts' : user.posts }%}
-                </div>
-            </div>
-            <div class="menu" id="mes-infos">
-                {% include 'user/navbar/_infos-profile.html.twig' with { 'user' : user }%}
-            </div>
-        </div>
-    {% endblock %}
+	<div class="section-background">
+		{% include 'user/navbar/_navbar.html.twig'%}
+		<div class="menus-container">
+			<div class="container-fluid h-100">
+				<div class="menu" id="mes-annonces">
+					{% include 'user/navbar/_annonce-profile.html.twig' with { 'posts' : user.posts }%}
+				</div>
+				<div class="menu" id="mes-favories">
+					{% include 'user/navbar/_favories-profile.html.twig' with { 'favories' : favories }%}
+				</div>
+			</div>
+			<div class="menu" id="mes-infos">
+				{% include 'user/navbar/_infos-profile.html.twig' with { 'user' : user }%}
+			</div>
+		</div>
+	</div>
+{% endblock %}
