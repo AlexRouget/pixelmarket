@@ -4,7 +4,7 @@ console.log("hello app.js");
 $("document").ready(function() {
   setTimeout(function() {
     $("div.alert").remove();
-  }, 3000); // 5 secs
+  }, 3000); // 3 secs
 });
 
 // BURGER

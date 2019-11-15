@@ -12,7 +12,7 @@
 				</a>
 			{% endif %}
 		{% else %}
-			<a class="like" onclick="return confirm('vous devez vous connectez pour ajouter cette annonce dans vos favoris')" href="{{ path('app_login')}}">
+			<a onclick="return confirm('vous devez vous connectez pour ajouter cette annonce dans vos favoris')" href="{{ path('app_login')}}">
 				<i class="far fa-heart"></i>
 			</a>
 		{% endif %}
