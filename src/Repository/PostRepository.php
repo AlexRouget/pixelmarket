@@ -29,17 +29,21 @@ class PostRepository extends ServiceEntityRepository
      *
      * @return array The posts for the homepage
      */
-    public function findHomepage(int $start = 0, $take = 16)
+    public function findHomepage(int $start = 0, $take = 16, $onlyPublic = false ,$categories)
     {
-       return $this->findPostList($start, $take, true);
+       return $this->findPostList($start, $take, true, $categories);
     }
+    // public function findHomepage($categorie)
+    // {
+    //    return $this->findByCategories($categorie);
+    // }
 
     /**
      * Get all the posts and the related amount of comments
      *
      * @return array The posts for the homepage
      */
-    public function findPostList($start, $take, $onlyPublic = false)
+    public function findPostList($start, $take, $onlyPublic = false, $categories)
     {
         $queryBuilder = $this->createQueryBuilder('p')
             ->select('p as post')
@@ -50,6 +54,9 @@ class PostRepository extends ServiceEntityRepository
 
         if ($onlyPublic === true) {
             $queryBuilder = $queryBuilder->where('p.public = true');
+        }
+        if ($categories) {
+            $queryBuilder = $queryBuilder->where('p.categories = :val')->setParameter('val', $categories);
         }
 
         $results = $queryBuilder->getQuery()->getResult();
@@ -68,22 +75,6 @@ class PostRepository extends ServiceEntityRepository
         return $this->count(['public' => true]);
     }
 
-    // /**
-    //  * @return Post[] Returns an array of Post objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
 
     /*
     public function findOneBySomeField($value): ?Post

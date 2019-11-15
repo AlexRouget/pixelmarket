@@ -19,6 +19,7 @@ class Controller extends AbstractController
 
            // Gestion de la pagination
            $page = (int) $request->query->get('p');
+           $categories = $request->query->get('cat');
 
            if (!isset($page)) {
                $page = 1;
@@ -42,7 +43,7 @@ class Controller extends AbstractController
            $posts = $this
                ->getDoctrine()
                ->getRepository(Post::class)
-               ->findHomepage($start);
+               ->findHomepage($start, $max, true, $categories);
    
            // On envoie les posts dans la vue
            return $this->render('homepage.html.twig', [

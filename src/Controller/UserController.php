@@ -92,7 +92,7 @@ class UserController extends AbstractController
         // EN FAIRE DES RECHERCHES PAR CAT / FAVORIS... 
         return $this->render('user/profile-me.html.twig', [
             'user' => $user,
-            'posts' => $postRepository->findPostList(0, 8, false), 
+            'posts' => $postRepository->findPostList(0, 8, false, null), 
             'favories' => $user->getLiked(),
             'user_form' => $form->createView()
         ]);

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  var myInput = document.getElementById("user_password_first");
+  var myInput = document.getElementById("registration_form_password_first");
   var letter = document.getElementById("letter");
   var capital = document.getElementById("capital");
   var number = document.getElementById("number");
@@ -59,10 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  var $password = $("#user_password_first"),
-    $confirmation = $("#user_password_second"),
-    $email = $("#user_email"),
-    $submit = $("#user_submit"),
+  var $password = $("#registration_form_password_first"),
+    $confirmation = $("#registration_form_password_second"),
+    $email = $("#registration_form_email"),
+    $submit = $("#registration_form_submit"),
     $reset = $("#reset"),
     $erreur = $("#erreur"),
     $champPsw = $(".champ-password"),

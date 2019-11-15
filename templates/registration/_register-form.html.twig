@@ -3,117 +3,117 @@
 {{ form_start(register_form,{'attr' : {'class' : 'm-4'}}) }}
 
 <div class="form-group">
-    {{ form_label(register_form.username) }}
+	{{ form_label(register_form.username) }}
 
-    {{ form_widget(register_form.username, {'attr': { 'class': 'form-control' ~ hasError(register_form.username)
+	{{ form_widget(register_form.username, {'attr': { 'class': 'form-control' ~ hasError(register_form.username)
   }}) }}
 
-    <div class="text-danger">
-        {{ form_errors(register_form.username) }}
-    </div>
+	<div class="text-danger">
+		{{ form_errors(register_form.username) }}
+	</div>
 </div>
 
 <div class="form-group">
-    {{ form_label(register_form.avatar) }}
+	{{ form_label(register_form.avatar) }}
 
-    <div id="avatars">
-        <div id="avatar_1" class="avatar-auto"></div>
-        <div id="avatar_2" class="avatar-auto"></div>
-        <div id="avatar_3" class="avatar-auto"></div>
-        <div id="avatar_4" class="avatar-auto avatar_4"></div>
-    </div>
+	<div id="avatars">
+		<div id="avatar_1" class="avatar-auto"></div>
+		<div id="avatar_2" class="avatar-auto"></div>
+		<div id="avatar_3" class="avatar-auto"></div>
+		<div id="avatar_4" class="avatar-auto avatar_4"></div>
+	</div>
 
-    {{ form_widget(register_form.avatar, {'attr': { 'class': 'form-control hidden' ~ hasError(register_form.avatar)
+	{{ form_widget(register_form.avatar, {'attr': { 'class': 'form-control hidden' ~ hasError(register_form.avatar)
     }}) }}
 
-    <div class="text-danger">
-        {{ form_errors(register_form.avatar) }}
-    </div>
+	<div class="text-danger">
+		{{ form_errors(register_form.avatar) }}
+	</div>
 </div>
 
 <div class="form-group">
-    {{ form_label(register_form.first_name) }}
+	{{ form_label(register_form.first_name) }}
 
-    {{ form_widget(register_form.first_name, {'attr': { 'class': 'form-control' ~ hasError(register_form.first_name)
+	{{ form_widget(register_form.first_name, {'attr': { 'class': 'form-control' ~ hasError(register_form.first_name)
   }}) }}
 
-    <div class="text-danger">
-        {{ form_errors(register_form.first_name) }}
-    </div>
+	<div class="text-danger">
+		{{ form_errors(register_form.first_name) }}
+	</div>
 </div>
 
 <div class="form-group">
-    {{ form_label(register_form.last_name) }}
+	{{ form_label(register_form.last_name) }}
 
-    {{ form_widget(register_form.last_name, {'attr': { 'class': 'form-control' ~ hasError(register_form.last_name)
+	{{ form_widget(register_form.last_name, {'attr': { 'class': 'form-control' ~ hasError(register_form.last_name)
   }}) }}
 
-    <div class="text-danger">
-        {{ form_errors(register_form.last_name) }}
-    </div>
+	<div class="text-danger">
+		{{ form_errors(register_form.last_name) }}
+	</div>
 </div>
 
 <div class="form-group">
-    {{ form_label(register_form.email) }}
+	{{ form_label(register_form.email) }}
 
-    {{ form_widget(register_form.email, {'attr': { 'class': 'form-control champ-email' ~ hasError(register_form.email)
+	{{ form_widget(register_form.email, {'attr': { 'class': 'form-control champ-email' ~ hasError(register_form.email)
   }}) }}
 
-    <div class="text-danger">
-        {{ form_errors(register_form.email) }}
-    </div>
+	<div class="text-danger">
+		{{ form_errors(register_form.email) }}
+	</div>
 </div>
 
 <div class="form-group">
-    {{ form_row(register_form.password.first, {'attr': { 
+	{{ form_row(register_form.password.first, {'attr': { 
         'pattern':"(?=.*\)(?=.*[a-z])(?=.*[A-Z]).{8,}", 
         'title':" Doit contenir au moins 8 caractères dont : 1 chiffre, 1 majuscule, 1minuscule" , 'class': 'form-control champ-password' 
         ~ hasError(register_form.password) }})  }}
-    {{ form_help(register_form.password, {'help_attr': {'class': 'tiny-text'}})  }}
+	{{ form_help(register_form.password, {'help_attr': {'class': 'tiny-text'}})  }}
 
-    <div id="message">
-        <h3>Le mot de passe doit contenir:</h3>
-        <p id="letter" class="invalid">au moins 1 lettre
-            <b>minuscule</b>
-        </p>
-        <p id="capital" class="invalid">au moins 1 lettre
-            <b>majuscule</b>
-        </p>
-        <p id="number" class="invalid">au moins 1
-            <b>chiffre</b>
-        </p>
-        <p id="length" class="invalid">Minimum
-            <b>8 caractères</b>
-        </p>
-    </div>
+	<div id="message">
+		<h3>Le mot de passe doit contenir:</h3>
+		<p id="letter" class="invalid">au moins 1 lettre
+			<b>minuscule</b>
+		</p>
+		<p id="capital" class="invalid">au moins 1 lettre
+			<b>majuscule</b>
+		</p>
+		<p id="number" class="invalid">au moins 1
+			<b>chiffre</b>
+		</p>
+		<p id="length" class="invalid">Minimum
+			<b>8 caractères</b>
+		</p>
+	</div>
 
-    {{ form_row(register_form.password.second, {'attr': { 'class': 'form-control champ' ~ hasError(register_form.password) }}) }}
-    {{ form_help(register_form.password, {'help_attr': {'class': 'tiny-text'}})  }}
+	{{ form_row(register_form.password.second, {'attr': { 'class': 'form-control champ' ~ hasError(register_form.password) }}) }}
+	{{ form_help(register_form.password, {'help_attr': {'class': 'tiny-text'}})  }}
 
-    <div class="text-danger">
-        {{ form_errors(register_form.password) }}
-    </div>
+	<div class="text-danger">
+		{{ form_errors(register_form.password) }}
+	</div>
 
 </div>
 
 
 <div class="d-flex form-group">
-    {{ form_widget(register_form.agreeTerms, {'attr': { 'class': '' ~ hasError(register_form.agreeTerms)
+	{{ form_widget(register_form.agreeTerms, {'attr': { 'class': '' ~ hasError(register_form.agreeTerms)
     }}) }}
 
-    <label for="user_agreeTerms" class="required w-100 ml-2">&quot;J&#039;accepte les Conditions Générales de Vente et les Conditions Générales d&#039;utilisations&quot;</label>
+	<label for="user_agreeTerms" class="required w-100 ml-2">&quot;J&#039;accepte les Conditions Générales de Vente et les Conditions Générales d&#039;utilisations&quot;</label>
 
-    <div class="text-danger">
-        {{ form_errors(register_form.agreeTerms) }}
-    </div>
+	<div class="text-danger">
+		{{ form_errors(register_form.agreeTerms) }}
+	</div>
 
 </div>
 <div id="erreur">
-    <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
+	<p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
 </div>
 
 <div class="d-flex justify-content-center">
-    {{ form_widget(register_form.submit, { 'attr': { 'class' : 'btn btn-green'}}) }}
-    <input type="reset" id="reset" value="Reset" class="btn btn-green ml-4"/>
+	{{ form_widget(register_form.submit, { 'attr': { 'class' : 'btn btn-green'}}) }}
+	<input type="reset" id="reset" value="Reset" class="btn btn-green ml-4"/>
 </div>
 {{ form_end(register_form) }}
