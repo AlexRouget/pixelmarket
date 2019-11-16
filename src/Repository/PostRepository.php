@@ -29,9 +29,9 @@ class PostRepository extends ServiceEntityRepository
      *
      * @return array The posts for the homepage
      */
-    public function findHomepage(int $start = 0, $take = 16, $onlyPublic = false ,$categories)
+    public function findHomepage($categories, int $start = 0, $take = 16)
     {
-       return $this->findPostList($start, $take, true, $categories);
+       return $this->findPostList($categories, $start, $take, true);
     }
     // public function findHomepage($categorie)
     // {
@@ -43,7 +43,7 @@ class PostRepository extends ServiceEntityRepository
      *
      * @return array The posts for the homepage
      */
-    public function findPostList($start, $take, $onlyPublic = false, $categories)
+    public function findPostList($categories, $start, $take, $onlyPublic = false)
     {
         $queryBuilder = $this->createQueryBuilder('p')
             ->select('p as post')
@@ -74,17 +74,4 @@ class PostRepository extends ServiceEntityRepository
     {
         return $this->count(['public' => true]);
     }
-
-
-    /*
-    public function findOneBySomeField($value): ?Post
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

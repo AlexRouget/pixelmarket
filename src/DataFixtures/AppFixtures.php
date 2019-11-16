@@ -26,11 +26,16 @@ class AppFixtures extends Fixture
 
         // Création des Users
         $users = [];
-        $usernames = ['Alex', 'Clem', 'Doc'];
+        $usernames = ['Alex', 'Clem', 'Doc', 'Didier', 'Michel', 'Henri', 'Thomas', 'O\'maley'];
         $avatars = [
             'https://www.listchallenges.com/f/items-dl/a2b55c01-befc-4286-a245-0b3a8c8a2098.jpg',
             'https://www.listchallenges.com/f/items-dl/30b9cc37-1a6a-456a-97bf-f0121f5a0c26.jpg',
-            'https://www.listchallenges.com/f/items-dl/e0fff511-3b03-4bd6-b5af-8c1d9d3671bd.jpg'
+            'https://www.listchallenges.com/f/items-dl/a2b55c01-befc-4286-a245-0b3a8c8a2098.jpg',
+            'https://www.listchallenges.com/f/items-dl/e0fff511-3b03-4bd6-b5af-8c1d9d3671bd.jpg',
+            'https://www.listchallenges.com/f/items-dl/e0fff511-3b03-4bd6-b5af-8c1d9d3671bd.jpg',
+            'https://www.listchallenges.com/f/items-dl/a2b55c01-befc-4286-a245-0b3a8c8a2098.jpg',
+            'https://www.listchallenges.com/f/items-dl/a2b55c01-befc-4286-a245-0b3a8c8a2098.jpg',
+            'https://www.listchallenges.com/f/items-dl/a2b55c01-befc-4286-a245-0b3a8c8a2098.jpg'
         ];
 
 
@@ -50,14 +55,14 @@ class AppFixtures extends Fixture
         }
 
         // Création des Posts
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 0; $i < 100; $i++) {
 
             $title = $faker->realText(20);
             $description = $faker->realText(180);
             $attachment = $faker->imageUrl(640, 480);
             $price = $faker->numberBetween(10, 500);
             $location = $faker->randomElement(['Bordeaux', 'Paris', 'Franconville']);
-            $categories = $faker->randomElement(['Jeux vidéo','Goodies','Dvd', 'Jeux de société', 'Rétrogaming']);
+            $categories = $faker->randomElement(['jeux-video','goodies','dvd', 'jeux-de-societe', 'retrogaming']);
             $isPublic = $faker->boolean(70);
             $dateBetween = $faker->dateTimeBetween('-30 days', 'now', null);
 

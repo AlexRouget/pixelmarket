@@ -20,18 +20,11 @@
 
 	<p class="lead">32 nouveaux posts aujourd'hui</p>
 	{% include 'post/index.html.twig' %}
+
+	<div class="container-fluid">
+		<div class="row">
+			{% include 'pagination.html.twig' %}
+		</div>
+	</div>
+
 {% endblock %}
-{#
-    <div class="row">
-        <div class="col">
-            {% include 'post/pagination.html.twig' %}
-        </div>
-    </div>
-    {% block javascripts %}
-    
-        {{ parent() }}
-    
-        <!-- // <script src="{{ asset('js/like.js') }}"></script> -->
-    
-    {% endblock %}
-    #}

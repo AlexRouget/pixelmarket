@@ -1,87 +1,106 @@
 <ul id="signInUp">
-    {% if app.user is empty %}
-        <li>
-            <a class="" href="{{path("app_login")}}">S'inscrire/Se connecter</a>
-        </li>
-    {% endif %}
-    <li>
-        {% if app.user is not empty %}
-            <a href="{{ path("post_new") }}">
-                Créer une annonce
-            </a>
-        {% else %}
-            <a class="btn-create-post" data-value="@Request.RequestContext.HttpContext.Session['user']" href="{{ path('app_login')}}">
-                Créer une annonce
-            </a>
-        {% endif %}
-    </li>
-    <li>
-        <a href="#">Recherche</a>
-    </li>
+	{% if app.user is empty %}
+		<li>
+			<a class="" href="{{path("app_login")}}">S'inscrire/Se connecter</a>
+		</li>
+	{% endif %}
+	<li>
+		{% if app.user is not empty %}
+			<a href="{{ path("post_new") }}">
+				Créer une annonce
+			</a>
+		{% else %}
+			<a class="btn-create-post" data-value="@Request.RequestContext.HttpContext.Session['user']" href="{{ path('app_login')}}">
+				Créer une annonce
+			</a>
+		{% endif %}
+	</li>
+	<li>
+		<a href="#">Recherche</a>
+	</li>
 </ul>
 
 <HR size="2" align="center" width="100%">
 <h6 class="text-center">Selectionnez une catégorie</h6>
 
 <ul id="categories-burger">
+	<li id="cat-jeuxVideo">
+		<a href="{{ path('home', { 'cat': 'jeux-video'}) }}">
+			<div class="categorie-burger">
+				<img class="icons" src="{{asset('img/icons_bleu_menu_mobile/icon_videogame.png') }}">
+				<p>Jeux vidéo</p>
+				<input type="checkbox" name="categories" id="cat-jeux-video"/>
+				<label for="cat-jeux-video"></label>
+			</div>
+		</a>
+	</li>
 
-    <li id="cat-jeuxVideo" class="categorie-burger">
-        <img class="icons" src="{{asset('img/icons_bleu_menu_mobile/icon_videogame.png') }}">
-        <a href="#">Jeux vidéo</a>
-        <input type="checkbox" name="cat-jeux-video" id="cat-jeux-video" checked="checked"/>
-        <label for="cat-jeux-video"></label>
-    </li>
+	<li id="cat-jeuxSociete">
+		<a href="{{ path('home', { 'cat': 'jeux-de-societe'}) }}">
+			<div class="categorie-burger">
+				<img class="icons" src="{{asset('img/icons_bleu_menu_mobile/icon_boardgame.png') }}">
+				<p>Jeux de société</p>
+				<input type="checkbox" name="categories" id="cat-jeux-societe"/>
+				<label for="cat-jeux-societe"></label>
+			</div>
+		</a>
+	</li>
 
-    <li id="cat-jeuxSociete" class="categorie-burger">
-        <img class="icons" src="{{asset('img/icons_bleu_menu_mobile/icon_boardgame.png') }}">
-        <a href="#">Jeux de société</a>
-        <input type="checkbox" name="cat-jeux-societe" id="cat-jeux-societe"/>
-        <label for="cat-jeux-societe"></label>
-    </li>
+	<li id="cat-dvd">
+		<a href="{{ path('home', { 'cat': 'dvd'}) }}">
+			<div class="categorie-burger">
+				<img class="icons" src="{{asset('img/icons_bleu_menu_mobile/icon_cddvd.png') }}">
+				<p>dvd</p>
+				<input type="checkbox" name="categories" id="cat-cd-dvd"/>
+				<label for="cat-cd-dvd"></label>
+			</div>
+		</a>
+	</li>
 
-    <li id="cat-dvd" class="categorie-burger">
-        <img class="icons" src="{{asset('img/icons_bleu_menu_mobile/icon_cddvd.png') }}">
-        <a href="#">dvd</a>
-        <input type="checkbox" name="cat-cd-dvd" id="cat-cd-dvd"/>
-        <label for="cat-cd-dvd"></label>
-    </li>
+	<li id="cat-retroGaming">
+		<a href="{{ path('home', { 'cat': 'retrogaming'}) }}">
+			<div class="categorie-burger">
+				<img class="icons" src="{{asset('img/icons_bleu_menu_mobile/icon_retro.png') }}">
+				<p>Retrogaming</p>
+				<input type="checkbox" name="categories" id="cat-retro"/>
+				<label for="cat-retro"></label>
+			</div>
+		</a>
+	</li>
 
-    <li id="cat-retroGaming" class="categorie-burger">
-        <img class="icons" src="{{asset('img/icons_bleu_menu_mobile/icon_retro.png') }}">
-        <a href="#">Retrogaming</a>
-        <input type="checkbox" name="cat-retro" id="cat-retro"/>
-        <label for="cat-retro"></label>
-    </li>
-
-    <li id="cat-goodies" class="categorie-burger">
-        <img class="icons" src="{{asset('img/icons_bleu_menu_mobile/icon_goodies.png') }}">
-        <a href="#">Goodies</a>
-        <input type="checkbox" name="cat-goodies" id="cat-goodies"/>
-        <label for="cat-goodies"></label>
-    </li>
+	<li id="cat-goodies">
+		<a href="{{ path('home', { 'cat': 'goodies'}) }}">
+			<div class="categorie-burger">
+				<img class="icons" src="{{asset('img/icons_bleu_menu_mobile/icon_goodies.png') }}">
+				<p>Goodies</p>
+				<input type="checkbox" name="categories" id="cat-goodies"/>
+				<label for="cat-goodies"></label>
+			</div>
+		</a>
+	</li>
 </ul>
 
 <HR size="2" align="center" width="100%">
 <ul id="profile-burger">
-    {% if app.user is not empty %}
-        <li>
-            <a id="signInUp" class="" href="{{path("current_user_profile")}}">Mon Compte</a>
-        </li>
-    {% endif %}
-    <li id="FAQ">
-        <a href="#">FAQ</a>
-    </li>
+	{% if app.user is not empty %}
+		<li>
+			<a id="signInUp" class="" href="{{path("current_user_profile")}}">Mon Compte</a>
+		</li>
+	{% endif %}
+	<li id="FAQ">
+		<a href="#">FAQ</a>
+	</li>
 </ul>
 
 <HR size="2" align="center" width="100%">
 
 <ul id="infos-burger">
-    {% if app.user is not empty %}
-        <li>
-            <a id="signInUp" class="" href="{{path("app_logout")}}">Se déconnecter</a>
-        </li>
-    {% endif %}
-    <li id="infos">
-        <a href="#">infos pratiques</a>
-    </li>
-</ul>
+	{% if app.user is not empty %}
+		<li>
+			<a id="signInUp" class="" href="{{path("app_logout")}}">Se déconnecter</a>
+		</li>
+	{% endif %}
+	<li id="infos">
+		<a href="#">infos pratiques</a>
+	</li>
+</ul></li>

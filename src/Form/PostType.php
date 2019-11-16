@@ -22,11 +22,11 @@ class PostType extends AbstractType
         ->add('categories', ChoiceType::class, [
             'placeholder' => 'Catégorie',
             'choices' => [
-                'Jeux vidéo' => 'Jeux vidéo',
-                'Jeux de société' => 'Jeux de société',
-                'Dvd' => 'Dvd',
-                'Rétrogaming' => 'Rétrogaming',
-                'Goodies' => 'Goodies']])
+                'Jeux vidéo' => 'jeux-video',
+                'Jeux de société' => 'jeux-de-societe',
+                'Dvd' => 'dvd',
+                'Rétrogaming' => 'retrogaming',
+                'Goodies' => 'goodies']])
 
             ->add('title', TextType::class, [
                 'required' => true,

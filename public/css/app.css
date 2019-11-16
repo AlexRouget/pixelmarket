@@ -23,6 +23,12 @@ select:-webkit-autofill:focus {
 
 /* ------- GENERAL -------- */
 
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
 p {
   margin: 0;
 }
@@ -209,11 +215,6 @@ p {
   position: absolute;
 }
 
-li.categorie-burger input,
-li.categorie-burger input:checked {
-  margin-left: auto;
-}
-
 /* --------- PROFILE-CARD --------- */
 
 #stars {
@@ -316,11 +317,6 @@ div.custom-file {
 }
 
 /* ------------------ */
-ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
 
 .sticky {
   position: sticky;
@@ -397,22 +393,6 @@ ul {
 /*
 Exemple de CSS pour l'état de chargement du bouton
 */
-
-#roll .btn-content {
-  display: block;
-}
-
-#roll .spinner-border {
-  display: none;
-}
-
-#roll.is-loading .btn-content {
-  display: none;
-}
-
-#roll.is-loading .spinner-border {
-  display: block;
-}
 
 #alert {
   display: none;

@@ -96,10 +96,15 @@ ul#infos-burger li {
   margin: 0.5em;
 }
 
-li.categorie-burger {
+.categorie-burger {
   display: flex !important;
   flex-direction: row;
   align-items: center;
+}
+
+.categorie-burger input,
+.categorie-burger input:checked {
+  margin-left: auto;
 }
 
 ul {
