@@ -9,7 +9,7 @@
 - TODO update_at \Datetime
 - TODO published_at -> if public true => \Datetime
 - /!\ TODO checkbox disapear when @media ≈ 1000
-- TODO avatar/attachment si c'est upload/ 
+- TODO avatar/attachment si c'est upload/
 - TODO avatar par defaut si rien
 - TODO replace logos
 - TODO dans UserController sur /me : créer des fonctions selon les besoins
@@ -24,6 +24,7 @@
 
 - TODO form de créer une annonce OK
 - /!\ Password with constrains OK
+- TODO connection by email not username OK
 
 //REMARQUES --------------------------
 

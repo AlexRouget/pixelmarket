@@ -38,7 +38,7 @@ class PostType extends AbstractType
 
             ->add('description', TextType::class, [
                 'required' => true,
-                'label' => 'Courte description de votre annonce',
+                'label' => 'Description de votre annonce',
                 'attr' => [
                     'placeholder' => 'Tome 1 Harry Potter, édition 2005, 265 pages'
                     ]
@@ -58,12 +58,12 @@ class PostType extends AbstractType
                  ])
 
             ->add('publishedAt', ChoiceType::class, [
-                'label' => 'Publier le :',
+                'label' => 'Publier le ',
                 'choices' => [
-                    'now' => new \DateTime('now'),
-                    'tomorrow' => new \DateTime('+1 day'),
-                    '1 week' => new \DateTime('+1 week'),
-                    '1 month' => new \DateTime('+1 month'),
+                    'maintenant' => new \DateTime('now'),
+                    'demain' => new \DateTime('+1 day'),
+                    'dans 1 semaine' => new \DateTime('+1 week'),
+                    'dans 1 mois' => new \DateTime('+1 month'),
                 ],
                 'required' => false,
                 'placeholder' => 'Quand ?',

@@ -149,7 +149,7 @@ class PostController extends AbstractController
             ->find($id);
 
         if (empty($post)) {
-            throw $this->createNotFoundException('Post introuvable');
+            throw $this->createNotFoundException('Annonce introuvable');
         }
         
         return $post;
