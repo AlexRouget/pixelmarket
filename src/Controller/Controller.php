@@ -14,7 +14,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class Controller extends AbstractController
 {
     /**
-     * @Route("/home/{cat}", name="home", methods={"GET"}, defaults={"page": 1, "cat": null}))
+     * @Route("/home/{cat}", name="home", methods={"GET", "POST"}, defaults={"page": 1, "cat": null}))
      * @param Request $request, 
      * @param AuthenticationUtils $authenticationUtils
      * @return
@@ -64,7 +64,25 @@ class Controller extends AbstractController
                 $response->setStatusCode(404);
                 return $response;
             }
-               
+
+            $form = $this->createForm(SearchType::class);
+            $form->handleRequest($request);
+    
+            if ($form->isSubmitted() && $form->isValid()) {
+    
+                $search = $form->getData()['search'];
+                
+                $results = $this
+                ->getDoctrine()
+                ->getRepository(Post::class)
+                ->findPost($search);
+
+                $posts = $results;
+                // $totalPosts = count($posts);
+                // $totalPages = intval(ceil($max));
+                // $isLastPage = $page === $totalPages;
+            }
+
             if ($request->isXmlHttpRequest()) {
             /**
              * @see https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP
@@ -92,35 +110,5 @@ class Controller extends AbstractController
            ]);
     }
 
-    /**
-     * @Route("/resultats", name="search_results", methods={"POST", "GET"})
-     * @param Request $request, 
-     */
-    public function resultsSearch(Request $request)
-    {
-        $response = new Response();
-
-        $form = $this->createForm(SearchType::class);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $search = $form->getData()['search'];
-            
-            $results = $this
-            ->getDoctrine()
-            ->getRepository(Post::class)
-            ->findPost($search);
-
-            return $this->render('search.html.twig', [
-                'search_form' => $form->createView(), 
-                'posts' => $results
-            ]);
-        }
-
-        return $this->render('search.html.twig', [
-            'search_form' => $form->createView(),
-            'posts' => null
-        ]);
-    }
+  
 }

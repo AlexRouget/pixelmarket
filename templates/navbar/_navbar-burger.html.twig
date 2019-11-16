@@ -1,28 +1,26 @@
 <div id="hamburger-content">
-    {% include 'navbar/_nav-content.html.twig' %}
+  {% include 'navbar/_nav-content.html.twig' %}
 </div>
 <button class="m-0" id="hamburger-button">&#9776;</button>
 <div id="hamburger-sidebar">
-    <div id="hamburger-sidebar-header" class="bg-green">
+  <div id="hamburger-sidebar-header" class="bg-green">
+    {% if app.user is not empty %}
+    <h3 class="text-white">
+      <span class="text-blue">Bienvenue</span>
+      {{ app.user.username }}
+    </h3>
+    {% else %}
+    <h3 class="text-white">
+      <span class="text-white">Bienvenue sur </span>
+      <span class="text-blue">pixelmarket</span>
+    </h3>
+    {% endif %}
+  </div>
 
-        {% if app.user is not empty %}
-            <h3 class="text-white">
-                <span class="text-blue">Bienvenue</span>
-                {{ app.user.username }}
-            </h3>
-        {% else %}
-            <h3 class="text-white">
-                <span class="text-white">Bienvenue sur
-                </span>
-                <span class="text-blue">pixelmarket</span>
-            </h3>
-        {% endif %}
-    </div>
-
-    <div id="hamburger-sidebar-body"></div>
+  <div id="hamburger-sidebar-body"></div>
 </div>
 <div id="hamburger-overlay">
-    <h3 id="burger-cross">
-        X
-    </h3>
+  <h3 id="burger-cross">
+    X
+  </h3>
 </div>

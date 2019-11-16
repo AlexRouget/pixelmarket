@@ -15,10 +15,10 @@ class SearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('search', TextType::class)
-            ->add('submit', SubmitType::class, [
-                'attr'=> [
-                    'class' => 'btn btn-primary'
+            ->add('search', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Rechercher',
+                    'class' => 'search form-control mr-sm-2 w-100 rounded-pill border-light bg-secondary text-white'
                     ]
                 ]);
     }

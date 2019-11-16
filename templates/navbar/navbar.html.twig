@@ -6,10 +6,11 @@
 			<img id="logo" class="navbar-brand nav-link m-0" src="{{ asset('img/logo_pixelmarket/logo_pixelmarket_1.png')}}" class="card-img" alt="">
 		</a>
 	</h1>
-
-	<form class="search-bar">
-		<input class="search form-control mr-sm-2 w-100 rounded-pill border-light bg-secondary text-white" type="search" placeholder="Rechercher" aria-label="Search">
+	<form class="search-bar" name="search" method="post">
+		<input type="text" id="search_search" name="search[search]" required="required" placeholder="Rechercher" class="search form-control mr-sm-2 w-100 rounded-pill border-light bg-secondary text-white" value="C'est une fille!.">
+		<input type="hidden" id="search__token" name="search[_token]" value="iA5xpgPaAWTvCTK6oVzQSDUFldS7OK9VtIPs66RHy6E">
 	</form>
+
 
 	<ul id="toogle-sign">
 		<li>

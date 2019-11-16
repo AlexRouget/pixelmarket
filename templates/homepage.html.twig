@@ -1,10 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-	PixelMarket
-{% endblock %}
+{% block title %} PixelMarket {% endblock %} 
 
-{% block headerContent %}{%  endblock %}
+{% block headerContent %} {% endblock %} 
 
 {% block sidebarContent %}
 	<div class="container p-2">
@@ -12,13 +10,14 @@
 			{% include 'navbar/_nav-content.html.twig'%}
 		</div>
 	</div>
-{% endblock %}
+{% endblock %} 
 
-{% block flash %}{% endblock %}
+{% block flash %}{% endblock %} 
 
 {% block mainContent %}
 
-	<p class="lead">32 nouveaux posts aujourd'hui</p>
+	<!-- <p class="lead">{{ 'posts.count' }} nouveaux posts aujourd'hui</p> -->
+
 	{% include 'post/index.html.twig' %}
 
 	<div class="container-fluid">
