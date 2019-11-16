@@ -2,9 +2,9 @@
 @media only screen and (min-width: 1025px) {
   /* For desktop: */
   #page-side-content {
-    margin: 50px;
+    margin: 30px;
   }
-
+  .desktop-none,
   div#hamburger,
   div.profile-card {
     display: none !important;
@@ -82,12 +82,6 @@
 
   .hamburger-activated #hamburger-sidebar {
     transform: translateX(0);
-  }
-
-  input[type="checkbox"]:checked {
-    border-color: #fff;
-    border-width: 3px;
-    position: fixed;
   }
 
   .avatar-img {

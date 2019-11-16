@@ -15,7 +15,7 @@
 
     {% if user.posts is not empty %}
         <div class="container-fluid">
-            {% include 'post/index.html.twig' with {'posts' : user.posts} %}
+            {% include 'post/_list_posts.html.twig' with {'posts' : user.posts} %}
         </div>
     {% else %}
         <h5>
@@ -35,7 +35,7 @@
                 </div>
                 {% include 'user/_btn2-profile-card.html.twig' with { 'user' : user }%}
 
-                {% if app.session is not empty %}
+                {% if app.user is not empty %}
 
                     {% if user.id == app.user.id %}
                         <div class="d-flex flex-column align-items-center mt-4">

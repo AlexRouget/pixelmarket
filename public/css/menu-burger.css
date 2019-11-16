@@ -2,6 +2,7 @@ nav,
 li {
   display: inline-block;
 }
+
 li a,
 .button {
   text-decoration: none;
@@ -25,6 +26,7 @@ li a,
 #hamburger li {
   margin-left: 32px;
 }
+
 #hamburger,
 #hamburger-content {
   display: inline;
@@ -91,9 +93,16 @@ ul#infos-burger li {
 }
 
 .icons {
-  height: 1.5em;
-  width: 1.5em;
-  margin: 0.5em;
+  height: 2.8em;
+  width: 2.8em;
+  margin: 0.5em 0.5em 0.5em 0em;
+}
+
+#categories-burger h6,
+.categorie-burger p,
+#side-menu ul li a,
+#hamburger-sidebar-body ul li a {
+  font-size: 18px;
 }
 
 .categorie-burger {
