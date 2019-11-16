@@ -13,7 +13,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class Controller extends AbstractController
 {
     /**
-     * @Route("/{cat}", name="home", methods={"GET","POST"}, defaults={"page": 1, "cat": null}))
+     * @Route("/home/{cat}", name="home", methods={"GET","POST"}, defaults={"page": 1, "cat": null}))
      * @param Request $request, 
      * @param AuthenticationUtils $authenticationUtils
      * @return
