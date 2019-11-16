@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Form\SearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +14,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class Controller extends AbstractController
 {
     /**
-     * @Route("/home/{cat}", name="home", methods={"GET","POST"}, defaults={"page": 1, "cat": null}))
+     * @Route("/home/{cat}", name="home", methods={"GET"}, defaults={"page": 1, "cat": null}))
      * @param Request $request, 
      * @param AuthenticationUtils $authenticationUtils
      * @return
@@ -63,22 +64,55 @@ class Controller extends AbstractController
             $response->headers->set('X-PixelMarket-Is-Last-Page', $isLastPage ? '1' : '0' );
 
             // cette reponse s'enverra dans le js
-            return $this->render('post/_list_posts.html.twig', [
-                'posts' => $posts,
-                'cat' => $cat
-            ], $response);
+                return $this->render('post/_list_posts.html.twig', [
+                    'posts' => $posts,
+                    'cat' => $cat
+                ], $response);
             }
    
            // On envoie les posts dans la vue
            return $this->render('homepage.html.twig', [
-               'posts' => $posts,
-               'last_username' => $lastUsername,
-               'error' => $error,
-               'cat' => $cat,
-               'pagination' => [
-                   'current' => $page,
-                   'max' => $totalPages, // fake limit for now
+                'search' => null,
+                'posts' => $posts,
+                'last_username' => $lastUsername,
+                'error' => $error,
+                'cat' => $cat,
+                'pagination' => [
+                    'current' => $page,
+                    'max' => $totalPages, // fake limit for now
                ]
            ]);
+    }
+
+    /**
+     * @Route("/resultats", name="search_results", methods={"POST", "GET"})
+     * @param Request $request, 
+     */
+    public function resultsSearch(Request $request)
+    {
+        $response = new Response();
+
+        $form = $this->createForm(SearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $search = $form->getData()['search'];
+            
+            $results = $this
+            ->getDoctrine()
+            ->getRepository(Post::class)
+            ->findPost($search);
+
+            return $this->render('search.html.twig', [
+                'search_form' => $form->createView(), 
+                'posts' => $results
+            ]);
+        }
+
+        return $this->render('search.html.twig', [
+            'search_form' => $form->createView(),
+            'posts' => null
+        ]);
     }
 }

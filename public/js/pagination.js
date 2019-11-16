@@ -1,8 +1,5 @@
 $(function() {
-  //------------------------------------------------
-  // Pagination tout au long de la page
-  //------------------------------------------------
-
+  
   const $list = $("#posts-list-ajax");
   const $loader = $(`
         <div class="card loader">

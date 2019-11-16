@@ -1,53 +1,53 @@
 <nav id="navbar" class="bg-blue navbar m-0">
 
-    <h1>
-        <a class="" href="{{ path('home') }}">
-            <img id="symbol-logo" class="navbar-brand nav-link m-0" src="{{ asset('img/logo_pixelmarket/logo_symbol.png')}}" class="card-img" alt="">
-            <img id="logo" class="navbar-brand nav-link m-0" src="{{ asset('img/logo_pixelmarket/logo_pixelmarket_1.png')}}" class="card-img" alt="">
-        </a>
-    </h1>
+	<h1>
+		<a class="" href="{{ path('home') }}">
+			<img id="symbol-logo" class="navbar-brand nav-link m-0" src="{{ asset('img/logo_pixelmarket/logo_symbol.png')}}" class="card-img" alt="">
+			<img id="logo" class="navbar-brand nav-link m-0" src="{{ asset('img/logo_pixelmarket/logo_pixelmarket_1.png')}}" class="card-img" alt="">
+		</a>
+	</h1>
 
-    <form class="search-bar">
-        <input class="search form-control mr-sm-2 w-100 rounded-pill border-light bg-secondary text-white" type="search" placeholder="Rechercher" aria-label="Search">
-    </form>
+	<form class="search-bar">
+		<input class="search form-control mr-sm-2 w-100 rounded-pill border-light bg-secondary text-white" type="search" placeholder="Rechercher" aria-label="Search">
+	</form>
 
-    <ul id="toogle-sign">
-        <li>
-            {% if app.user is not empty %}
-                <a class="btn-green" href="{{ path("post_new") }}">
-                    Créer une annonce
-                </a>
-            {% else %}
-                <a class="btn-green btn-create-post" data-value="@Request.RequestContext.HttpContext.Session['user']" href="{{ path('app_login')}}">
-                    Créer une annonce
-                </a>
+	<ul id="toogle-sign">
+		<li>
+			{% if app.user is not empty %}
+				<a class="btn-green" href="{{ path("post_new") }}">
+					Créer une annonce
+				</a>
+			{% else %}
+				<a class="btn-green btn-create-post" data-value="@Request.RequestContext.HttpContext.Session['user']" href="{{ path('app_login')}}">
+					Créer une annonce
+				</a>
 
-            {% endif %}
-        </li>
-        {% if app.user is not empty %}
-            <li class="nav-item dropdown" id="profileNavbar">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="h6 text-white ">
-                        Bienvenue
-                        {{ app.user.username }}
-                    </span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ path('current_user_profile') }}">Profile</a>
-                    <a class="dropdown-item disabled" href="#">Paramêtres</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{path("app_logout")}}">Deconnexion</a>
-                </div>
-            </li>
-        {% else %}
-            <li>
-                <a id="signInUp" class="btn-white" href="{{path("app_login")}}">S'inscrire/Se connecter</a>
-            </li>
-        {% endif %}
-    </ul>
+			{% endif %}
+		</li>
+		{% if app.user is not empty %}
+			<li class="nav-item dropdown" id="profileNavbar">
+				<a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span class="h6 text-white ">
+						Bienvenue
+						{{ app.user.username }}
+					</span>
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="{{ path('current_user_profile') }}">Profile</a>
+					<a class="dropdown-item disabled" href="#">Paramêtres</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="{{path("app_logout")}}">Deconnexion</a>
+				</div>
+			</li>
+		{% else %}
+			<li>
+				<a id="signInUp" class="btn-white" href="{{path("app_login")}}">S'inscrire/Se connecter</a>
+			</li>
+		{% endif %}
+	</ul>
 
-    <div class="bg-blue" id="hamburger">
-        {% include 'navbar/_navbar-burger.html.twig'%}
-    </div>
+	<div class="bg-blue" id="hamburger">
+		{% include 'navbar/_navbar-burger.html.twig'%}
+	</div>
 
 </nav>

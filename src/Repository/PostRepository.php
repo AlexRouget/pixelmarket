@@ -74,4 +74,25 @@ class PostRepository extends ServiceEntityRepository
     {
         return $this->count(['public' => true]);
     }
+
+    public function findPost($search)
+    {
+        
+        $queryBuilder = $this->createQueryBuilder('p')
+        ->select('p as post')
+        ->groupBy('p.id')
+        ->orderBy('p.published_at', 'DESC')
+        ->where('p.title = :val')->setParameter('val', $search)
+        ;
+
+        $results = $queryBuilder->getQuery()->getResult();
+
+        $posts = [];
+        foreach ($results as $result) {
+            $post = $result['post'];
+            array_push($posts, $post);
+        }
+
+        return $posts;
+    }
 }
