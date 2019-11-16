@@ -29,7 +29,7 @@ class PostRepository extends ServiceEntityRepository
      *
      * @return array The posts for the homepage
      */
-    public function findHomepage($categories, int $start = 0, $take = 16)
+    public function findHomepage($categories, int $start = 0, $take = 12)
     {
        return $this->findPostList($categories, $start, $take, true);
     }
@@ -70,11 +70,11 @@ class PostRepository extends ServiceEntityRepository
         return $posts;
     }
 
-    public function countForHomepage()
-    {
-        return $this->count(['public' => true]);
-    }
-
+    /**
+     * Get all the posts researched
+     *
+     * @return array The posts for the searchBar
+     */
     public function findPost($search)
     {
         
@@ -94,5 +94,17 @@ class PostRepository extends ServiceEntityRepository
         }
 
         return $posts;
+    }
+
+
+    public function countForHomepage()
+    {
+        return $this->count(['public' => true]);
+    }
+
+
+    public function countByCat($cat)
+    {
+        return $this->count(['categories' => $cat]);
     }
 }

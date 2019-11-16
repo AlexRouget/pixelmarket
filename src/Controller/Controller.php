@@ -29,13 +29,21 @@ class Controller extends AbstractController
            }
    
            $page = max(1, $page);
-           $start = ($page - 1) * 16;
-           $totalPosts = $this
-               ->getDoctrine()
-               ->getRepository(Post::class)
-               ->countForHomepage();
+           $start = ($page - 1) * 12;
+
+            if ($cat == null) {
+                $totalPosts = $this
+                    ->getDoctrine()
+                    ->getRepository(Post::class)
+                    ->countForHomepage();
+            }else{
+                $totalPosts = $this
+                    ->getDoctrine()
+                    ->getRepository(Post::class)
+                    ->countByCat($cat);
+           }
    
-           $max = ceil($totalPosts / 16);
+           $max = ceil($totalPosts / 12);
            $totalPages = intval(ceil($max));
            $isLastPage = $page === $totalPages;
    

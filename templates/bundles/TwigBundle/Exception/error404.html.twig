@@ -1,54 +1,28 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-    Page 404
+	Page 404
 {% endblock %}
 
 {% block pageContent %}
-    <div class="m-4">
+	<div class="m-4">
 
-        {% block headerContent %}
-            <div class="d-flex flex-column align-items-center m-2">
-                <h1 class="display-4">
-                    <span class="text-blue">erreur</span>
-                    <span class="text-green">404</span>
-                </h1>
-                <p class="lead">
-                    Oulala! Le contenu que vous chercher n'existe pas !</p>
-            </div>
-            <hr class="my-4"/>
-        {% endblock %}
+		{% block headerContent %}
+			<div class="d-flex flex-column align-items-center m-2">
+				<h1 class="display-4">
+					<span class="text-blue">erreur</span>
+					<span class="text-green">404</span>
+				</h1>
+				<p class="lead">
+					Oulala! Le contenu que vous chercher n'existe pas !</p>
+			</div>
+			<hr class="my-4"/>
+		{% endblock %}
 
-        <div class="d-flex justify-content-center m-4">
-            <p>
-                      \          SORRY            /
-                       \                         /
-                        \    This page does     /
-                        ]   not exist yet.    [    ,'|
-                        ]                     [   /  |
-                        ]___               ___[ ,'   |
-                        ]  ]\             /[  [ |:   |
-                        ]  ] \           / [  [ |:   |
-                        ]  ]  ]         [  [  [ |:   |
-                        ]  ]  ]__     __[  [  [ |:   |
-                        ]  ]  ] ]\ _ /[ [  [  [ |:   |
-                        ]  ]  ] ] (#) [ [  [  [ :===='
-                        ]  ]  ]_].nHn.[_[  [  [
-                        ]  ]  ]  HHHHH. [  [  [
-                        ]  ] /   `HH("N  \ [  [
-                        ]__]/     HHH  "  \[__[
-                        ]         NNN         [
-                        ]         N/"         [
-                        ]         N H         [
-                        /          N            \
-                      /           q,            \
-                    /                           \
-            </p>
-        </div>
-        <div class="d-flex justify-content-center m-4">
+		<div class="d-flex justify-content-center m-4">
 
-            <a href="{{ path('home')}}" class="btn btn-block btn-green">
-                Revenir à l'accueil
-            </a>
-        </div>
-    </div>
+			<a href="{{ path('home')}}" class="btn btn-block btn-green">
+				Revenir à l'accueil
+			</a>
+		</div>
+	</div>
 {% endblock %}

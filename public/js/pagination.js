@@ -1,8 +1,8 @@
 $(function() {
-  
   const $list = $("#posts-list-ajax");
+  const $btn = $("#next");
   const $loader = $(`
-        <div class="card loader">
+        <div class="loader m-5 d-flex justify-content-center">
             <div class="spinner-border text-primary" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -24,6 +24,7 @@ $(function() {
       .then(response => {
         if (parseInt(response.headers.get("X-PixelMarket-Is-Last-Page"))) {
           isDone = true;
+          $btn.remove();
         }
         return response.text();
       })
@@ -105,9 +106,10 @@ $(function() {
       $("body").scrollTop() || $("html").scrollTop() || $window.scrollTop();
     const endOfPage = currentScroll + $window.height();
     const heightDoc = $(document).height();
-
-    if (endOfPage == heightDoc) {
-      loadPosts();
+    if ($list) {
+      if (endOfPage == heightDoc) {
+        loadPosts();
+      }
     }
   });
 });

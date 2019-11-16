@@ -88,13 +88,8 @@
     border-color: #fff;
     border-width: 3px;
     position: fixed;
-    right: 3em;
   }
 
-  li.categorie-burger input {
-    position: fixed;
-    right: 3em;
-  }
   .avatar-img {
     width: 70px;
     height: 70px;
