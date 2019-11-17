@@ -84,6 +84,15 @@ class PostController extends AbstractController
     {
         // On va chercher en BDD le post qui correspond à l'ID
         $post = $this->findOr404($id);
+        // le user du post
+        $userId = $post->getAuthor()->getId();
+        //user connected
+        $user = $this->getUser()->getId();
+
+        if(!($userId == $user)){
+            $this->addFlash('danger', 'Ce post ne t\'appartiens pas !');   
+            return $this->redirectToRoute('current_user_profile');
+        }
         
         $file = $post->getAttachment();
         $public = $post->getPublic();
