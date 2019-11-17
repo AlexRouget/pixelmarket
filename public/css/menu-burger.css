@@ -158,3 +158,10 @@ ul#categories-burger {
   right: 25px;
   cursor: pointer;
 }
+
+.reverse-underline a {
+  text-decoration: underline;
+}
+.reverse-underline:hover a {
+  text-decoration: none;
+}

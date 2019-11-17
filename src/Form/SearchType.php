@@ -18,7 +18,7 @@ class SearchType extends AbstractType
             ->add('search', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Rechercher',
-                    'class' => 'search form-control rounded-pill'
+                    'class' => 'search form-control'
                     ]
                 ]);
     }

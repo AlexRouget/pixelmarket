@@ -1,7 +1,7 @@
 <ul id="signInUp">
 	{% if app.user is empty %}
-		<li class="desktop-none">
-			<a class="" href="{{path("app_login")}}">S'inscrire/Se connecter</a>
+		<li class="desktop-none reverse-underline">
+			<a href="{{path("app_login")}}">S'inscrire/Se connecter</a>
 		</li>
 	{% endif %}
 	<li class="desktop-none">

@@ -23,6 +23,10 @@ select:-webkit-autofill:focus {
 
 /* ------- GENERAL -------- */
 
+form input {
+  border-radius: 50rem !important;
+}
+
 ul {
   margin: 0;
   padding: 0;
