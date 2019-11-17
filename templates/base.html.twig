@@ -6,7 +6,8 @@
 		<meta name="description" content="{% block metaDescription %}{% endblock %}"/>
 
 		<title>
-			{% block title %}Welcome!
+			{% block title %}
+			{% if title is defined %}{{title}}{% else %}PixelMarket{% endif %}
 			{% endblock %}
 		</title>
 

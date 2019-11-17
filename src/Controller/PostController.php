@@ -19,16 +19,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostController extends AbstractController
 {
     /**
-     * @Route("/", name="post_index", methods={"GET"})
-     */
-    public function index(PostRepository $postRepository): Response
-    {
-        return $this->render('post/_posts.html.twig', [
-            'posts' => $postRepository->findAll(),
-        ]);
-    }
-
-    /**
      * @Route("/new", name="post_new", methods={"GET","POST"})
      */
     public function new(Request $request){
@@ -68,6 +58,7 @@ class PostController extends AbstractController
 
         return $this->render('post/new.html.twig', [
             'post_form' => $form->createView(),
+            'title' => 'Créer une annonce',
         ]);
     }
 
@@ -82,6 +73,7 @@ class PostController extends AbstractController
 
         return $this->render('post/single.html.twig', [
             'post' => $post,
+            'title' => 'Annonce #' . $id,
         ]);
     }
 
@@ -138,6 +130,7 @@ class PostController extends AbstractController
         return $this->render('post/edit.html.twig', [
             'post' => $post,
             'post_form' => $form->createView(),
+            'title' => 'Modifier mon annonce',
         ]);
     }
 

@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Form\SearchType;
+use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,17 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class Controller extends AbstractController
 {
+    /**
+     * @Route("/admin", name="admin", methods={"GET", "POST"})
+     */
+    public function admin(PostRepository $postRepository): Response
+    {
+        return $this->render('post/_posts.html.twig', [
+            'posts' => $postRepository->findAll(),
+            'mainNavHome'=>true,
+        ]);
+    }
+    
     /**
      * @Route("/home/{cat}", name="home", methods={"GET", "POST"}, defaults={"page": 1, "cat": null}))
      * @param Request $request, 

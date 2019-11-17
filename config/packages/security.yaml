@@ -3,12 +3,17 @@ security:
     App\Entity\User:
       algorithm: auto
 
+  role_hierarchy:
+    ROLE_ADMIN: ROLE_USER
+    ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
   providers:
     # used to reload user from session & other features (e.g. switch_user)
     app_user_provider:
       entity:
         class: App\Entity\User
         property: username
+
 
   firewalls:
     dev:
@@ -44,6 +49,6 @@ security:
     - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     # Posts routes require full authentication
     - { path: ^/admin, roles: ROLE_ADMIN }
-    - { path: ^/users/me, roles: ROLE_USER }
+    - { path: ^/profil/me, roles: ROLE_USER }
     - { path: "^/post/[0-9]*/edit", roles: ROLE_USER }
     - { path: "^/post/[0-9]*/new", roles: ROLE_USER }

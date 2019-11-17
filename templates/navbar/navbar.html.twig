@@ -7,7 +7,17 @@
 		</a>
 	</h1>
 
+	
 	<ul id="toogle-sign">
+
+
+<!-- POUR L'ADMIN -->
+		{% if is_granted('ROLE_ADMIN') %}
+			<li class="nav-item {% if mainNavAdmin is defined %}active{% endif %}">
+				<a class="nav-link" href="{{path('admin')}}">Espace admin</a>
+			</li>
+		{% endif %}
+		
 		<li>
 			{% if app.user is not empty %}
 				<a class="btn-green" href="{{ path("post_new") }}">
@@ -20,6 +30,7 @@
 
 			{% endif %}
 		</li>
+
 		{% if app.user is not empty %}
 			<li class="nav-item dropdown" id="profileNavbar">
 				<a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

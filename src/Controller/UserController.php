@@ -41,11 +41,13 @@ class UserController extends AbstractController
         ->getRepository(User::class)
         ->find($id);
 
+        $username = $user->getUsername();
+
         if (empty($user)) {
             throw $this->createNotFoundException('User #' . $id . " not found");
         }
 
-        return $this->render('user/profile.html.twig', ['user'=> $user]);
+        return $this->render('user/profile.html.twig', ['user'=> $user, 'title' => 'Profil de ' . $username,]);
     }
 
     /**
@@ -97,7 +99,8 @@ class UserController extends AbstractController
             'user' => $user,
             'posts' => $postRepository->findPostList(0, 8, false, null), 
             'favories' => $user->getLiked(),
-            'user_form' => $form->createView()
+            'user_form' => $form->createView(),
+            'title' => 'Mon profil',
         ]);
     }
 }

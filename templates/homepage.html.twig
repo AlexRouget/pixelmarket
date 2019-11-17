@@ -1,42 +1,33 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} 
 
-{% block title %} PixelMarket {% endblock %} 
-
-{% block headerContent %} {% endblock %} 
-
-{% block sidebarContent %}
-	<div class="container p-2">
-		<div id="side-menu">
-			{% include 'navbar/_nav-content.html.twig'%}
-		</div>
-	</div>
-{% endblock %} 
-
-{% block flash %}{% endblock %} 
-
-{% block mainContent %}
+{% block headerContent %} {% endblock %} {% block
+sidebarContent %}
+<div class="container p-2">
+  <div id="side-menu">
+    {% include 'navbar/_nav-content.html.twig'%}
+  </div>
+</div>
+{% endblock %} {% block flash %}{% endblock %} {% block mainContent %}
 
 <div class="d-flex justify-content-center">
+  {{ form_start(search_form, {'attr' : {'class' : 'search-bar'}}) }}
 
-	{{ form_start(search_form, {'attr' : {'class' : 'search-bar'}}) }}
-		
-			{{ form_widget(search_form.search)}}
-		
-			<div class="text-danger">
-				{{ form_errors(search_form.search) }}
-			</div>
+  {{ form_widget(search_form.search) }}
 
-	{{ form_end(search_form) }}
-	
+  <div class="text-danger">
+    {{ form_errors(search_form.search) }}
+  </div>
+
+  {{ form_end(search_form) }}
 </div>
-	<!-- <p class="lead">{{ 'posts.count' }} nouveaux posts aujourd'hui</p> -->
+<!-- <p class="lead">{{ 'posts.count' }} nouveaux posts aujourd'hui</p> -->
 
-	{% include 'post/index.html.twig' %}
+{% include 'post/index.html.twig' %}
 
-	<div class="container-fluid">
-		<div class="row">
-			{% include 'pagination.html.twig' %}
-		</div>
-	</div>
+<div class="container-fluid">
+  <div class="row">
+    {% include 'pagination.html.twig' %}
+  </div>
+</div>
 
 {% endblock %}
