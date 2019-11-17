@@ -129,16 +129,27 @@ p {
 
 /* ------- SEARCH-BAR -------- */
 
-.search::placeholder {
+.search-bar input::placeholder {
   color: white !important;
 }
 
 .search-bar {
-  width: 30%;
+  margin-top: 2em;
+  width: 80%;
 }
-.search-bar input {
+
+.search-bar input:hover {
+  color: var(--blue) !important;
+}
+
+.search-bar input,
+.search-bar input:visited {
   border: 0.5px solid white;
+  background-color: var(--grey-light);
+  border: 1px solid var(--grey);
+  color: white !important;
 }
+
 /* ------- LOGIN-FORM -------- */
 
 .login-btn {
@@ -227,10 +238,11 @@ p {
   width: 20px;
   height: 20px;
   margin: 2px;
+  fill: var(--blue);
 }
 .star-empty svg#Capa_1 {
   fill: white;
-  stroke: black;
+  stroke: var(--blue);
   stroke-width: 2;
 }
 

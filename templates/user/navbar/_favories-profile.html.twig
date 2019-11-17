@@ -1,34 +1,36 @@
 {% if user.liked is not empty %}
-	<ul id="post-list" class="container-fluid">
-		<div class="row">
-
-			{% for favori in favories %}
-				<li class="appear-animation col-sm-3 p-1">
-					{% include 'post/card.html.twig' with { 'post' : favori } %}
-				</li>
-			{% endfor  %}
-
-		</div>
-	</ul>
-{% else %}
+<ul id="post-list" class="container-fluid">
+  <div class="row">
+    {% for favori in favories %}
+    <li class="appear-animation col-sm-3 p-1">
+      {% include 'post/card.html.twig' with { 'post' : favori } %}
+    </li>
+    {% endfor %}
+  </div>
+</ul>
+{% else %} 
 	{% block headerContent %}
 		<div class="d-flex flex-column align-items-center m-2">
-			<h1 class="display-4 m-5 d-flex flex-column align-items-center">
-				<span class="text-blue">Wow!</span>
-				<span class="text-green">Tu n'as pas de favoris pour le moment !</span>
-			</h1>
+		<h1 class="display-4 my-5 d-flex flex-column align-items-center">
+			<span class="text-blue">Wow!</span>
+			<span class="text-green">Tu n'as pas de favoris pour le moment !</span>
+		</h1>
 			<div class="d-flex">
 				<p class="lead d-flex align-items-center mr-2">
-					Pour y remerdier, tu peux cliquer sur
+				Pour y remerdier, tu peux cliquer sur
 				</p>
-				<a class="like" onclick="return confirm('YEAH! Essaye sur les annonces maintenant! Clique sur OK pour y aller directement')" href="{{ path('app_login')}}">
-					<i class="far fa-heart"></i>
+				<a
+				class="like"
+				onclick="return confirm('YEAH! Essaye sur les annonces maintenant! Clique sur OK pour y aller directement')"
+				href="{{ path('app_login') }}"
+				>
+				<i class="far fa-heart"></i>
 				</a>
 				<p class="lead d-flex align-items-center ml-2">
-					en haut à gauche des annonces !
+				en haut à gauche des annonces !
 				</p>
 			</div>
 		</div>
-		<hr class="my-4"/>
-	{% endblock %}
-{% endif  %}
+		<hr class="my-4" />
+	{% endblock %} 
+{% endif %}

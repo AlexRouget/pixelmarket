@@ -3,73 +3,77 @@
 {{ form_start(user_form,{'attr' : {'class' : 'm-4'}}) }}
 
 <div class="form-group">
-    {{ form_label(user_form.username) }}
+  {{ form_label(user_form.username) }}
 
-    {{ form_widget(user_form.username, {'attr': { 'class': 'form-control' ~ hasError(user_form.username)
+  {{ form_widget(user_form.username, {'attr': { 'class': 'form-control' ~ hasError(user_form.username)
+
   }}) }}
 
-    <div class="text-danger">
-        {{ form_errors(user_form.username) }}
-    </div>
+  <div class="text-danger">
+    {{ form_errors(user_form.username) }}
+  </div>
 </div>
 
 <div class="form-group">
-    {{ form_label(user_form.avatar) }}
+  {{ form_label(user_form.avatar) }}
 
-    <div id="avatars">
-        <div id="avatar_1" class="avatar-auto"></div>
-        <div id="avatar_2" class="avatar-auto"></div>
-        <div id="avatar_3" class="avatar-auto"></div>
-        <div id="avatar_4" class="avatar-auto avatar_4"></div>
-    </div>
+  <div id="avatars">
+    <div id="avatar_1" class="avatar-auto"></div>
+    <div id="avatar_2" class="avatar-auto"></div>
+    <div id="avatar_3" class="avatar-auto"></div>
+    <div id="avatar_4" class="avatar-auto avatar_4"></div>
+  </div>
 
-    {{ form_widget(user_form.avatar, {'attr': { 'class': 'form-control hidden' ~ hasError(user_form.avatar)
-    }}) }}
+  {{ form_widget(user_form.avatar, {'attr': { 'class': 'form-control hidden' ~ hasError(user_form.avatar)
 
-    <div class="text-danger">
-        {{ form_errors(user_form.avatar) }}
-    </div>
+  }}) }}
+
+  <div class="text-danger">
+    {{ form_errors(user_form.avatar) }}
+  </div>
 </div>
 
 <div class="form-group">
-    {{ form_label(user_form.first_name) }}
+  {{ form_label(user_form.first_name) }}
 
-    {{ form_widget(user_form.first_name, {'attr': { 'class': 'form-control' ~ hasError(user_form.first_name)
+  {{ form_widget(user_form.first_name, {'attr': { 'class': 'form-control' ~ hasError(user_form.first_name)
+
   }}) }}
 
-    <div class="text-danger">
-        {{ form_errors(user_form.first_name) }}
-    </div>
+  <div class="text-danger">
+    {{ form_errors(user_form.first_name) }}
+  </div>
 </div>
 
 <div class="form-group">
-    {{ form_label(user_form.last_name) }}
+  {{ form_label(user_form.last_name) }}
 
-    {{ form_widget(user_form.last_name, {'attr': { 'class': 'form-control' ~ hasError(user_form.last_name)
+  {{ form_widget(user_form.last_name, {'attr': { 'class': 'form-control' ~ hasError(user_form.last_name)
+
   }}) }}
 
-    <div class="text-danger">
-        {{ form_errors(user_form.last_name) }}
-    </div>
+  <div class="text-danger">
+    {{ form_errors(user_form.last_name) }}
+  </div>
 </div>
 
 <div class="form-group">
-    {{ form_label(user_form.email) }}
+  {{ form_label(user_form.email) }}
 
-    {{ form_widget(user_form.email, {'attr': { 'class': 'form-control champ-email' ~ hasError(user_form.email)
+  {{ form_widget(user_form.email, {'attr': { 'class': 'form-control champ-email' ~ hasError(user_form.email)
+
   }}) }}
 
-    <div class="text-danger">
-        {{ form_errors(user_form.email) }}
-    </div>
+  <div class="text-danger">
+    {{ form_errors(user_form.email) }}
+  </div>
 </div>
 
 <div id="erreur">
-    <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
+  <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
 </div>
 
 <div class="d-flex justify-content-center">
-    {{ form_widget(user_form.submit, { 'attr': { 'class' : 'btn btn-green'}}) }}
-    <input type="reset" id="reset" value="Reset" class="btn btn-green ml-4"/>
+  {{ form_widget(user_form.submit, { 'attr': { 'class' : 'btn btn-green'}}) }}
 </div>
 {{ form_end(user_form) }}

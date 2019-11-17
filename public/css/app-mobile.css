@@ -133,9 +133,16 @@
 @media screen and (min-width: 600px) and (max-width: 768px) {
   #post,
   #register {
-    -ms-flex: 0 0 83.3333%;
-    flex: 0 0 83.3333%;
-    max-width: 83.3333%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  #posts-list-ajax li,
+  #post-list li {
+    -ms-flex: 0 0 33.3333%;
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
   }
 }
 
@@ -148,6 +155,9 @@
     flex: 0 0 100%;
     max-width: 100%;
   }
+
+  #mes-annonces li,
+  #posts-list-ajax li,
   #post-list li {
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;

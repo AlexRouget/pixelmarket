@@ -67,9 +67,10 @@ class Controller extends AbstractController
 
             $form = $this->createForm(SearchType::class);
             $form->handleRequest($request);
-    
+
+            
             if ($form->isSubmitted() && $form->isValid()) {
-    
+                
                 $search = $form->getData()['search'];
                 
                 $results = $this
@@ -99,6 +100,7 @@ class Controller extends AbstractController
            // On envoie les posts dans la vue
            return $this->render('homepage.html.twig', [
                 'search' => null,
+                'search_form' => $form->createView(),
                 'posts' => $posts,
                 'last_username' => $lastUsername,
                 'error' => $error,
