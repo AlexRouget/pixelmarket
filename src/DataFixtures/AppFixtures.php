@@ -63,6 +63,7 @@ class AppFixtures extends Fixture
             $price = $faker->numberBetween(10, 500);
             $location = $faker->randomElement(['Bordeaux', 'Paris', 'Franconville']);
             $categories = $faker->randomElement(['jeux-video','goodies','dvd', 'jeux-de-societe', 'retrogaming']);
+            $state = $faker->randomElement(['jeux-video','goodies','dvd', 'jeux-de-societe', 'retrogaming']);
             $isPublic = $faker->boolean(70);
             $dateBetween = $faker->dateTimeBetween('-30 days', 'now', null);
 

@@ -1,38 +1,31 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %} Editer annonce
+{{ post.id }}
+{% endblock %} {% block pageContent %}
 
-{% block title %}
-    Editer annonce
-    {{ post.id }}
-{% endblock %}
-
-{% block pageContent %}
-
-    <div class="card align-items-center bg-img">
-
-        {% block headerContent %}
-            <div class="container-fluid">
-
-                <a href="javascript:history.back()" class="btn btn-white">
-                    file d'ariane
-                </a>
-                <div class="d-flex flex-column align-items-center m-2">
-                    <h1 class="display-4 form-title text-blue">
-                        Je modifie mon annonce
-                    </h1>
-                    <p class="lead">À vos marques, prêts? Geekeur, à vos échanges !</p>
-
-                </div>
-                <hr class="my-4 bg-white"/>
-            </div>
-        {% endblock %}
-
-        <div class="card-body col-7 bg-white my-4">
-            {% set action = path('post_edit', { 'id': post.id }) %}
-            {{ include('post/_form.html.twig', {'button_label': 'Modifier mon annonce'}) }}
-            <button class="btn">
-                {{ include('post/_delete_form.html.twig') }}
-            </button>
-
-        </div>
+<div class="card align-items-center bg-img">
+  {% block headerContent %}
+  <div class="container-fluid">
+    <a href="javascript:history.back()" class="btn btn-white">
+      file d'ariane
+    </a>
+    <div class="d-flex flex-column align-items-center m-2">
+      <h1 class="display-4 form-title text-blue">
+        Je modifie mon annonce
+      </h1>
+      <p class="lead">À vos marques, prêts? Geekeur, à vos échanges !</p>
     </div>
+    <hr class="my-4 bg-white" />
+  </div>
+  {% endblock %}
+
+  <div class="card-body col-7 bg-white my-4">
+    {% set action = path('post_edit', { 'id': post.id }) %}
+    {{
+      include("post/_form.html.twig", { button_label: "Modifier mon annonce" })
+    }}
+    <button class="btn">
+      {{ include("post/_delete_form.html.twig") }}
+    </button>
+  </div>
+</div>
 {% endblock %}

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Form\PostType;
+use App\Service\FileUploader;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\File;
@@ -87,26 +88,46 @@ class PostController extends AbstractController
     /**
      * @Route("/{id}/edit", name="post_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, $id): Response
+    public function edit(Request $request, $id, FileUploader $fileUploader): Response
     {
         // On va chercher en BDD le post qui correspond à l'ID
         $post = $this->findOr404($id);
+        
+        $file = $post->getAttachment();
+        $public = $post->getPublic();
+        $published = $post->getPublishedAt();
+
+        // dump($post);die;
+        if (!is_null($file)) {
+            $post->setAttachment($file);
+        }
 
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
-          /* @var UploadedFile $file */
-          $file = $post->getAttachment();
-          if (!empty($file)) {
-              $basename = 'post-attachment-' . md5(uniqid());
-              // c'est une identifiant basé sur la date en microseconde. c'est n'est pas utilisable en secu, de plus on peut avoir la même chaîne de caractère
-              $ext = $file->guessExtension();
-              $filename = $basename . '.' . $ext;
+            /* @var UploadedFile $file */
+            $fileForm = $form->get('attachment')->getData();
+            $publicForm = $form->get('public')->getData();
 
-              $file->move($this->getParameter('user_upload_folder'), $filename);
-              $post->setAttachment($filename);
-          }
+            if ($fileForm !== null) {
+                $fileName = $fileUploader->upload($fileForm);
+                $post->setAttachment($fileName);
+            } else {
+                $post->setAttachment($file);
+            }
+            
+            $date = new \Datetime();
+
+            if ($publicForm) {
+                $post->setPublishedAt($date);
+            } else {
+                $post->setPublishedAt(null);
+            }
+            
+            //update date
+            $post->setUpdatedAt($date);
 
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'Ton post à été modifié!');

@@ -1,137 +1,98 @@
-{% from '_macros/field-has_error.html.twig' import hasError %}
+{% from '_macros/field-has_error.html.twig' import hasError %} {% if action is
+not defined %} {% set action = path('post_new') %} {% endif %}
 
-{% if action is not defined %}
-    {% set action  = path('post_new') %}
-{% endif %}
-
-{{ form_start(post_form, { 'action': action }) }}
-
+{{ form_start(post_form, { action: action }) }}
 
 <div class="form-group">
-    {{ form_label(post_form.categories) }}
+  {{ form_label(post_form.categories) }}
 
-    {{ form_widget(post_form.categories, {'attr': { 'class': 'form-control ' ~ hasError(post_form.categories)
-              }}) }}
+  {{ form_widget(post_form.categories, {'attr': { 'class': 'form-control ' ~ hasError(post_form.categories)}}) }}
 
-    <div class="text-danger">
-        {{ form_errors(post_form.categories) }}
-    </div>
+  <div class="text-danger">
+    {{ form_errors(post_form.categories) }}
+  </div>
 </div>
 
 <div class="form-group">
-    {{ form_label(post_form.title) }}
+  {{ form_label(post_form.title) }}
 
-    {{ form_widget(post_form.title, {'attr': { 'class': 'form-control ' ~ hasError(post_form.title)
-      }}) }}
+  {{ form_widget(post_form.title, {'attr': { 'class': 'form-control ' ~ hasError(post_form.title) }}) }}
 
-    <div class="text-danger">
-        {{ form_errors(post_form.title) }}
-    </div>
+  <div class="text-danger">
+    {{ form_errors(post_form.title) }}
+  </div>
 </div>
 
 <div class="form-group">
-    {{ form_label(post_form.description) }}
+  {{ form_label(post_form.description) }}
 
-    {{ form_widget(post_form.description, {'attr': { 'class': 'form-control ' ~ hasError(post_form.description)
-      }}) }}
+  {{ form_widget(post_form.description, {'attr': { 'class': 'form-control ' ~ hasError(post_form.description)}}) }}
 
-    <div class="text-danger">
-        {{ form_errors(post_form.description) }}
-    </div>
+  <div class="text-danger">
+    {{ form_errors(post_form.description) }}
+  </div>
 </div>
-<div class="d-flex form-group">
-    <div class="form-group">
-        {{ form_label(post_form.state) }}
-
-        <div id="post_state" class="d-flex flex-column h-auto">
-            <div class="d-flex">
-                <input type="radio" id="post_state_0" name="post[state]" required="required" value="new">
-                <label for="post_state_0" class="required ml-2">Neuf</label>
-            </div>
-            <div class="d-flex">
-                <input type="radio" id="post_state_1" name="post[state]" required="required" value="very-good">
-                <label for="post_state_1" class="required ml-2">Très bon état</label>
-            </div>
-            <div class="d-flex">
-                <input type="radio" id="post_state_2" name="post[state]" required="required" value="good">
-                <label for="post_state_2" class="required ml-2">Bon état</label>
-            </div>
-            <div class="d-flex">
-                <input type="radio" id="post_state_3" name="post[state]" required="required" value="bad">
-                <label for="post_state_3" class="required ml-2">État moyen</label>
-            </div>
-            <div class="d-flex">
-                <input type="radio" id="post_state_4" name="post[state]" required="required" value="very-bad">
-                <label for="post_state_4" class="required ml-2">Pour bricoler</label>
-            </div>
-        </div>
 
 
-        <div class="text-danger">
-            {{ form_errors(post_form.state) }}
-        </div>
-    </div>
-
-    <div class="form-group d-flex flex-column align-items-center m-auto">
-        <div class="form-group text-center">
-            {{ form_label(post_form.price) }}
-            {{ form_widget(post_form.price, {'attr': { 'class': 'form-control' ~ hasError(post_form.price)
+    {{ form_label(post_form.state) }}
+    <div id="post_state" class="d-flex flex-column h-auto container-fluid">
+        {{ form_widget(post_form.state, {'attr': { 'class': '' ~ hasError(post_form.state)
         }}) }}
-        </div>
 
         <div class="text-danger">
-            {{ form_errors(post_form.price) }}
+        {{ form_errors(post_form.state) }}
         </div>
     </div>
-</div>
+
+
+  <div class="form-group d-flex flex-column align-items-center m-auto">
+    <div class="form-group text-center">
+      {{ form_label(post_form.price) }}
+      {{ form_widget(post_form.price, {'attr': { 'class': 'form-control' ~ hasError(post_form.price) }}) }}
+    </div>
+
+    <div class="text-danger">
+      {{ form_errors(post_form.price) }}
+    </div>
+  </div>
+
 {% if action is not defined %}
-    <img src="{{ asset('uploads/' ~ post.attachment) }}" class="card-img">
-    {% else %}
-{% endif %}
+<img src="{{ asset('uploads/' ~ post.attachment) }}" class="card-img" />
+{% else %} {% endif %}
 
 <div class="form-group d-flex flex-column">
-    {{ form_label(post_form.attachment, 'Include a cool picture')}}
-    <div class="custom-file">
-        {{ form_widget(post_form.attachment, {'attr': { 'class': 'custom-file-input' ~ hasError(post_form.attachment) }}) }}
-    </div>
-    <small class="form-text text-muted">
-        Only the following valid images format are supported : jpeg, png, gif
-    </small>
+  {{ form_label(post_form.attachment, "Include a cool picture") }}
+  <div class="custom-file">
+    {{ form_widget(post_form.attachment, {'attr': { 'class': 'custom-file-input' ~ hasError(post_form.attachment) }}) }}
+  </div>
+  <small class="form-text text-muted">
+    Les formats d'images supportés : jpeg, png, gif
+  </small>
 
-    <div class="text-danger">
-        {{ form_errors(post_form.attachment) }}
-    </div>
+  <div class="text-danger">
+    {{ form_errors(post_form.attachment) }}
+  </div>
 </div>
 
 <div class="form-group">
-    {{ form_label(post_form.location) }}
+  {{ form_label(post_form.location) }}
 
-    {{ form_widget(post_form.location, {'attr': { 'class': 'form-control ' ~ hasError(post_form.location)
-          }}) }}
+  {{ form_widget(post_form.location, {'attr': { 'class': 'form-control ' ~ hasError(post_form.location)}}) }}
 
-    <div class="text-danger">
-        {{ form_errors(post_form.location) }}
-    </div>
+  <div class="text-danger">
+    {{ form_errors(post_form.location) }}
+  </div>
 </div>
 
 <div class="form-group">
-    {{ form_label(post_form.publishedAt) }}
-    {{ form_widget(post_form.publishedAt, {'attr': { 'class': 'form-control' ~ hasError(post_form.publishedAt) }}) }}
-
-    <div class="text-danger">
-        {{ form_errors(post_form.publishedAt) }}
-    </div>
-</div>
-
-<div class="form-group">
-    <div class="custom-control custom-switch">
-        {{ form_widget(post_form.public, { 'attr': { 'class' : 'custom-control-input' ~ hasError(post_form.public)}}) }}
-        {{ form_label(post_form.public, 'Mark visibility as public', { 'label_attr': { 'class' : 'custom-control-label'}}) }}
-    </div>
+  <div class="custom-control custom-switch">
+    {{ form_widget(post_form.public, { 'attr': { 'class' : 'custom-control-input' ~ hasError(post_form.public) }}) }}
+    {{ form_label(post_form.public, 'Mark visibility as public', { 'label_attr': { 'class' : 'custom-control-label'}}) }}
+  </div>
 </div>
 <div class="d-flex form-group justify-content-center">
-    <button class="btn btn-green">
-        {{ button_label|default('Valider mon annonce', { 'attr': { 'class' : 'btn btn-green'}}) }}
-    </button>
+  <button class="btn btn-green">
+    {{ button_label|default('Valider mon annonce', { 'attr': { 'class' : 'btn btn-green'}}) }}
+  </button>
 </div>
 {{ form_end(post_form) }}

@@ -80,6 +80,9 @@ class UserController extends AbstractController
                 $user->setAvatar($avatar);
             }
 
+            $date = new \Datetime();
+            $user->setUpdatedAt($date);
+
             $em->persist($user);
             $em->flush();
 

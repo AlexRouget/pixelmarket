@@ -7,10 +7,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -36,7 +38,7 @@ class PostType extends AbstractType
                     ]
                 ])
 
-            ->add('description', TextType::class, [
+            ->add('description', TextareaType::class, [
                 'required' => true,
                 'label' => 'Description de votre annonce',
                 'attr' => [
@@ -44,9 +46,17 @@ class PostType extends AbstractType
                     ]
                 ])
 
-            ->add('state', HiddenType::class, [
+            ->add('state', ChoiceType::class, [
                 'label' => 'Dans quel état est votre article ?',
                 'required' => true,
+                'expanded' => true,
+                'multiple' => false,
+                'choices' => [
+                    'Neuf' => 'new',
+                    'Très bon état' => 'very-good',
+                    'Bon état' => 'good',
+                    'État moyen' => 'bad',
+                    'Pour bricoler' => 'very-bad']
                ])
 
             ->add('price')
@@ -56,22 +66,10 @@ class PostType extends AbstractType
                 'data_class' => null,
                 'required' => false
                  ])
-
-            ->add('publishedAt', ChoiceType::class, [
-                'label' => 'Publier le ',
-                'choices' => [
-                    'maintenant' => new \DateTime('now'),
-                    'demain' => new \DateTime('+1 day'),
-                    'dans 1 semaine' => new \DateTime('+1 week'),
-                    'dans 1 mois' => new \DateTime('+1 month'),
-                ],
-                'required' => false,
-                'placeholder' => 'Quand ?',
-                ])
                 
-                ->add('public')
+            ->add('public')
 
-                ->add('location');
+            ->add('location');
     }
 
     public function configureOptions(OptionsResolver $resolver)
