@@ -1,0 +1,46 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>CreatedAt</th>
+      <th>UpdatedAt</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Public</th>
+      <th>Attachment</th>
+      <th>Published_at</th>
+      <th>Price</th>
+      <th>Location</th>
+      <th>Categories</th>
+      <th>State</th>
+      <th>Auteur</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ post.id }}</td>
+      <td>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+      <td>{{ post.updatedAt ? post.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+      <td>{{ post.title }}</td>
+      <td>{{ post.description }}</td>
+      <td>{{ post.public }}</td>
+      <td>{{ post.attachment }}</td>
+      <td>
+        {{ post.publishedAt ? post.publishedAt|date('Y-m-d H:i:s') : '' }}
+      </td>
+      <td>{{ post.price }}</td>
+      <td>{{ post.location }}</td>
+      <td>{{ post.categories ? post.categories|join(', ') : '' }}</td>
+      <td>{{ post.state }}</td>
+      <td>{{ post.author.username }}</td>
+      <td>
+        <a href="{{ path('post_show', { id: post.id }) }}">show</a>
+
+        {% if app.user is not empty %}
+        <a href="{{ path('post_edit', { id: post.id }) }}">edit</a>
+        {% endif %}
+      </td>
+    </tr>
+  </tbody>
+</table>

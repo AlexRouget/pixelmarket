@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %} {% block pageContent %}
+<div class="container-fluid">
+  <div class="row">
+    {% for post in posts %} {% include 'admin/_posts.html.twig' %} {% endfor %}
+    {% for user in users %} {% include 'admin/_users.html.twig' %} {% endfor %}
+  </div>
+</div>
+{% endblock %}

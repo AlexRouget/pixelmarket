@@ -42,6 +42,7 @@ class RegistrationController extends AbstractController
                     $file->move($this->getParameter('user_upload_folder'), $filename);
                     $user->setAvatar($filename);
                 }
+            $user->setRoles(['ROLE_USER']);
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
