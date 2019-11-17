@@ -27,6 +27,11 @@ form input {
   border-radius: 50rem !important;
 }
 
+form input::placeholder,
+::placeholder {
+  color: var(--grey-light) !important;
+}
+
 ul {
   margin: 0;
   padding: 0;

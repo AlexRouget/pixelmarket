@@ -26,28 +26,18 @@ class AppFixtures extends Fixture
 
         // Création des Users
         $users = [];
-        $usernames = ['Alex', 'Clem', 'Doc', 'Didier', 'Michel', 'Henri', 'Thomas', 'O\'maley'];
-        $avatars = [
-            'https://www.listchallenges.com/f/items-dl/a2b55c01-befc-4286-a245-0b3a8c8a2098.jpg',
-            'https://www.listchallenges.com/f/items-dl/30b9cc37-1a6a-456a-97bf-f0121f5a0c26.jpg',
-            'https://www.listchallenges.com/f/items-dl/a2b55c01-befc-4286-a245-0b3a8c8a2098.jpg',
-            'https://www.listchallenges.com/f/items-dl/e0fff511-3b03-4bd6-b5af-8c1d9d3671bd.jpg',
-            'https://www.listchallenges.com/f/items-dl/e0fff511-3b03-4bd6-b5af-8c1d9d3671bd.jpg',
-            'https://www.listchallenges.com/f/items-dl/a2b55c01-befc-4286-a245-0b3a8c8a2098.jpg',
-            'https://www.listchallenges.com/f/items-dl/a2b55c01-befc-4286-a245-0b3a8c8a2098.jpg',
-            'https://www.listchallenges.com/f/items-dl/a2b55c01-befc-4286-a245-0b3a8c8a2098.jpg'
-        ];
-
+        $usernames = ['alex33_game', 'bleucerise', 'j3r3mgame', 'lise_unicorn', 'molly_hyde', 'ok_clem'];
+        $dateBetweenUser = $faker->dateTimeBetween('-30 days', '-20 days', null);
 
         foreach ($usernames as $k => $name) {
 
             $user = new User();
             $user->setUsername($name);
             $user->setEmail(strtolower($name) . '@mail.org');
-            $user->setAvatar($avatars[$k]);
 
             $password = $this->encoder->encodePassword($user,'azeaze');
             $user->setPassword($password);
+            $user->setCreatedAt($dateBetweenUser);
 
             $manager->persist($user);
             array_push($users, $user);
@@ -55,29 +45,26 @@ class AppFixtures extends Fixture
         }
 
         // Création des Posts
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 50; $i++) {
 
-            $title = $faker->realText(20);
-            $description = $faker->realText(180);
-            $attachment = $faker->imageUrl(640, 480);
-            $price = $faker->numberBetween(10, 500);
-            $location = $faker->randomElement(['Bordeaux', 'Paris', 'Franconville']);
-            $categories = $faker->randomElement(['jeux-video','goodies','dvd', 'jeux-de-societe', 'retrogaming']);
+            $title = 'à modifier';
+            $description = 'à modifier';
+            $location = $faker->randomElement(['Bordeaux', 'Paris', 'Franconville', 'Toulouse', 'Nantes', 'Merignac', 'Nancy', 'Grenoble']);
+            $categories = $faker->randomElement(['jeux-video','goodies','dvd', 'jeux-de-societe', 'retrogaming', 'book']);
             $state = $faker->randomElement(['new','very-good','good', 'bad', 'very-bad']);
             $isPublic = $faker->boolean(70);
-            $dateBetween = $faker->dateTimeBetween('-30 days', 'now', null);
+            $dateBetween = $faker->dateTimeBetween('-20 days', 'now', null);
 
             $date = new \DateTime();
 
             $post = new Post();
             $post->setTitle($title);
             $post->setDescription($description);
-            $post->setAttachment($attachment);
-            $post->setPrice($price);
             $post->setLocation($location);
             $post->setCategories($categories);
+            $post->setState($state);
             $post->setPublic($isPublic);
-            $post->setCreatedAt($date);
+            $post->setCreatedAt($dateBetween);
             $post->setPublishedAt($dateBetween);
 
             // Auteur du post
@@ -87,8 +74,6 @@ class AppFixtures extends Fixture
 
             $manager->persist($post);
         }
-
-
 
         $manager->flush();
     }

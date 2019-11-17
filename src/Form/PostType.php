@@ -28,13 +28,14 @@ class PostType extends AbstractType
                 'Jeux de société' => 'jeux-de-societe',
                 'Dvd' => 'dvd',
                 'Rétrogaming' => 'retrogaming',
+                'Livres' => 'livres',
                 'Goodies' => 'goodies']])
 
             ->add('title', TextType::class, [
                 'required' => true,
                 'label' => 'Titre de votre annonce',
                 'attr' => [
-                    'placeholder' => 'Tome 1 Harry Potter'
+                    'placeholder' => 'Exemple : Switch, DVD Marvel, Tome 1 Harry Potter '
                     ]
                 ])
 
@@ -42,7 +43,7 @@ class PostType extends AbstractType
                 'required' => true,
                 'label' => 'Description de votre annonce',
                 'attr' => [
-                    'placeholder' => 'Tome 1 Harry Potter, édition 2005, 265 pages'
+                    'placeholder' => 'Exemple : Tome 1 Harry Potter, édition 2005, 265 pages'
                     ]
                 ])
 

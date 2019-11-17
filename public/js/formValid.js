@@ -141,10 +141,10 @@ document.addEventListener("DOMContentLoaded", () => {
       $password.val().match(passwordFormat) === null
     ) {
       console.log(!checkEmpty($password));
-      alert("bad password");
+      alert("Le mot de passe est incomplet");
       return false;
     } else if (checkEmpty($confirmation)) {
-      alert("bad password confirmation");
+      alert("Le mot de passe ne correspond");
       return false;
     } else if (
       checkEmpty($email) ||
@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
       $email.val().length < 8 ||
       $email.val().match(emailFormat) === null
     ) {
-      alert("bad email");
+      alert("Votre email est invalide");
       return false;
     } else {
       return true;
