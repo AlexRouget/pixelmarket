@@ -1,138 +1,125 @@
-{% extends 'base.html.twig' %} {% block mainContent %}
-<a href="javascript:history.back()" class="">
-  file d'ariane
-</a>
+{% extends 'base.html.twig' %}
+{% block mainContent %}
+	<a href="javascript:history.back()" class="">
+		file d'ariane
+	</a>
 
-{% if post.attachment is not empty %}
-<img src="{{ asset('uploads/' ~ post.attachment) }}" class="card-img" />
-{% else %}
-<div class="card">
-  <p class="text-center">
-    Pas de photo pour cette annonce
-  </p>
-</div>
-{% endif %}
+	{% if post.attachment is not empty %}
+		<img src="{{ asset('uploads/' ~ post.attachment) }}" class="card-img"/>
+	{% else %}
+		<div class="card">
+			<p class="text-center">
+				Pas de photo pour cette annonce
+			</p>
+		</div>
+	{% endif %}
 
-<!-- CATEGORIES -->
+	<!-- CATEGORIES -->
 
-{% if post.categories == 'jeux-video' %}
-<div class="d-flex align-items-center mt-1">
-  <img
-    class="icons-grey"
-    src="{{ asset('img/icons/icon_categorie/gris/icon_videogame_gris.png') }}"
-  />
-  <p>Jeux vidéo</p>
-</div>
-{% elseif post.categories == 'book' %}
-<div class="d-flex align-items-center mt-1">
-  <img
-    class="icons-grey"
-    src="{{ asset('img/icons/icon_categorie/gris/icon_book_gris.png') }}"
-  />
-  <p>Livres</p>
-</div>
-{% elseif post.categories == 'retrogaming'%}
-<div class="d-flex align-items-center mt-1">
-  <img
-    class="icons-grey"
-    src="{{ asset('img/icons/icon_categorie/gris/icon_retro_gris.png') }}"
-  />
-  <p>Rétrogaming</p>
-</div>
-{% elseif post.categories == 'jeux-de-societe'%}
-<div class="d-flex align-items-center mt-1">
-  <img
-    class="icons-grey"
-    src="{{ asset('img/icons/icon_categorie/gris/icon_boardgame_gris.png') }}"
-  />
-  <p>Jeux de société</p>
-</div>
-{% elseif post.categories == 'dvd'%}
-<div class="d-flex align-items-center mt-1">
-  <img
-    class="icons-grey"
-    src="{{ asset('img/icons/icon_categorie/gris/icon_cddvd_gris.png') }}"
-  />
-  <p>Cd/Dvd</p>
-</div>
-{% elseif post.categories == 'goodies'%}
-<div class="d-flex align-items-center mt-1">
-  <img
-    class="icons-grey"
-    src="{{ asset('img/icons/icon_categorie/gris/icon_goodies_gris.png') }}"
-  />
-  <p>Goodies</p>
-</div>
-{% else %}
-<p></p>
-{% endif %}
+	{% if post.categories == 'jeux-video' %}
+		<div class="d-flex align-items-center mt-1">
+			<img class="icons-grey" src="{{ asset('img/icons/icon_categorie/gris/icon_videogame_gris.png') }}"/>
+			<p>Jeux vidéo</p>
+		</div>
+	{% elseif post.categories == 'book' %}
+		<div class="d-flex align-items-center mt-1">
+			<img class="icons-grey" src="{{ asset('img/icons/icon_categorie/gris/icon_book_gris.png') }}"/>
+			<p>Livres</p>
+		</div>
+	{% elseif post.categories == 'retrogaming'%}
+		<div class="d-flex align-items-center mt-1">
+			<img class="icons-grey" src="{{ asset('img/icons/icon_categorie/gris/icon_retro_gris.png') }}"/>
+			<p>Rétrogaming</p>
+		</div>
+	{% elseif post.categories == 'jeux-de-societe'%}
+		<div class="d-flex align-items-center mt-1">
+			<img class="icons-grey" src="{{ asset('img/icons/icon_categorie/gris/icon_boardgame_gris.png') }}"/>
+			<p>Jeux de société</p>
+		</div>
+	{% elseif post.categories == 'dvd'%}
+		<div class="d-flex align-items-center mt-1">
+			<img class="icons-grey" src="{{ asset('img/icons/icon_categorie/gris/icon_cddvd_gris.png') }}"/>
+			<p>CD/DVD</p>
+		</div>
+	{% elseif post.categories == 'goodies'%}
+		<div class="d-flex align-items-center mt-1">
+			<img class="icons-grey" src="{{ asset('img/icons/icon_categorie/gris/icon_goodies_gris.png') }}"/>
+			<p>Goodies</p>
+		</div>
+	{% else %}
+		<p></p>
+	{% endif %}
 
-<!-- TITLE -->
-<h3>{{ post.title }}</h3>
+	<!-- TITLE -->
+	<h3>{{ post.title }}</h3>
 
-<!-- DATE/PRICE -->
-{% set myDate = "now" | date %}
-<div class="d-flex justify-content-between">
-  <p>
-    à {{ post.location }},
-    {{ post.publishedAt | ago }}
-  </p>
-  <div class="price">{{ post.price }}€</div>
-</div>
+	<!-- DATE/PRICE -->
+	{% set myDate = "now" | date %}
+	<div class="d-flex justify-content-between">
+		<p>
+			à
+			{{ post.location }},
+			{{ post.publishedAt | ago }}
+		</p>
+		<div class="price">{{ post.price }}€</div>
+	</div>
 
-<!-- DESCRIPTION -->
-<HR size="2" align="center" />
+	<!-- DESCRIPTION -->
+	<HR size="2" align="center"/>
 
-<h6>Description</h6>
-<p>
-  {{ post.description }}.
+	<h6>Description</h6>
+	<p>
+		{{ post.description }}.
 
-<!-- STATE -->
-  {% if post.state == 'new' %}
-Neuf
-{% elseif post.state == 'very-good' %}
-Très bon état
-{% elseif post.state == 'good' %}
-Bon état
-{% elseif post.state == 'bad' %}
-État moyen
-{% elseif post.state == 'very-bad' %}
-Pour bricoler
-{% else %}
+		<!-- STATE -->
+		{% if post.state == 'new' %}
+			Neuf
+		{% elseif post.state == 'very-good' %}
+			Très bon état
+		{% elseif post.state == 'good' %}
+			Bon état
+		{% elseif post.state == 'bad' %}
+			État moyen
+		{% elseif post.state == 'very-bad' %}
+			Pour bricoler
+			{% else %}
 
-{% endif %}
-</p>
+		{% endif %}
+	</p>
 
-<!-- EDIT/DELETE -->
-<HR size="2" align="center" width="100%" />
+	<!-- EDIT/DELETE -->
+	<HR size="2" align="center" width="100%"/>
 
-<div class="d-flex justify-content-center">
-  {% if app.user is not empty %} {% if post.author.id == app.user.id %}
-  <a class="btn btn-green mr-5" href="{{ path('post_edit', { id: post.id }) }}"
-    >Modifier</a
-  >
+	<div class="d-flex justify-content-center">
+		{% if app.user is not empty %}
+			{% if post.author.id == app.user.id %}
+				<a class="btn btn-green mr-5" href="{{ path('post_edit', { id: post.id }) }}">Modifier</a>
 
-  {{ include("post/_delete_form.html.twig") }}
+				{{ include("post/_delete_form.html.twig") }}
 
-  {% endif %} {% endif %}
+			{% endif %}
+		{% endif %}
 
-  <!-- CARD USER -->
-  {% if app.user != post.author %}
+		<!-- CARD USER -->
+		{% if app.user != post.author %}
 
-  <div class="profile-card d-flex flex-column align-items-center">
-    {% include 'user/_btn1-profile-card.html.twig' with { 'user' : post.author
-    }%} {% include 'user/_profile-card.html.twig' with { 'user' : post.author
+			<div class="profile-card d-flex flex-column align-items-center">
+				{% include 'user/_btn1-profile-card.html.twig' with { 'user' : post.author
     }%}
-  </div>
+				{% include 'user/_profile-card.html.twig' with { 'user' : post.author
+    }%}
+			</div>
 
-  {% endif %}
-</div>
+		{% endif %}
+	</div>
 
-{% endblock %} {% block sidebarContent %}
+{% endblock %}
+{% block sidebarContent %}
 
-<div class="d-flex flex-column align-items-center">
-  {% include 'user/_profile-card.html.twig' with { 'user' : post.author }%} {%
+	<div class="d-flex flex-column align-items-center">
+		{% include 'user/_profile-card.html.twig' with { 'user' : post.author }%}
+		{%
   include 'user/_btn2-profile-card.html.twig' with { 'user' : post.author }%}
-</div>
+	</div>
 
 {% endblock %}

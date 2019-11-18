@@ -93,11 +93,13 @@ ul#infos-burger li {
 }
 
 .icons {
-  height: 2.8em;
-  width: 2.8em;
+  height: 2.4em;
+  width: 2.4em;
   margin: 0.5em 0.5em 0.5em 0em;
 }
-
+#categories-burger h6 {
+  font-weight: 600;
+}
 #categories-burger h6,
 .categorie-burger p,
 #side-menu ul li a,

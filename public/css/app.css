@@ -144,7 +144,7 @@ p {
 /* ------- SEARCH-BAR -------- */
 
 .search-bar input::placeholder {
-  color: white !important;
+  color:var(--grey);
 }
 
 .search-bar {
@@ -158,10 +158,9 @@ p {
 
 .search-bar input,
 .search-bar input:visited {
-  border: 0.5px solid white;
-  background-color: var(--grey-light);
-  border: 1px solid var(--grey);
-  color: white !important;
+
+  background-color: white;
+  border: 1px solid var(--grey-light);
 }
 
 /* ------- LOGIN-FORM -------- */
@@ -297,7 +296,7 @@ p {
 
   height: 5rem;
   /* transparent 80% */
-  background-color: rgba(255, 255, 255, 0.8) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
   padding: 1px;
 }
 
@@ -330,7 +329,7 @@ p {
 }
 
 .liked {
-  color: var(--green);
+  color: white;
 }
 
 /* selection brother of */
