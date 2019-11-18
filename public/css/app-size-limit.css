@@ -14,7 +14,7 @@
     background-attachment: fixed;
   }
   .bg-img {
-    background: white;
+    background: transparent !important;
   }
 
   body #body-content {

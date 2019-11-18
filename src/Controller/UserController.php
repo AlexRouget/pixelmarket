@@ -44,7 +44,7 @@ class UserController extends AbstractController
         $username = $user->getUsername();
 
         if (empty($user)) {
-            throw $this->createNotFoundException('User #' . $id . " not found");
+            throw $this->createNotFoundException('Utilisateur #' . $id . " introuvable");
         }
 
         return $this->render('user/profile.html.twig', ['user'=> $user, 'title' => 'Profil de ' . $username,]);

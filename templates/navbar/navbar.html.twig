@@ -14,7 +14,7 @@
 <!-- POUR L'ADMIN -->
 		{% if is_granted('ROLE_ADMIN') %}
 			<li class="nav-item {% if mainNavAdmin is defined %}active{% endif %}">
-				<a class="nav-link" href="{{path('admin')}}">Espace admin</a>
+				<a class="nav-link text-light" href="{{path('admin')}}">Espace admin</a>
 			</li>
 		{% endif %}
 		
@@ -40,8 +40,8 @@
 					</span>
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="{{ path('current_user_profile') }}">Profile</a>
-					<a class="dropdown-item disabled" href="#">Paramêtres</a>
+					<a class="dropdown-item" href="{{ path('current_user_profile') }}">Mon profil</a>
+					<a class="dropdown-item disabled" href="#">Paramètres</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="{{path("app_logout")}}">Deconnexion</a>
 				</div>

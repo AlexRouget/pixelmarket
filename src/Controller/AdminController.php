@@ -35,12 +35,14 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/me", name="user_edit", methods={"GET","POST"})
+     * @Route("users/{id}/edit", name="user_edit", methods={"GET","POST"})
      * @param Request $req
      * @return Response
      */
-    public function me(Request $req, PostRepository $postRepository, UserRepository $userRepository, FileUploader $fileUploader): Response {
+    public function userEdit(Request $req, PostRepository $postRepository, UserRepository $userRepository, FileUploader $fileUploader): Response {
 
+        $user = $this->findOr404($id);
+        
         $em = $this->getDoctrine()->getManager();
 
         $user = $this->getUser();
@@ -78,20 +80,17 @@ class AdminController extends AbstractController
             sleep(5);
         }
 
-        // EN FAIRE DES RECHERCHES PAR CAT / FAVORIS... 
-        return $this->render('user/profile-me.html.twig', [
+        return $this->render('user/_edit-form.html.twig', [
             'user' => $user,
-            'posts' => $postRepository->findPostList(0, 8, false, null), 
-            'favories' => $user->getLiked(),
             'user_form' => $form->createView(),
-            'title' => 'Mon profil',
+            'title' => 'profil'.$id ,
         ]);
     }
 
     /**
-     * @Route("/{id<\d+>}", name="user_show")
+     * @Route("users/{id<\d+>}", name="user_show")
      */
-    public function profile($id, SessionInterface $session)
+    public function userShow($id, SessionInterface $session)
     {
         $this->session = $session;
 
@@ -101,17 +100,28 @@ class AdminController extends AbstractController
             }
         }
 
-        $user = $this
-        ->getDoctrine()
-        ->getRepository(User::class)
-        ->find($id);
+        $user = $this->findOr404($id);
 
         $username = $user->getUsername();
 
         if (empty($user)) {
-            throw $this->createNotFoundException('User #' . $id . " not found");
+            throw $this->createNotFoundException('Utilisateur #' . $id . " introuvable");
         }
 
         return $this->render('user/profile.html.twig', ['user'=> $user, 'title' => 'Profil de ' . $username,]);
+    }
+
+    private function findOr404($id) {
+
+        $post = $this
+            ->getDoctrine()
+            ->getRepository(User::class)
+            ->find($id);
+
+        if (empty($post)) {
+            throw $this->createNotFoundException('Utilisateur introuvable');
+        }
+        
+        return $user;
     }
 }
