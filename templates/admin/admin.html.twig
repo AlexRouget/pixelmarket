@@ -2,10 +2,7 @@
 {% block pageContent %}
 	{% block headerContent %}
 		<div class="d-flex flex-column align-items-center m-2">
-			<h1 class="display-4">
-				<span class="text-blue">pixel</span>
-				<span class="text-green">market</span>
-			</h1>
+			<img class="navbar-brand nav-link m-0" src="{{ asset('img/logo_pixelmarket/symbol_pixelmarket-blue.png')}}" class="card-img" alt="">
 			<p class="lead">Espace Administrateur !</p>
 		</div>
 		<hr class="my-4"/>
@@ -13,7 +10,7 @@
 
 	<!-- LES NOUVEAUX POSTS -->
 	<div class="container-fluid">
-		<h2>LES NOUVEAUX POSTS</h2>
+		<h4>LES NOUVEAUX POSTS</h4>
 		<p>il y a
 			{{ count_new_posts }}
 			nouveaux posts</p>
@@ -30,7 +27,7 @@
 		<div class="container-fluid mt-4 d-flex justify-content-end">
 			<a id="" class="btn btn-green text-center my-4" href="{{ path('admin_posts', { onlyUnchecked: 1 }) }}" aria-label="Next">
 				<span aria-hidden="true">
-					+ voir plus d'articles
+					+ voir plus d'annonces
 				</span>
 			</a>
 		</div>
@@ -38,7 +35,7 @@
 
 	<!-- LES NOUVEAUX UTILISATEURS -->
 	<div class="container-fluid">
-		<h2>LES NOUVEAUX UTILISATEURS</h2>
+		<h4>LES NOUVEAUX UTILISATEURS</h4>
 		<p>il y a
 			{{ count_new_users }}
 			nouveaux utilisateurs</p>
@@ -56,7 +53,7 @@
 		<div class="container-fluid mt-4 d-flex justify-content-end">
 			<a id="" class="btn btn-green text-center my-4" href="{{ path('admin_users', { onlyUnchecked: 1 }) }}" aria-label="Next">
 				<span aria-hidden="true">
-					+ voir plus d'articles
+					+ voir plus d'annonces
 				</span>
 			</a>
 		</div>
@@ -64,7 +61,7 @@
 
 	<!-- TOUS LES POSTS -->
 	<div class="container-fluid">
-		<h2>TOUS LES POSTS</h2>
+		<h4>TOUS LES POSTS</h4>
 		<p>il y a
 			{{ count_posts }}
 			nouveaux utilisateurs</p>
@@ -81,13 +78,13 @@
 		<div class="container-fluid mt-4 d-flex justify-content-end">
 			<a id="" class="btn btn-green text-center my-4" href="{{ path('admin_posts', { onlyUnchecked: 0 }) }}" aria-label="Next">
 				<span aria-hidden="true">
-					+ voir plus d'articles
+					+ voir plus d'annonces
 				</span>
 			</a>
 		</div>
 		<!-- TOUS LES USER -->
 		<div class="container-fluid">
-			<h2>TOUS LES USERS</h2>
+			<h4>TOUS LES USERS</h4>
 			<p>il y a
 				{{ count_users }}
 				nouveaux utilisateurs</p>
@@ -104,7 +101,7 @@
 		<div class="container-fluid mt-4 d-flex justify-content-end">
 			<a id="" class="btn btn-green text-center my-4" href="{{ path('admin_users', { onlyUnchecked: 0 }) }}" aria-label="Next">
 				<span aria-hidden="true">
-					+ voir plus d'articles
+					+ voir plus d'annonces
 				</span>
 			</a>
 		</div>

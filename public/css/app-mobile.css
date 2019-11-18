@@ -79,6 +79,18 @@
     display: none;
   }
 
+  .display-4 {
+    font-size: calc(24px + 0.2rem);
+    font-weight: 600;
+    text-align: center !important;
+  }
+  .display-4 ~ p {
+    font-size: calc(16px + 0.2rem);
+    text-align: center !important;
+    display: flex;
+    flex-direction: column;
+  }
+
   #hamburger-button,
   #hamburger-sidebar,
   .hamburger-activated #hamburger-overlay {

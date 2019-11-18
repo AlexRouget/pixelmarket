@@ -2,25 +2,30 @@
 
 {% block pageContent %}
 
-    <div class="card align-items-center bg-img">
+	<div class="card align-items-center bg-img">
 
-        {% block headerContent %}
+		{% block headerContent %}
 
-            <div class="container-fluid">
-                <div class="d-flex flex-column align-items-center m-2">
-                    <h1 class="display-4 form-title text-blue">
-                        Je créer une nouvelle annonce
-                    </h1>
-                    <p class="lead">À vos marques, prêts? Geekeur, à vos échanges !</p>
-                </div>
-                <hr class="my-4 bg-white"/>
-            </div>
-        {% endblock %}
+			<div class="container-fluid">
+				<div class="d-flex flex-column align-items-center m-2">
+					<h1 class="display-4 d-flex flex-column form-title text-blue">
+						<span>Je créer une
+						</span>
+						<span>nouvelle annonce</span>
+					</h1>
+					<p class="lead">
+						<span>À vos marques, prêts ?</span>
+						<span>À vos échanges !</span>
+					</p>
+				</div>
+				<hr class="my-4 bg-white"/>
+			</div>
+		{% endblock %}
 
-        <div id="post" class="card-body col-7 bg-white my-4">
-            {% include 'post/_form.html.twig' %}
-        </div>
+		<div id="post" class="card-body col-7 bg-white my-4">
+			{% include 'post/_form.html.twig' %}
+		</div>
 
-    </div>
+	</div>
 
 {% endblock %}

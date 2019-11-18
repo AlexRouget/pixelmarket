@@ -141,6 +141,12 @@ p {
   transition: all 0.3s ease;
 }
 
+#symbol-logo {
+  width: auto;
+  height: 30px;
+  padding: 0;
+}
+
 /* ------- SEARCH-BAR -------- */
 
 .search-bar input::placeholder {
@@ -338,6 +344,15 @@ p {
   height: 2em;
   width: 2em;
   margin: 0em 0.5em 0em -5px;
+}
+
+/* --------- SINGLE-POST --------- */
+
+.heart-like-2 {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  z-index: 5;
 }
 
 /* --------- FORM-POST --------- */

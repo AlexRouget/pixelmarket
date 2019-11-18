@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Entity\Post;
 use App\Form\SearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\PostRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,7 +21,7 @@ class Controller extends AbstractController
      * @param AuthenticationUtils $authenticationUtils
      * @return
      */
-    public function index(AuthenticationUtils $authenticationUtils, Request $request, $page, $cat): Response  {
+    public function index(AuthenticationUtils $authenticationUtils, Request $request, PostRepository $postRepository,  $page, $cat): Response  {
 
            // Gestion de la pagination
            $page = (int) $request->query->get('p');
@@ -31,17 +32,20 @@ class Controller extends AbstractController
    
            $page = max(1, $page);
            $start = ($page - 1) * 12;
-
+           
             if ($cat == null) {
                 $totalPosts = $this
                     ->getDoctrine()
                     ->getRepository(Post::class)
                     ->countForHomepage();
+
+                $postsCount = $postRepository->findPostList(null, 0, null, true, false);
             }else{
                 $totalPosts = $this
                     ->getDoctrine()
                     ->getRepository(Post::class)
                     ->countByCat($cat);
+                $postsCount = $postRepository->findBy(['categories' => $cat], ['createdAt' => 'DESC']);
            }
    
            $max = ceil($totalPosts / 12);
@@ -94,13 +98,14 @@ class Controller extends AbstractController
             // cette reponse s'enverra dans le js
                 return $this->render('post/_list_posts.html.twig', [
                     'posts' => $posts,
-                    'cat' => $cat
+                    'cat' => $cat,
                 ], $response);
             }
    
            // On envoie les posts dans la vue
            return $this->render('homepage.html.twig', [
                 'search' => null,
+                'count_posts' =>  count($postsCount),
                 'search_form' => $form->createView(),
                 'posts' => $posts,
                 'last_username' => $lastUsername,
@@ -108,7 +113,7 @@ class Controller extends AbstractController
                 'cat' => $cat,
                 'pagination' => [
                     'current' => $page,
-                    'max' => $totalPages, // fake limit for now
+                    'max' => $totalPages,
                ]
            ]);
     }

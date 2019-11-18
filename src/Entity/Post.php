@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Post extends Model
 {
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=50)
      */
     private $title;
 

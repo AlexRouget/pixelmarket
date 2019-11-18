@@ -1,33 +1,41 @@
-{% extends 'base.html.twig' %} 
+{% extends 'base.html.twig' %}
 
-{% block headerContent %} {% endblock %} {% block
+{% block headerContent %}{% endblock %}
+{% block
 sidebarContent %}
-<div class="container p-2">
-  <div id="side-menu">
-    {% include 'navbar/_nav-content.html.twig'%}
-  </div>
-</div>
-{% endblock %} {% block flash %}{% endblock %} {% block mainContent %}
+	<div class="container p-2">
+		<div id="side-menu">
+			{% include 'navbar/_nav-content.html.twig'%}
+		</div>
+	</div>
+{% endblock %}
+{% block flash %}{% endblock %}
+{% block mainContent %}
 
-<div class="d-flex justify-content-center">
-  {{ form_start(search_form, {'attr' : {'class' : 'search-bar'}}) }}
+	<div class="d-flex justify-content-center">
+		{{ form_start(search_form, {'attr' : {'class' : 'search-bar'}}) }}
 
-  {{ form_widget(search_form.search) }}
+		{{ form_widget(search_form.search) }}
 
-  <div class="text-danger">
-    {{ form_errors(search_form.search) }}
-  </div>
+		<div class="text-danger">
+			{{ form_errors(search_form.search) }}
+		</div>
 
-  {{ form_end(search_form) }}
-</div>
-<!-- <p class="lead">{{ 'posts.count' }} nouveaux posts aujourd'hui</p> -->
+		{{ form_end(search_form) }}
+	</div>
 
-{% include 'post/index.html.twig' %}
+	<div class="d-flex justify-content-center mt-2">
+		<p class="lead">{{ count_posts }}
+			annonces
+		</p>
+	</div>
 
-<div class="container-fluid">
-  <div class="row">
-    {% include 'pagination.html.twig' %}
-  </div>
-</div>
+	{% include 'post/index.html.twig' %}
+
+	<div class="container-fluid">
+		<div class="row">
+			{% include 'pagination.html.twig' %}
+		</div>
+	</div>
 
 {% endblock %}

@@ -4,15 +4,18 @@
 		file d'ariane
 	</a>
 
-	{% if post.attachment is not empty %}
-		<img src="{{ asset('uploads/' ~ post.attachment) }}" class="card-img"/>
-	{% else %}
-		<div class="card">
-			<p class="text-center">
-				Pas de photo pour cette annonce
-			</p>
-		</div>
-	{% endif %}
+	<!-- IMAGES -->
+	<div class="container-fluid">
+		{% if post.attachment is not empty %}
+			<img src="{{ asset('uploads/' ~ post.attachment) }}" class="card-img" style='width:100%; height:30em; object-fit: contain; background-color:#eeeeee'/>
+		{% else %}
+			<div class="card">
+				<p class="text-center">
+					Pas de photo pour cette annonce
+				</p>
+			</div>
+		{% endif %}
+	</div>
 
 	<!-- CATEGORIES -->
 
@@ -48,6 +51,30 @@
 		</div>
 	{% else %}
 		<p></p>
+	{% endif %}
+
+	{# TODO #}
+
+	{% if app.user != post.author %}
+
+		<div class="heart-like-2">
+			{% if app.user is not empty %}
+				{% if app.user and app.user.doesLike(post) %}
+					<a class="like" href="{{ path('post_unlike', { id: post.id }) }}">
+						<i class="fas fa-heart liked"></i>
+					</a>
+				{% else %}
+					<a class="like" href="{{ path('post_like', { id: post.id }) }}">
+						<i class="far fa-heart"></i>
+					</a>
+				{% endif %}
+			{% else %}
+				<a onclick="return confirm('vous devez vous connectez pour ajouter cette annonce dans vos favoris')" href="{{ path('app_login') }}">
+					<i class="far fa-heart"></i>
+				</a>
+			{% endif %}
+		</div>
+
 	{% endif %}
 
 	<!-- TITLE -->
@@ -92,7 +119,7 @@
 
 	<div class="d-flex justify-content-center">
 		{% if app.user is not empty %}
-			{% if post.author.id == app.user.id %}
+			{% if post.author.id == app.user.id or is_granted('ROLE_ADMIN')%}
 				<a class="btn btn-green mr-5" href="{{ path('post_edit', { id: post.id }) }}">Modifier</a>
 
 				{{ include("post/_delete_form.html.twig") }}

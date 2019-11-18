@@ -28,7 +28,7 @@ class PostType extends AbstractType
                 'Jeux de société' => 'jeux-de-societe',
                 'Dvd' => 'dvd',
                 'Rétrogaming' => 'retrogaming',
-                'Livres' => 'livres',
+                'Livres' => 'book',
                 'Goodies' => 'goodies']])
 
             ->add('title', TextType::class, [
