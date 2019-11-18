@@ -1,56 +1,72 @@
-{% extends 'base.html.twig' %}{% block
-mainContent %}
-<a href="javascript:history.back()" class="">
-  file d'ariane
-</a>
+{% extends 'base.html.twig' %}
 
-{% if post.attachment is not empty %} {#
-<img src="{{ asset('uploads/' ~ post.attachment) }}" class="card-img" /> #}
-<img src="{{ post.attachment }}" class="card-img" />
-{% else %}
-<div class="card">
-  <p class="text-center">
-    Pas de photo pour cette annonce
-  </p>
-</div>
-{% endif %}
 
-<p>{{ post.categories ? post.categories|join(', ') : '' }}</p>
+{% block mainContent %}
+  <a href="javascript:history.back()" class="">
+    file d'ariane
+  </a>
 
-<h3>{{ post.title }}</h3>
+  {% if post.attachment is not empty %}
+    <img src="{{ asset('uploads/' ~ post.attachment) }}" class="card-img" />
+  {% else %}
+    <div class="card">
+      <p class="text-center">
+        Pas de photo pour cette annonce
+      </p>
+    </div>
+  {% endif %}
 
-{% set myDate = "now" | date %}
-<div class="d-flex justify-content-between">
+  <p>{{ post.categories ? post.categories|join(', ') : '' }}</p>
+
+  <h3>{{ post.title }}</h3>
+
+  {% set myDate = "now" | date %}
+  <div class="d-flex justify-content-between">
+    <p>
+      {{ post.location }}, à
+      {{ post.publishedAt | ago }}
+    </p>
+    <div class="price">{{ post.price }}€</div>
+  </div>
+
+  <HR size="2" align="center" />
+
+  <h6>Description</h6>
   <p>
-    {{ post.location }}, à
-    {{ post.publishedAt | ago }}
+    {{ post.description }},
+    {{ post.state }}
   </p>
-  <div class="price">{{ post.price }}€</div>
-</div>
 
-<HR size="2" align="center" />
+  <HR size="2" align="center" width="100%" />
 
-<h6>Description</h6>
-<p>
-  {{ post.description }},
-  {{ post.state }}
-</p>
+  <div class="d-flex justify-content-center">
+    {% if app.user is not empty %} 
+      {% if post.author.id == app.user.id %}
+        <a class="btn btn-green mr-5" href="{{ path('post_edit', { id: post.id }) }}"
+          >Modifier</a
+        >
 
-<HR size="2" align="center" width="100%" />
+        {{ include("post/_delete_form.html.twig") }}
 
-<div class="profile-card d-flex flex-column align-items-center">
-  {% include 'user/_btn1-profile-card.html.twig' with { 'user' : post.author }%}
-  {% include 'user/_profile-card.html.twig' with { 'user' : post.author }%}
-</div>
+      {% endif %} 
+    {% endif %} 
 
-{% if app.user is not empty %} {% if post.author.id == app.user.id %}
-<a href="{{ path('post_edit', { id: post.id }) }}">edit</a>
+    {% if app.user != post.author %}
 
-{{ include("post/_delete_form.html.twig") }}
+      <div class="profile-card d-flex flex-column align-items-center">
+        {% include 'user/_btn1-profile-card.html.twig' with { 'user' : post.author }%}
+        {% include 'user/_profile-card.html.twig' with { 'user' : post.author }%}
+      </div>
 
-{% endif %} {% endif %} {% endblock %} {% block sidebarContent %}
-<div class="d-flex flex-column align-items-center">
-  {% include 'user/_profile-card.html.twig' with { 'user' : post.author }%} {%
-  include 'user/_btn2-profile-card.html.twig' with { 'user' : post.author }%}
-</div>
+    {% endif %} 
+  </div>
+
+{% endblock %} 
+{% block sidebarContent %}
+
+  <div class="d-flex flex-column align-items-center">
+    {% include 'user/_profile-card.html.twig' with { 'user' : post.author }%} {%
+    include 'user/_btn2-profile-card.html.twig' with { 'user' : post.author }%}
+  </div>
+
 {% endblock %}

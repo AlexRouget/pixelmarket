@@ -22,6 +22,9 @@ select:-webkit-autofill:focus {
 }
 
 /* ------- GENERAL -------- */
+h5 {
+  font-size: 18px;
+}
 
 form input {
   border-radius: 50rem !important;
@@ -48,7 +51,8 @@ p {
 }
 
 .tiny-text {
-  font-size: 0.8em;
+  font-size: 14px;
+  color: var(--grey-light);
 }
 
 /* ------- COLOR -------- */
@@ -144,7 +148,7 @@ p {
 
 .search-bar {
   margin-top: 2em;
-  width: 80%;
+  width: 100%;
 }
 
 .search-bar input:hover {
@@ -236,6 +240,15 @@ p {
 }
 
 /* --------- PROFILE-CARD --------- */
+
+.avatar-img {
+  border: 1px solid black;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+
+  margin-right: 8px;
+}
 
 #stars {
   display: flex;
@@ -337,98 +350,11 @@ div.custom-file {
   cursor: pointer;
 }
 
-/* ------------------ */
-
-.sticky {
-  position: sticky;
-  position: -webkit-sticky;
-  top: 32px;
-}
-
-.post-card-data {
-  margin: 0 8px;
-}
-
-.post-header {
-  display: flex;
-}
-
-.post-header h5 {
-  flex: 1;
-}
-
-.post-id {
-  /*align-self: center;*/
-  color: #c4c4c4;
-}
-
-.post-author {
-  display: flex;
-  align-items: center;
-}
-
-.post-author img {
-  width: 50px;
-  height: 50px;
-  margin-right: 16px;
-}
-
-.post-comments {
-  padding-left: 32px;
-}
-
-.post-comments h5 {
-  font-size: 16px;
-}
-
-.avatar-img {
-  border: 1px solid black;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-
-  margin-right: 8px;
-}
-
-.random-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-#random {
-  font-weight: bold;
-  font-size: 40px;
-}
-
-#roll {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 40px;
-  min-width: 160px;
-}
-
-/*
-Exemple de CSS pour l'état de chargement du bouton
-*/
+/* --------- DIVERS --------- */
 
 #alert {
   display: none;
   margin-top: 32px;
-}
-
-#notification-container {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 2;
-}
-
-#notification-container .alert:last-child {
-  margin-bottom: 0;
 }
 
 .post-pagination {
@@ -441,14 +367,5 @@ Exemple de CSS pour l'état de chargement du bouton
   align-items: center;
 
   padding: 32px;
-}
-
-#global {
-  position: absolute;
-  z-index: -10;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: url(../images/background.png) center;
-  background-size: cover;
+  margin: 32px;
 }

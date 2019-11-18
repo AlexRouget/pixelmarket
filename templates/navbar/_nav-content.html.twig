@@ -6,15 +6,23 @@
 	{% endif %}
 	<li class="desktop-none">
 		{% if app.user is not empty %}
-			<a href="{{ path("post_new") }}">
+			<a class="ml-2" href="{{ path("post_new") }}">
 				Créer une annonce
 			</a>
 		{% else %}
-			<a class="btn-create-post" data-value="@Request.RequestContext.HttpContext.Session['user']" href="{{ path('app_login')}}">
+			<a class="btn-create-post ml-2" data-value="@Request.RequestContext.HttpContext.Session['user']" href="{{ path('app_login')}}">
 				Créer une annonce
 			</a>
 		{% endif %}
 	</li>
+	  <!-- POUR L'ADMIN -->
+	  {% if is_granted('ROLE_ADMIN') %}
+	  <li
+		class="desktop-none ml-4 {% if mainNavAdmin is defined %}active{% endif %}"
+	  >
+		<a class="nav-link" href="{{ path('admin') }}">Espace admin</a>
+	  </li>
+	  {% endif %}
 </ul>
 
 
@@ -26,7 +34,7 @@
 	<li class="link-cat" id="cat-all">
 			<a href="{{ path('home', { 'cat': null }) }}">
 				<div class="categorie-burger">
-					<img class="icons" src="{{asset('img/icons_bleu_menu_mobile/icon_videogame.png') }}">
+					<div class="icons" src=""></div>
 					<p>Toutes</p>
 				</div>
 			</a>
@@ -80,8 +88,8 @@
 
 <ul id="profile-burger">
 	{% if app.user is not empty %}
-		<li class="desktop-none">
-			<a id="signInUp" class="" href="{{path("current_user_profile")}}">Mon Compte</a>
+		<li class="desktop-none ml-4">
+			<a id="signInUp" class="nav-link" href="{{path("current_user_profile")}}">Mon Compte</a>
 		</li>
 	{% endif %}
 </ul>
@@ -89,8 +97,8 @@
 
 <ul id="infos-burger">
 	{% if app.user is not empty %}
-	<li>
-		<a id="signInUp" class="" href="{{path("app_logout")}}">Se déconnecter</a>
+	<li class="ml-4">
+		<a id="signInUp" class="nav-link" href="{{path("app_logout")}}">Se déconnecter</a>
 	</li>
 	{% endif %}
 </ul>

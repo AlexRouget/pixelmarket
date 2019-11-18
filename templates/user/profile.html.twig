@@ -8,10 +8,10 @@
   {% include 'post/_list_posts.html.twig' with {'posts' : user.posts} %}
 </div>
 {% else %}
-<h5>
+<h4>
   {{ user.username }}
   n'a rien publié pour le moment !
-</h5>
+</h4>
 {% endif %} {% endblock %} {% block sidebarContent %}
 
 <div class="container">

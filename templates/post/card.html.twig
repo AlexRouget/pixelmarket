@@ -1,5 +1,7 @@
 {% set myDate = "now" | date %}
 <div class="card-post">
+  {% if app.user != post.author %}
+
   <div class="heart-like">
     {% if app.user is not empty %} {% if app.user and app.user.doesLike(post) %}
     <a class="like" href="{{ path('post_unlike', { id: post.id }) }}">
@@ -18,6 +20,8 @@
     </a>
     {% endif %}
   </div>
+
+  {% endif %}
 
   <a
     href="{{ path('post_show', { id: post.id }) }}"
@@ -46,8 +50,8 @@
       <div class="card-bottom-content">
         <h5 class="item-title text-center">{{ post.title }}</h5>
 
-        <p class="m-0 tiny-text">
-          {{ post.location }}
+        <p class="mb-1 tiny-text">
+          {{ post.location }},
           {{ post.publishedAt | ago }}
         </p>
       </div>
