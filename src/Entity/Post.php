@@ -67,6 +67,11 @@ class Post extends Model
      */
     private $likers;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $checked;
+
     public function __construct()
     {
         parent::__construct();
@@ -193,7 +198,7 @@ class Post extends Model
         return $this;
     }
 
-        /**
+    /**
      * Generates the magic method
      * 
      */
@@ -226,6 +231,18 @@ class Post extends Model
         if ($this->likers->contains($liker)) {
             $this->likers->removeElement($liker);
         }
+
+        return $this;
+    }
+
+    public function getChecked(): ?bool
+    {
+        return $this->checked;
+    }
+
+    public function setChecked(bool $checked): self
+    {
+        $this->checked = $checked;
 
         return $this;
     }

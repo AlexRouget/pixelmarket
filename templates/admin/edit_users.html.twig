@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+
+{% block pageContent %}
+
+	{% block headerContent %}
+		<div class="d-flex flex-column align-items-center m-2">
+			<h1 class="display-4">
+				<span class="text-blue">pixel</span>
+				<span class="text-green">market</span>
+			</h1>
+			<p class="lead">Modification de l'utilisateur #{{ user.id }}
+				!</p>
+		</div>
+		<hr class="my-4"/>
+	{% endblock %}
+
+	<div class="card align-items-center">
+		<div id="register" class="card-body col-7 bg-white my-4">
+			{% include 'user/_edit-form.html.twig' %}
+		</div>
+	</div>
+
+{% endblock %}

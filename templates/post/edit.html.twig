@@ -21,6 +21,12 @@
     {{
       include("post/_form.html.twig", { button_label: "Modifier mon annonce" })
     }}
+
+    {% if is_granted('ROLE_ADMIN') %}
+
+    {{ include("post/_delete_form.html.twig") }}
+
+    {% endif %}
   </div>
 </div>
 {% endblock %}

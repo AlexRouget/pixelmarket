@@ -69,7 +69,7 @@ class PostType extends AbstractType
                  ])
                 
             ->add('public')
-
+            ->add('checked')
             ->add('location');
     }
 

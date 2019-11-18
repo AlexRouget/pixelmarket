@@ -66,6 +66,11 @@ class User extends Model implements UserInterface
      */
     private $liked;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $checked;
+
     public function __construct()
     {
         parent::__construct();
@@ -258,5 +263,17 @@ class User extends Model implements UserInterface
 
     public function doesLike(Post $post): bool {
         return $this->liked->contains($post);
+    }
+
+    public function getChecked(): ?bool
+    {
+        return $this->checked;
+    }
+
+    public function setChecked(bool $checked): self
+    {
+        $this->checked = $checked;
+
+        return $this;
     }
 }

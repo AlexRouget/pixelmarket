@@ -7,6 +7,7 @@ use App\Entity\Post;
 use App\Entity\User;
 use App\Repository\PostRepository;
 use App\Repository\UserRepository;
+use App\Form\UserType;
 use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,21 +27,92 @@ class AdminController extends AbstractController
      */
     public function admin(PostRepository $postRepository, UserRepository $userRepository): Response
     {
+        $usersCount = $userRepository->findAll();
+        $postsCount = $postRepository->findAll();
+
+        $CountNewPosts = $this
+        ->getDoctrine()
+        ->getRepository(Post::class)
+        ->countByChecked();
+
+        $CountNewUsers = $this
+        ->getDoctrine()
+        ->getRepository(User::class)
+        ->countByChecked();
+
         return $this->render('admin/admin.html.twig', [
-            'posts' => $postRepository->findAll(),
-            'users' => $userRepository->findAll(),
+            'posts' => $postRepository->findPostList(null, 0, 4, false, false),
+            'posts_unchecked' => $postRepository->findPostList(null, 0, 4, false, true),
+            'count_posts' =>  count($postsCount),
+            'count_new_posts' => $CountNewPosts,
+            'users' => $userRepository->findUserList(0, 8, false),
+            'users_unchecked' => $userRepository->findBy(['checked' => false], ['createdAt' => 'DESC'], 8),
+            'count_users' => count($usersCount),
+            'count_new_users' => $CountNewUsers,
             'mainNavHome'=>true,
             'title'=>'Back Office',
         ]);
     }
 
     /**
-     * @Route("/me", name="user_edit", methods={"GET","POST"})
+     * @Route("/annonces/{onlyUnchecked}", name="admin_posts")
+     */
+    public function posts(PostRepository $postRepository, $onlyUnchecked): Response
+    {
+        $posts = $postRepository->findPostList(null, 0, null, false, $onlyUnchecked);
+
+        if ($onlyUnchecked) {
+            $title = " LES NOUVELLES ANNONCES ";
+            $CountNewPosts = $this
+            ->getDoctrine()
+            ->getRepository(Post::class)
+            ->countByChecked();
+        } else {
+            $title = "TOUTES LES ANNONCES";
+            $CountNewPosts = count($posts);
+        }
+
+        return $this->render('admin/posts.html.twig', [
+            'posts' => $posts,
+            'count_new_posts' => $CountNewPosts,
+            'title_posts' => $title,
+            ]);
+    }
+
+    /**
+     * @Route("/utilisateurs/{onlyUnchecked}", name="admin_users")
+     */
+    public function users(UserRepository $userRepository, $onlyUnchecked): Response
+    {
+        $users = $userRepository->findUserList( 0, null, $onlyUnchecked);
+
+        if ($onlyUnchecked) {
+            $title = "LES NOUVEAUX UTILISATEURS";
+            $CountNewUsers = $this
+            ->getDoctrine()
+            ->getRepository(User::class)
+            ->countByChecked();
+        } else {
+            $title = "TOUTES LES UTILISATEURS";
+            $CountNewUsers = count($users);
+        }
+
+        return $this->render('admin/users.html.twig', [
+            'users' => $users,
+            'count_new_users' => $CountNewUsers,
+            'title_users' => $title,
+            ]);
+    }
+
+    /**
+     * @Route("/utilisateurs/{id}/edit", name="user_edit", methods={"GET","POST"})
      * @param Request $req
      * @return Response
      */
-    public function me(Request $req, PostRepository $postRepository, UserRepository $userRepository, FileUploader $fileUploader): Response {
+    public function userEdit(Request $req, PostRepository $postRepository, UserRepository $userRepository, FileUploader $fileUploader, $id): Response {
 
+        $user = $this->findOr404($id);
+        
         $em = $this->getDoctrine()->getManager();
 
         $user = $this->getUser();
@@ -74,24 +146,21 @@ class AdminController extends AbstractController
 
             //  MESSAGE FLASHE     
             $this->addFlash('success', 'Les modifications ont bien été prise en compte');
-            return $this->redirectToRoute('current_user_profile');
+            return $this->redirectToRoute('user_show');
             sleep(5);
         }
 
-        // EN FAIRE DES RECHERCHES PAR CAT / FAVORIS... 
-        return $this->render('user/profile-me.html.twig', [
+        return $this->render('admin/edit_users.html.twig', [
             'user' => $user,
-            'posts' => $postRepository->findPostList(0, 8, false, null), 
-            'favories' => $user->getLiked(),
             'user_form' => $form->createView(),
-            'title' => 'Mon profil',
+            'title' => 'profil ' .$id ,
         ]);
     }
 
     /**
-     * @Route("/{id<\d+>}", name="user_show")
+     * @Route("users/{id<\d+>}", name="user_show")
      */
-    public function profile($id, SessionInterface $session)
+    public function userShow($id, SessionInterface $session)
     {
         $this->session = $session;
 
@@ -101,17 +170,28 @@ class AdminController extends AbstractController
             }
         }
 
-        $user = $this
-        ->getDoctrine()
-        ->getRepository(User::class)
-        ->find($id);
+        $user = $this->findOr404($id);
 
         $username = $user->getUsername();
 
         if (empty($user)) {
-            throw $this->createNotFoundException('User #' . $id . " not found");
+            throw $this->createNotFoundException('Utilisateur #' . $id . " introuvable");
         }
 
         return $this->render('user/profile.html.twig', ['user'=> $user, 'title' => 'Profil de ' . $username,]);
+    }
+
+    private function findOr404($id) {
+
+        $user = $this
+            ->getDoctrine()
+            ->getRepository(User::class)
+            ->find($id);
+
+        if (empty($user)) {
+            throw $this->createNotFoundException('Utilisateur introuvable');
+        }
+        
+        return $user;
     }
 }

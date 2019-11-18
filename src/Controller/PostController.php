@@ -89,7 +89,7 @@ class PostController extends AbstractController
         //user connected
         $user = $this->getUser()->getId();
 
-        if(!($userId == $user)){
+        if(($userId != $user) and ($this->getUser()->getRoles()[0] != 'ROLE_ADMIN')){
             $this->addFlash('danger', 'Ce post ne t\'appartiens pas !');   
             return $this->redirectToRoute('current_user_profile');
         }

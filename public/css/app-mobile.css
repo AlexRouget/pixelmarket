@@ -9,6 +9,9 @@
   div.profile-card {
     display: none !important;
   }
+  #post-edit-form {
+    width: 600px;
+  }
 
   div#hamburger-content {
     display: flex;
