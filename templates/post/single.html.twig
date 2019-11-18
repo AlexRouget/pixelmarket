@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block mainContent %}
 	<a href="javascript:history.back()" class="">
-		file d'ariane
+		Retour
 	</a>
 
 	<!-- IMAGES -->
@@ -9,11 +9,7 @@
 		{% if post.attachment is not empty %}
 			<img src="{{ asset('uploads/' ~ post.attachment) }}" class="card-img" style='width:100%; height:30em; object-fit: contain; background-color:#eeeeee'/>
 		{% else %}
-			<div class="card">
-				<p class="text-center">
-					Pas de photo pour cette annonce
-				</p>
-			</div>
+			<img src="{{ asset('img/icons/icons_autres/icon_camera.png') }}" class="card-img" style='width:100%; height:30em; object-fit: contain; background-color:#eeeeee'/>
 		{% endif %}
 	</div>
 

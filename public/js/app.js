@@ -73,7 +73,7 @@ $(function() {
 
   //AVATARS
   var $avatarInput = $("#user_avatar");
-  var $avatarInput = $("#post_attachment");
+  // var $avatarInput = $("#post_attachment");
   var $avatarRegisterInput = $("#registration_form_avatar");
 
   var $avatar1 = $("#avatar_1");

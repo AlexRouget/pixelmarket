@@ -125,7 +125,8 @@ not defined %}
 		</div>
 	</div>
 {% else %}
-	<input type="hidden" id="post_checked" name="post[checked]" value="1" checked="checked">
+	{{ form_widget(post_form.checked, { 'attr': { 'class' : 'custom-control-input hidden' ~ hasError(post_form.checked)
+}}) }}
 {% endif %}
 
 
