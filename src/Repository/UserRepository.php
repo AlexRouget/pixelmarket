@@ -34,16 +34,38 @@ class UserRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    
-    /*
-    public function findOneBySomeField($value): ?User
+
+      /**
+     * Get all the users and the related amount of comments
+     *
+     * @return array The users for the adminpage
+     */
+    public function findUserList($start, $take, $onlyUnchecked = false)
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $queryBuilder = $this->createQueryBuilder('u')
+            ->select('u as user')
+            ->groupBy('u.id')
+            ->orderBy('u.createdAt', 'DESC')
+            ->setFirstResult($start)
+            ->setMaxResults($take);
+
+            if ($onlyUnchecked === true) {
+                $queryBuilder = $queryBuilder->where('u.checked = false');
+            }
+
+        $results = $queryBuilder->getQuery()->getResult();
+
+        $users = [];
+        foreach ($results as $result) {
+            $user = $result['user'];
+            array_push($users, $user);
+        }
+
+        return $users;
     }
-    */
+
+    public function countByChecked()
+    {
+        return $this->count(['checked' => false]);
+    }
 }

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+{% block pageContent %}
+	{% block headerContent %}
+		<div class="d-flex flex-column align-items-center m-2">
+			<h1 class="display-4">
+				<span class="text-blue">pixel</span>
+				<span class="text-green">market</span>
+			</h1>
+			<p class="lead">Espace Administrateur !</p>
+		</div>
+		<hr class="my-4"/>
+	{% endblock %}
+
+	<h2>{{ title_posts }}</h2>
+	<p>il y a
+		{{ count_new_posts }}
+		nouveaux posts</p>
+
+	<div class="container-fluid">
+		<div class="row">
+			{% for post in posts %}
+				<div class="appear-animation col-sm-3 p-1">
+					{% if post.attachment is not empty %}
+						<img src="{{ asset('uploads/' ~ post.attachment) }}" class="" style="width:100%; height:10em; object-fit: cover;"/>
+					{% else %}
+						<div class="card" style="width:100%; height:10em;">
+							<p class="text-center">
+								Pas de photo pour cette annonce
+							</p>
+						</div>
+					{% endif %}
+					<div class="position-relative card-bottom">
+						<div class="card-post m-0 position-relative">
+							<div class="card-price">{{ post.price }}€</div>
+						</div>
+
+						<div class="card-bottom-content">
+							<h5 class="item-title text-center">{{ post.title }}</h5>
+
+							<p class="mb-1 tiny-text">
+								{{ post.location }},
+								{{ post.publishedAt | ago }}
+							</p>
+						</div>
+					</div>
+
+					<div class="d-flex flex-column my-4 action-edit">
+						<div class="d-flex justify-content-between ">
+							<a href="{{ path('post_show', { id: post.id }) }}">voir</a>
+							<a href="{{ path('post_edit', { id: post.id }) }}">modifier</a>
+						</div>
+
+						<div class="btn btn-danger m-0 p-0">{{ include("post/_delete_form.html.twig") }}</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}

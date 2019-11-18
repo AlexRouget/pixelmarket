@@ -1,89 +1,112 @@
-{% extends 'base.html.twig' %} {% block pageContent %} {% block headerContent %}
-<div class="d-flex flex-column align-items-center m-2">
-  <h1 class="display-4">
-    <span class="text-blue">pixel</span>
-    <span class="text-green">market</span>
-  </h1>
-  <p class="lead">Espace Administrateur !</p>
-</div>
-<hr class="my-4" />
-{% endblock %}
+{% extends 'base.html.twig' %}
+{% block pageContent %}
+	{% block headerContent %}
+		<div class="d-flex flex-column align-items-center m-2">
+			<h1 class="display-4">
+				<span class="text-blue">pixel</span>
+				<span class="text-green">market</span>
+			</h1>
+			<p class="lead">Espace Administrateur !</p>
+		</div>
+		<hr class="my-4"/>
+	{% endblock %}
 
-<!-- LES NOUVEAUX POSTS -->
-<h2>LES NOUVEAUX POSTS</h2>
-<div class="container-fluid">
-  <div class="row">
-    {% for post in posts %}
-    <li class="appear-animation col-sm-3 p-1">
-      {% include 'post/card.html.twig' %}
-    </li>
-    {% endfor %}
-  </div>
-</div>
-<a
-  id="next"
-  class="page-link btn-primary"
-  href="{{ path('admin', {}) }}"
-  aria-label="Next"
->
-  <span aria-hidden="true">
-    + voir plus d'articles
-  </span>
-</a>
+	<!-- LES NOUVEAUX POSTS -->
+	<div class="container-fluid">
+		<h2>LES NOUVEAUX POSTS</h2>
+		<p>il y a
+			{{ count_new_posts }}
+			nouveaux posts</p>
+		<div class="container-fluid">
+			<div class="row">
+				{% for post in posts_unchecked %}
+					<li class="appear-animation col-sm-3 p-1">
+						{% include 'post/card.html.twig' %}
+					</li>
+				{% endfor %}
+			</div>
+		</div>
 
-<!-- LES NOUVEAUX UTILISATEURS -->
-<div class="container-fluid">
-  <h2>LES NOUVEAUX UTILISATEURS</h2>
-  <div class="row">
-    {% for user in users %} {% include 'user/_profile-card.html.twig' %} {%
+		<div class="container-fluid mt-4 d-flex justify-content-end">
+			<a id="" class="btn btn-green text-center my-4" href="{{ path('admin_posts', { onlyUnchecked: 1 }) }}" aria-label="Next">
+				<span aria-hidden="true">
+					+ voir plus d'articles
+				</span>
+			</a>
+		</div>
+	</div>
+
+	<!-- LES NOUVEAUX UTILISATEURS -->
+	<div class="container-fluid">
+		<h2>LES NOUVEAUX UTILISATEURS</h2>
+		<p>il y a
+			{{ count_new_users }}
+			nouveaux utilisateurs</p>
+		<div class="container-fluid">
+			<div class="row">
+				{% for user in users %}
+					<div class="m-3">
+						{% include 'user/_profile-card.html.twig' %}
+					</div>
+				{%
     endfor %}
-  </div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid mt-4 d-flex justify-content-end">
+		<a id="" class="btn btn-green text-center my-4" href="{{ path('admin_users', { onlyUnchecked: 1 }) }}" aria-label="Next">
+			<span aria-hidden="true">
+				+ voir plus d'articles
+			</span>
+		</a>
+	</div>
 </div>
-<a
-  id="next"
-  class="btn btn-danger page-link"
-  href="{{ path('admin', {}) }}"
-  aria-label="Next"
->
-  <span aria-hidden="true">
-    + voir plus d'articles
-  </span>
-</a>
 
 <!-- TOUS LES POSTS -->
 <div class="container-fluid">
-  <h2>TOUS LES POSTS</h2>
-  <div class="row">
-    {% for post in posts %}
-    <li class="appear-animation col-sm-3 p-1">
-      {% include 'post/card.html.twig' %}
-    </li>
-    {% endfor %}
-  </div>
+	<h2>TOUS LES POSTS</h2>
+	<p>il y a
+		{{ count_posts }}
+		nouveaux utilisateurs</p>
+	<div class="container-fluid">
+		<div class="row">
+			{% for post in posts %}
+				<li class="appear-animation col-sm-3 p-1">
+					{% include 'post/card.html.twig' %}
+				</li>
+			{% endfor %}
+		</div>
+	</div>
 </div>
-<a
-  id="next"
-  class="page-link btn btn-primary"
-  href="{{ path('admin', {}) }}"
-  aria-label="Next"
->
-  <span aria-hidden="true">
-    + voir plus d'articles
-  </span>
-</a>
-
+<div class="container-fluid mt-4 d-flex justify-content-end">
+	<a id="" class="btn btn-green text-center my-4" href="{{ path('admin_posts', { onlyUnchecked: 0 }) }}" aria-label="Next">
+		<span aria-hidden="true">
+			+ voir plus d'articles
+		</span>
+	</a>
+</div>
 <!-- TOUS LES USER -->
 <div class="container-fluid">
-  <h2>TOUS LES USERS</h2>
-  <div class="row">
-    {% for user in users %} {% include 'user/_profile-card.html.twig' %} {%
+	<h2>TOUS LES USERS</h2>
+	<p>il y a
+		{{ count_users }}
+		nouveaux utilisateurs</p>
+	<div class="container-fluid">
+		<div class="row d-flex">
+			{% for user in users %}
+				<div class="m-3">
+					{% include 'user/_profile-card.html.twig' %}
+				</div>
+			{%
     endfor %}
-  </div>
+		</div>
+	</div>
 </div>
-<a id="next" class="page-link" href="{{ path('admin', {}) }}" aria-label="Next">
-  <span aria-hidden="true">
-    + voir plus d'articles
-  </span>
-</a>
-
-{% endblock %}
+<div class="container-fluid mt-4 d-flex justify-content-end">
+	<a id="" class="btn btn-green text-center my-4" href="{{ path('admin_users', { onlyUnchecked: 0 }) }}" aria-label="Next">
+		<span aria-hidden="true">
+			+ voir plus d'articles
+		</span>
+	</a>
+</div>{% endblock %}

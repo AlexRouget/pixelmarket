@@ -80,6 +80,7 @@ p {
   text-align: center;
   width: max-content;
 
+  z-index: 10;
   border-radius: 50rem !important;
   padding: 0.25em 1.5em 0.25em 1.5em;
 
@@ -362,6 +363,9 @@ div.custom-file {
 }
 
 /* --------- DIVERS --------- */
+.action-edit {
+  z-index: 10;
+}
 
 #alert {
   display: none;

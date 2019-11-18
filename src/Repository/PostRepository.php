@@ -31,19 +31,15 @@ class PostRepository extends ServiceEntityRepository
      */
     public function findHomepage($categories, int $start = 0, $take = 12)
     {
-       return $this->findPostList($categories, $start, $take, true);
+       return $this->findPostList($categories, $start, $take, true, false);
     }
-    // public function findHomepage($categorie)
-    // {
-    //    return $this->findByCategories($categorie);
-    // }
 
     /**
      * Get all the posts and the related amount of comments
      *
      * @return array The posts for the homepage
      */
-    public function findPostList($categories, $start, $take, $onlyPublic = false)
+    public function findPostList($categories, $start, $take, $onlyPublic = false, $onlyUnchecked = false)
     {
         $queryBuilder = $this->createQueryBuilder('p')
             ->select('p as post')
@@ -52,14 +48,20 @@ class PostRepository extends ServiceEntityRepository
             ->setFirstResult($start)
             ->setMaxResults($take);
 
-        if ($onlyPublic === true) {
-            $queryBuilder = $queryBuilder->where('p.public = true');
-        }
-        if ($categories) {
-            $queryBuilder = $queryBuilder->where('p.categories = :val')->setParameter('val', $categories);
-        }
+            
+            if ($onlyPublic === true) {
+                $queryBuilder = $queryBuilder->where('p.public = true');
+            }
+            if ($onlyUnchecked === true) {
+                $queryBuilder = $queryBuilder->where('p.checked = false');
+            }
+            if ($categories) {
+                $queryBuilder = $queryBuilder->where('p.categories = :val')->setParameter('val', $categories);
+            }
 
-        $results = $queryBuilder->getQuery()->getResult();
+        $query = $queryBuilder->getQuery();
+        // dump($query);die;
+        $results = $query->getResult();
 
         $posts = [];
         foreach ($results as $result) {
@@ -106,5 +108,10 @@ class PostRepository extends ServiceEntityRepository
     public function countByCat($cat)
     {
         return $this->count(['categories' => $cat]);
+    }
+
+    public function countByChecked()
+    {
+        return $this->count(['checked' => false]);
     }
 }
