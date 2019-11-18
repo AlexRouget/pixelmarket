@@ -6,18 +6,14 @@
 			<img id="logo" class="navbar-brand nav-link m-0" src="{{ asset('img/logo_pixelmarket/logo_pixelmarket_1.png')}}" class="card-img" alt="">
 		</a>
 	</h1>
-
+<!-- POUR L'ADMIN -->
+{% if is_granted('ROLE_ADMIN') %}
+<div class="nav-item {% if mainNavAdmin is defined %}active{% endif %}">
+	<a class="nav-link text-light" href="{{path('admin')}}">Espace admin</a>
+</div>
+{% endif %}
 	
 	<ul id="toogle-sign">
-
-
-<!-- POUR L'ADMIN -->
-		{% if is_granted('ROLE_ADMIN') %}
-			<li class="nav-item {% if mainNavAdmin is defined %}active{% endif %}">
-				<a class="nav-link" href="{{path('admin')}}">Espace admin</a>
-			</li>
-		{% endif %}
-		
 		<li>
 			{% if app.user is not empty %}
 				<a class="btn-green" href="{{ path("post_new") }}">
@@ -40,7 +36,7 @@
 					</span>
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="{{ path('current_user_profile') }}">Profile</a>
+					<a class="dropdown-item" href="{{ path('current_user_profile') }}">Mon profil</a>
 					<a class="dropdown-item disabled" href="#">Paramêtres</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="{{path("app_logout")}}">Deconnexion</a>
