@@ -73,11 +73,16 @@ not defined %}
 {% endif %}
 
 <div class="form-group d-flex flex-column">
-	{{ form_label(post_form.attachment, "Include a cool picture") }}
-	<div class="custom-file">
-		{{ form_widget(post_form.attachment, {'attr': { 'class': 'custom-file-input' ~ hasError(post_form.attachment)
-    }}) }}
+	{{ form_label(post_form.attachment, "Choisir une photo") }}
+
+	<div id="avatars">
+		<div id="avatar_4" class="avatar-auto avatar_4">
+			<img class="avatar-img" src="{{ asset('img/icons/icons_autres/icon_camera.png') }}"/>
+		</div>
 	</div>
+	{{ form_widget(post_form.attachment, {'attr': { 'class': 'hidden' ~ hasError(post_form.attachment)
+		}}) }}
+
 	<small class="form-text text-muted">
 		Les formats d'images supportés : jpeg, png, gif
 	</small>
@@ -107,7 +112,6 @@ not defined %}
     }}) }}
 	</div>
 </div>
-
 
 <!-- CHECKED -->
 {% if is_granted('ROLE_ADMIN') %}

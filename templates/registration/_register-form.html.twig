@@ -17,10 +17,18 @@
 	{{ form_label(register_form.avatar) }}
 
 	<div id="avatars">
-		<div id="avatar_1" class="avatar-auto"></div>
-		<div id="avatar_2" class="avatar-auto"></div>
-		<div id="avatar_3" class="avatar-auto"></div>
-		<div id="avatar_4" class="avatar-auto avatar_4"></div>
+		<div id="avatar_1" class="avatar-auto">
+			<img class="avatar-img" src="{{ asset('img/icons/icons_avatars/avatar-blue.png') }}"/>
+		</div>
+		<div id="avatar_2" class="avatar-auto">
+			<img class="avatar-img" src="{{ asset('img/icons/icons_avatars/avatar-green.png') }}"/>
+		</div>
+		<div id="avatar_3" class="avatar-auto">
+			<img class="avatar-img" src="{{ asset('img/icons/icons_avatars/avatar-red.png') }}"/>
+		</div>
+		<div id="avatar_4" class="avatar-auto avatar_4">
+			<img class="avatar-img" src="{{ asset('img/icons/icons_autres/icon_camera.png') }}"/>
+		</div>
 	</div>
 
 	{{ form_widget(register_form.avatar, {'attr': { 'class': 'form-control hidden' ~ hasError(register_form.avatar)

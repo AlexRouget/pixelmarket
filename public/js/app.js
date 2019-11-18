@@ -73,6 +73,7 @@ $(function() {
 
   //AVATARS
   var $avatarInput = $("#user_avatar");
+  var $avatarInput = $("#post_attachment");
   var $avatarRegisterInput = $("#registration_form_avatar");
 
   var $avatar1 = $("#avatar_1");
@@ -120,10 +121,6 @@ $(function() {
 
     image.src = reader.result;
     $("#avatars")[0].appendChild(image);
-
-    $avatarLabel.css({
-      border: "2px solid green"
-    });
     console.log("File upload");
   });
 
