@@ -24,7 +24,12 @@
 					<div class="m-4">
 						<div class="d-flex flex-column align-items-center">
 
-							<img class="avatar-img" src="{{ asset('' ~ user.avatar) }}" alt="">
+							{% if user.avatar is not empty %}
+								<img class="avatar-img" src="{{ asset('uploads/' ~ user.avatar) }}" alt="avatar">
+							{% else  %}
+								<img class="avatar-img" src="{{ asset('img/default-avatar-708x708.jpg') }}" alt="avatar-default">
+							{% endif %}
+
 
 							<div class="d-flex flex-column align-items-center mt-4">
 								<h6 class="m-0">{{ user.username }}</h6>

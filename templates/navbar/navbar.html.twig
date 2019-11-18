@@ -6,15 +6,15 @@
 			<img id="logo" class="navbar-brand nav-link m-0" src="{{ asset('img/logo_pixelmarket/logo_pixelmarket_1.png')}}" class="card-img" alt="">
 		</a>
 	</h1>
-<!-- POUR L'ADMIN -->
-{% if is_granted('ROLE_ADMIN') %}
-<div class="nav-item {% if mainNavAdmin is defined %}active{% endif %}">
-	<a class="nav-link text-light" href="{{path('admin')}}">Espace admin</a>
-</div>
-{% endif %}
-	
+	<!-- POUR L'ADMIN -->
+	{% if is_granted('ROLE_ADMIN') %}
+		<div class="nav-item {% if mainNavAdmin is defined %}active{% endif %}">
+			<a class="nav-link text-light admin" href="{{path('admin')}}">Espace admin</a>
+		</div>
+	{% endif %}
+
 	<ul id="toogle-sign">
-				
+
 		<li>
 			{% if app.user is not empty %}
 				<a class="btn-green" href="{{ path("post_new") }}">

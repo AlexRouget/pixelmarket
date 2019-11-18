@@ -4,6 +4,7 @@
   #page-side-content {
     margin: 30px;
   }
+
   .desktop-none,
   div#hamburger,
   div.profile-card {
@@ -68,6 +69,7 @@
 
 /* DE 0 à 1024px*/
 @media screen and (max-width: 1024px) {
+  .admin,
   #base-sidebar,
   #side-menu,
   #symbol-logo,
@@ -111,6 +113,7 @@
 
 /*--------- DE 0 à 768px ----------*/
 @media only screen and (max-width: 767px) {
+  .mobil-none,
   nav#navbar form,
   li#profileNavbar,
   a#navbarDropdown,

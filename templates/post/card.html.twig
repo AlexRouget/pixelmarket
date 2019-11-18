@@ -1,60 +1,53 @@
 {% set myDate = "now" | date %}
 <div class="card-post">
-  {% if app.user != post.author %}
+	{% if app.user != post.author %}
 
-  <div class="heart-like">
-    {% if app.user is not empty %} {% if app.user and app.user.doesLike(post) %}
-    <a class="like" href="{{ path('post_unlike', { id: post.id }) }}">
-      <i class="fas fa-heart liked"></i>
-    </a>
-    {% else %}
-    <a class="like" href="{{ path('post_like', { id: post.id }) }}">
-      <i class="far fa-heart"></i>
-    </a>
-    {% endif %} {% else %}
-    <a
-      onclick="return confirm('vous devez vous connectez pour ajouter cette annonce dans vos favoris')"
-      href="{{ path('app_login') }}"
-    >
-      <i class="far fa-heart"></i>
-    </a>
-    {% endif %}
-  </div>
+		<div class="heart-like">
+			{% if app.user is not empty %}
+				{% if app.user and app.user.doesLike(post) %}
+					<a class="like" href="{{ path('post_unlike', { id: post.id }) }}">
+						<i class="fas fa-heart liked"></i>
+					</a>
+				{% else %}
+					<a class="like" href="{{ path('post_like', { id: post.id }) }}">
+						<i class="far fa-heart"></i>
+					</a>
+				{% endif %}
+			{% else %}
+				<a onclick="return confirm('vous devez vous connectez pour ajouter cette annonce dans vos favoris')" href="{{ path('app_login') }}">
+					<i class="far fa-heart"></i>
+				</a>
+			{% endif %}
+		</div>
 
-  {% endif %}
+	{% endif %}
 
-  <a
-    href="{{ path('post_show', { id: post.id }) }}"
-    style="text-decoration: none;"
-  >
-    {% if post.attachment is not empty %}
-    <img
-      src="{{ asset('uploads/' ~ post.attachment) }}"
-      class=""
-      style="width:100%; height:10em; object-fit: cover;"
-    />
-    {% else %}
-    <div class="card" style="width:100%; height:10em;">
-      <p class="text-center">
-        Pas de photo pour cette annonce
-      </p>
-    </div>
-    {% endif %} {# <img src="{{ post.attachment }} | default('{{
-      asset("img/default-avatar-708x708.jpg")
-    }}')'" class="" style='width:100%; height:100%; object-fit: cover;' "> #}
-    <div class="position-relative card-bottom">
-      <div class="card-post m-0 position-relative">
-        <div class="card-price">{{ post.price }}€</div>
-      </div>
+	<a href="{{ path('post_show', { id: post.id }) }}" style="text-decoration: none;">
+		{% if post.attachment is not empty %}
 
-      <div class="card-bottom-content">
-        <h5 class="item-title text-center">{{ post.title }}</h5>
+			<img src="{{ asset('uploads/' ~ post.attachment) }}" alt="photo" style='width:100%; height:10em; object-fit: cover;'>
 
-        <p class="mb-1 tiny-text">
-          {{ post.location }},
-          {{ post.publishedAt | ago }}
-        </p>
-      </div>
-    </div>
-  </a>
+		{% else %}
+			<div class="card" style="width:100%; height:10em;">
+
+				<img src="{{ asset('img/icons_avatars/avatar-pix.png') }}" alt="photo">
+
+			</div>
+		{% endif %}
+
+		<div class="position-relative card-bottom">
+			<div class="card-post m-0 position-relative">
+				<div class="card-price">{{ post.price }}€</div>
+			</div>
+
+			<div class="card-bottom-content d-flex align-items-center justify-content-center mt-2">
+				<h5 class="item-title text-center m-0 mt-1">{{ post.title }}</h5>
+
+				<p class="mb-2 tiny-text mobil-none">
+					{{ post.location }},
+					{{ post.publishedAt | ago }}
+				</p>
+			</div>
+		</div>
+	</a>
 </div>
